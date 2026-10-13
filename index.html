@@ -1,0 +1,644 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#2c6aa8"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Штиль"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-180.png"><link rel="icon" href="icon-192.png"><style>:root{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0}</style><title>Штиль на борту</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Unbounded:wght@500;700&display=swap">
+<style>
+/* Layout: one calm column, like a cabin information card — form, route profile, zones, in-flight panel */
+:root{
+  --bg:#edf1f5; --surface:#ffffff; --ink:#15212e; --muted:#5a6a7b; --line:#d3dce5; --accent:#2c6aa8; --accent-ink:#ffffff;
+  --calm:#3c9670; --light:#c09a1c; --mod:#dc7428; --sev:#c43e37; --band-bg:#e3e9ef;
+  --f-display:"Unbounded","Golos Text",system-ui,sans-serif;
+  --f-body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-data:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1620; --surface:#17212d; --ink:#e4ebf2; --muted:#93a3b4; --line:#273341; --accent:#6ea6de; --accent-ink:#0d1520;
+  --calm:#5cbf93; --light:#e0bb3e; --mod:#f08f45; --sev:#ef6a61; --band-bg:#1f2b38; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1620; --surface:#17212d; --ink:#e4ebf2; --muted:#93a3b4; --line:#273341; --accent:#6ea6de; --accent-ink:#0d1520;
+  --calm:#5cbf93; --light:#e0bb3e; --mod:#f08f45; --sev:#ef6a61; --band-bg:#1f2b38; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.app{max-width:640px;margin:0 auto;padding:20px 16px 48px;display:flex;flex-direction:column;gap:16px}
+.top{display:flex;flex-direction:column;gap:2px}
+.brand{font-family:var(--f-display);font-weight:700;font-size:28px;letter-spacing:-.01em;line-height:1.1}
+.brand small{font-weight:500;font-size:15px;color:var(--muted);margin-left:8px;letter-spacing:0}
+.tag{margin:0;color:var(--muted);font-size:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+h2{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:0;font-weight:600}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid .full{grid-column:1/-1}
+label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted);min-width:0}
+input,select{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 10px;width:100%;min-width:0}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hint{font-size:12px;color:var(--muted)}
+button{font:inherit;font-weight:600;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 14px;cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.status{font-size:13px;color:var(--muted)}
+.status.warn{color:var(--mod)}
+.summary{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--band-bg)}
+.dot{width:9px;height:9px;border-radius:50%;flex:none}
+.l0 .dot,.dot.l0{background:var(--calm)} .l1 .dot,.dot.l1{background:var(--light)} .l2 .dot,.dot.l2{background:var(--mod)} .l3 .dot,.dot.l3{background:var(--sev)}
+.meta{font-family:var(--f-data);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.chart{width:100%;overflow-x:auto}
+.chart svg{display:block;width:100%;height:auto;min-width:300px}
+.zones{display:flex;flex-direction:column;gap:0;margin:0;padding:0;list-style:none}
+.zones li{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:10px 0;border-top:1px solid var(--line)}
+.zones li:first-child{border-top:0}
+.zt{font-family:var(--f-data);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap;padding-top:1px}
+.zn{font-weight:600}
+.zd{grid-column:2;font-size:13px;color:var(--muted)}
+.big{font-family:var(--f-display);font-size:34px;font-weight:500;font-variant-numeric:tabular-nums;line-height:1.1}
+.next{font-size:15px}
+.flightbox{display:flex;flex-direction:column;gap:6px}
+.toggles{display:flex;gap:14px;flex-wrap:wrap;font-size:14px}
+.toggles label{flex-direction:row;align-items:center;gap:6px;color:var(--ink);font-size:14px}
+.toggles input{width:auto}
+.foot{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+.foot p{margin:0;max-width:65ch}
+.alert{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:24px 16px calc(24px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(4px)}
+.alert .box{background:var(--surface);border:1px solid var(--line);border-top:8px solid var(--light);border-radius:16px;padding:20px;max-width:440px;width:100%;display:flex;flex-direction:column;gap:10px}
+.alert.l2 .box{border-top-color:var(--mod)} .alert.l3 .box{border-top-color:var(--sev)}
+.alert h3{font-family:var(--f-display);font-weight:500;font-size:22px;margin:0;text-wrap:balance}
+.alert p{margin:0}
+.toast{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15;max-width:480px;margin:0 auto;background:var(--ink);color:var(--bg);border-radius:12px;padding:12px 14px;font-size:14px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}.brand{font-size:24px}}
+@media (prefers-reduced-motion:no-preference){.alert .box{animation:pop .25s ease-out}@keyframes pop{from{transform:translateY(12px);opacity:.6}to{transform:none;opacity:1}}}
+</style></head><body>
+
+<div class="app">
+  <header class="top">
+    <div class="brand">Штиль<small>на борту</small></div>
+    <p class="tag">Прогноз болтанки по маршруту и предупреждения прямо в полёте</p>
+  </header>
+
+  <section class="card" aria-labelledby="hForm">
+    <h2 id="hForm">Рейс</h2>
+    <div class="grid">
+      <label>Откуда<input id="from" list="apList" autocomplete="off" placeholder="Код аэропорта, напр. SVO"></label>
+      <label>Куда<input id="to" list="apList" autocomplete="off" placeholder="Код аэропорта, напр. PVG"></label>
+      <label>Вылет (время телефона)<input id="dep" type="datetime-local"></label>
+      <label>Эшелон<select id="fl">
+        <option value="auto" selected>Не знаю, подбери сам</option>
+        <option value="290">FL290 · 8,8 км</option><option value="310">FL310 · 9,4 км</option>
+        <option value="330">FL330 · 10,1 км</option><option value="350">FL350 · 10,7 км</option>
+        <option value="370">FL370 · 11,3 км</option><option value="390">FL390 · 11,9 км</option><option value="410">FL410 · 12,5 км</option>
+      </select><span class="hint" id="flHint">Подберу по длине рейса, в полёте уточню по высоте из GPS</span></label>
+      <label class="full">Время в пути, мин<input id="dur" type="number" min="20" max="1200" step="5" inputmode="numeric">
+        <span class="hint" id="durHint">Считается по расстоянию, можно поправить по расписанию</span></label>
+    </div>
+    <datalist id="apList"></datalist>
+    <div class="row">
+      <button class="primary" id="build">Построить прогноз</button>
+      <span class="status" id="status" role="status"></span>
+    </div>
+  </section>
+
+  <section class="card" id="results" hidden aria-labelledby="hRes">
+    <h2 id="hRes">Прогноз по маршруту</h2>
+    <div class="summary"><span class="pill" id="overall"></span><span class="meta" id="routeMeta"></span></div>
+    <div class="chart" id="chart"></div>
+    <ul class="zones" id="zones"></ul>
+    <div class="meta" id="srcMeta"></div>
+  </section>
+
+  <section class="card" id="flight" hidden aria-labelledby="hFlight">
+    <h2 id="hFlight">В полёте</h2>
+    <div class="flightbox">
+      <div class="big" id="clock">—</div>
+      <div class="next" id="nextZone">Нажмите «Взлетели», когда самолёт оторвётся от полосы.</div>
+      <div class="meta" id="posMeta"></div>
+    </div>
+    <div class="row">
+      <button class="primary" id="takeoff">Взлетели</button>
+      <button id="minus">−5 мин</button>
+      <button id="plus">+5 мин</button>
+      <button id="sim">Симуляция ×60</button>
+      <button id="stop" hidden>Стоп</button>
+    </div>
+    <div class="grid">
+      <label>Предупреждать за<select id="lead"><option value="2">2 минуты</option><option value="5" selected>5 минут</option><option value="10">10 минут</option></select></label>
+      <label>О какой болтанке<select id="thr"><option value="1" selected>Слабой и сильнее</option><option value="2">Умеренной и сильнее</option></select></label>
+    </div>
+    <div class="toggles">
+      <label><input type="checkbox" id="optSound" checked> Звук</label>
+      <label><input type="checkbox" id="optVoice" checked> Голос</label>
+      <label><input type="checkbox" id="optGps" checked> GPS</label>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>Как считается: маршрут строится по дуге большого круга, к каждой точке подбирается высота по профилю набора, крейсера и снижения. Для неё берётся прогноз ветра и температуры на ближайших уровнях давления (Open-Meteo). Ясная болтанка оценивается по сдвигу ветра и числу Ричардсона, грозовая по CAPE, болтанка у земли по порывам ветра.</p>
+    <p>Прогноз загрузите до посадки в самолёт, пока есть интернет: он сохранится в телефоне. В полёте приложение работает без сети, по таймеру от взлёта и по GPS, если телефон ловит спутники у окна.</p>
+    <p>На iPhone держите приложение открытым на экране: в фоне или при заблокированном экране iOS его приостанавливает и предупреждения не придут. Экран само не гасит, лучше подключить зарядку. Вибрации на iPhone нет, сигнал звуковой и голосом.</p>
+    <p>Это оценка по модели, а не данные экипажа. Болтанка бывает и там, где прогноз спокоен. Для пристёгнутого пассажира она не опасна: самолёт рассчитан на нагрузки намного выше любых, что встречаются в обычном полёте.</p>
+  </footer>
+</div>
+
+<div class="alert" id="alert" hidden role="alertdialog" aria-labelledby="alTitle">
+  <div class="box">
+    <h3 id="alTitle"></h3>
+    <p id="alText"></p>
+    <p class="meta" id="alCause"></p>
+    <button class="primary" id="alOk">Понятно</button>
+  </div>
+</div>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+(function(){
+"use strict";
+const AP=`LJU|Любляна|46.224|14.458
+ZAG|Загреб|45.743|16.069
+VIE|Вена|48.110|16.570
+MUC|Мюнхен|48.354|11.786
+FRA|Франкфурт|50.033|8.571
+BER|Берлин|52.366|13.503
+CDG|Париж Шарль-де-Голль|49.010|2.548
+ORY|Париж Орли|48.723|2.379
+LHR|Лондон Хитроу|51.470|-0.454
+LGW|Лондон Гатвик|51.148|-0.190
+AMS|Амстердам|52.310|4.768
+BRU|Брюссель|50.901|4.484
+ZRH|Цюрих|47.458|8.548
+GVA|Женева|46.238|6.109
+MXP|Милан Мальпенса|45.630|8.723
+FCO|Рим|41.800|12.239
+VCE|Венеция|45.505|12.352
+TRS|Триест|45.827|13.472
+BCN|Барселона|41.297|2.078
+MAD|Мадрид|40.472|-3.561
+LIS|Лиссабон|38.774|-9.134
+ATH|Афины|37.936|23.947
+IST|Стамбул|41.275|28.752
+SAW|Стамбул Сабиха|40.898|29.309
+AYT|Анталья|36.899|30.800
+PRG|Прага|50.101|14.260
+BUD|Будапешт|47.437|19.256
+WAW|Варшава|52.166|20.967
+HEL|Хельсинки|60.317|24.963
+ARN|Стокгольм|59.652|17.919
+CPH|Копенгаген|55.618|12.656
+OSL|Осло|60.194|11.100
+DUB|Дублин|53.421|-6.270
+BEG|Белград|44.818|20.309
+TIV|Тиват|42.405|18.723
+SPU|Сплит|43.539|16.298
+DBV|Дубровник|42.561|18.268
+VNO|Вильнюс|54.634|25.286
+RIX|Рига|56.924|23.971
+TLL|Таллин|59.413|24.833
+SVO|Москва Шереметьево|55.973|37.415
+DME|Москва Домодедово|55.409|37.906
+VKO|Москва Внуково|55.592|37.261
+LED|Санкт-Петербург|59.800|30.263
+AER|Сочи|43.450|39.957
+KRR|Краснодар|45.035|39.170
+MRV|Минеральные Воды|44.225|43.082
+KZN|Казань|55.606|49.279
+UFA|Уфа|54.557|55.874
+SVX|Екатеринбург|56.743|60.803
+OVB|Новосибирск|55.013|82.651
+KJA|Красноярск|56.173|92.493
+IKT|Иркутск|52.268|104.389
+VVO|Владивосток|43.399|132.148
+KGD|Калининград|54.890|20.593
+MSQ|Минск|53.882|28.031
+ALA|Алматы|43.352|77.040
+NQZ|Астана|51.022|71.467
+TAS|Ташкент|41.258|69.281
+TBS|Тбилиси|41.669|44.955
+EVN|Ереван|40.147|44.396
+GYD|Баку|40.467|50.047
+ULN|Улан-Батор|47.647|106.820
+DXB|Дубай|25.253|55.364
+AUH|Абу-Даби|24.433|54.651
+DOH|Доха|25.273|51.608
+TLV|Тель-Авив|32.011|34.887
+CAI|Каир|30.122|31.406
+SSH|Шарм-эль-Шейх|27.977|34.395
+HRG|Хургада|27.178|33.799
+PVG|Шанхай Пудун|31.143|121.805
+SHA|Шанхай Хунцяо|31.198|121.336
+PEK|Пекин Столичный|40.080|116.585
+PKX|Пекин Дасин|39.509|116.411
+CAN|Гуанчжоу|23.392|113.299
+SZX|Шэньчжэнь|22.639|113.811
+HKG|Гонконг|22.308|113.918
+CTU|Чэнду Шуанлю|30.578|103.947
+TFU|Чэнду Тяньфу|30.319|104.445
+CKG|Чунцин|29.719|106.642
+XIY|Сиань|34.447|108.752
+KMG|Куньмин|25.102|102.929
+HGH|Ханчжоу|30.229|120.434
+NKG|Нанкин|31.742|118.862
+WUH|Ухань|30.784|114.208
+CSX|Чанша|28.189|113.220
+XMN|Сямэнь|24.544|118.128
+TAO|Циндао|36.362|120.088
+DLC|Далянь|38.966|121.539
+TSN|Тяньцзинь|39.124|117.346
+HRB|Харбин|45.623|126.250
+URC|Урумчи|43.907|87.474
+SYX|Санья|18.303|109.412
+TPE|Тайбэй|25.078|121.233
+NRT|Токио Нарита|35.765|140.386
+HND|Токио Ханэда|35.552|139.780
+KIX|Осака Кансай|34.427|135.244
+ICN|Сеул Инчхон|37.460|126.441
+BKK|Бангкок|13.690|100.750
+HKT|Пхукет|8.113|98.317
+SIN|Сингапур|1.364|103.991
+KUL|Куала-Лумпур|2.746|101.710
+DPS|Бали|-8.748|115.167
+SGN|Хошимин|10.819|106.652
+HAN|Ханой|21.221|105.807
+DAD|Дананг|16.044|108.199
+MNL|Манила|14.509|121.020
+DEL|Дели|28.556|77.100
+BOM|Мумбаи|19.089|72.868
+MLE|Мале|4.192|73.529
+CMB|Коломбо|7.181|79.884
+JFK|Нью-Йорк JFK|40.640|-73.779
+EWR|Нью-Йорк Ньюарк|40.690|-74.175
+LAX|Лос-Анджелес|33.942|-118.408
+SFO|Сан-Франциско|37.619|-122.375
+ORD|Чикаго|41.978|-87.905
+MIA|Майами|25.793|-80.291
+YYZ|Торонто|43.677|-79.631
+MEX|Мехико|19.436|-99.072
+CUN|Канкун|21.037|-86.877
+GRU|Сан-Паулу|-23.432|-46.469
+SYD|Сидней|-33.946|151.177
+JNB|Йоханнесбург|-26.134|28.242
+ADD|Аддис-Абеба|8.978|38.799`.split("\n").map(l=>{const[c,n,a,o]=l.split("|");return{c,n,lat:+a,lon:+o}});
+
+const $=id=>document.getElementById(id);
+const IN_FRAME=(()=>{try{return window.self!==window.top}catch(e){return true}})();
+const rad=Math.PI/180, RE=6371;
+const LEVELS=[1000,925,850,700,600,500,400,300,250,200,150];
+const LV_NAME=["Спокойно","Слабая болтанка","Умеренная болтанка","Сильная болтанка"];
+const KEY="shtil.flight.v1";
+let flight=null;          // {from,to,depMs,fl,dur,dist,points,zones,source,fetchedAt}
+let clock=null;           // {baseMs,minAtBase,rate,mode}
+let timer=null, gpsWatch=null, wakeLock=null, audio=null;
+
+/* ---------- storage ---------- */
+function save(){try{localStorage.setItem(KEY,JSON.stringify(flight))}catch(e){}}
+function load(){try{const s=localStorage.getItem(KEY);return s?JSON.parse(s):null}catch(e){return null}}
+
+/* ---------- helpers ---------- */
+const pad=n=>String(n).padStart(2,"0");
+function fmtDur(m){m=Math.max(0,Math.round(m));const h=Math.floor(m/60),mm=m%60;return h?`${h} ч ${pad(mm)} мин`:`${mm} мин`}
+function fmtClock(m){const s=m<0?"−":"+";m=Math.abs(m);const h=Math.floor(m/60),mm=Math.floor(m%60);return `${s}${h}:${pad(mm)}`}
+function localInput(d){return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`}
+function hhmm(ms){const d=new Date(ms);return `${pad(d.getHours())}:${pad(d.getMinutes())}`}
+function parsePlace(s){
+  s=(s||"").trim(); if(!s) return null;
+  const m=s.match(/^(-?\d+(?:\.\d+)?)\s*[,; ]\s*(-?\d+(?:\.\d+)?)$/);
+  if(m) return {c:"",n:`${(+m[1]).toFixed(2)}, ${(+m[2]).toFixed(2)}`,lat:+m[1],lon:+m[2]};
+  const code=s.slice(0,3).toUpperCase();
+  return AP.find(a=>a.c===code)||AP.find(a=>a.n.toLowerCase().startsWith(s.toLowerCase()))||null;
+}
+function hav(a,b){const dl=(b.lat-a.lat)*rad,dn=(b.lon-a.lon)*rad;const h=Math.sin(dl/2)**2+Math.cos(a.lat*rad)*Math.cos(b.lat*rad)*Math.sin(dn/2)**2;return 2*RE*Math.asin(Math.min(1,Math.sqrt(h)))}
+function vec(p){const la=p.lat*rad,lo=p.lon*rad;return[Math.cos(la)*Math.cos(lo),Math.cos(la)*Math.sin(lo),Math.sin(la)]}
+function gc(a,b,n){
+  const d=hav(a,b)/RE,A=vec(a),B=vec(b),out=[];
+  for(let i=0;i<=n;i++){const f=i/n,s1=Math.sin((1-f)*d)/Math.sin(d),s2=Math.sin(f*d)/Math.sin(d);
+    const x=A[0]*s1+B[0]*s2,y=A[1]*s1+B[1]*s2,z=A[2]*s1+B[2]*s2;
+    out.push({lat:Math.atan2(z,Math.hypot(x,y))/rad,lon:Math.atan2(y,x)/rad,f});}
+  return out;
+}
+function altAt(min,dur,cruiseFt){
+  const climb=Math.min(22,dur*0.32),desc=Math.min(28,dur*0.38);
+  if(min<=climb){const f=min/climb;return cruiseFt*(1-Math.pow(1-f,1.8))}
+  if(min>=dur-desc){const f=(dur-min)/desc;return cruiseFt*Math.pow(Math.max(0,f),1.15)}
+  return cruiseFt;
+}
+function autoDur(dist){return Math.round((dist/830*60+28)/5)*5}
+const FLS=[290,310,330,350,370,390,410];
+function autoFl(dist){return dist<500?290:dist<1000?330:dist<6000?350:370}
+function cruiseWindow(dur){return[Math.min(22,dur*0.32),dur-Math.min(28,dur*0.38)]}
+
+/* ---------- weather ---------- */
+function apiHour(ms){return new Date(Math.floor(ms/3.6e6)*3.6e6).toISOString().slice(0,13)+":00"}
+async function fetchBatch(pts,startMs,endMs){
+  const vars=[];LEVELS.forEach(L=>["wind_speed","wind_direction","temperature","geopotential_height"].forEach(v=>vars.push(`${v}_${L}hPa`)));
+  vars.push("cape","wind_gusts_10m");
+  const url="https://api.open-meteo.com/v1/forecast?latitude="+pts.map(p=>p.lat.toFixed(3)).join(",")+
+    "&longitude="+pts.map(p=>p.lon.toFixed(3)).join(",")+"&hourly="+vars.join(",")+
+    "&wind_speed_unit=kn&timezone=GMT&start_hour="+apiHour(startMs)+"&end_hour="+apiHour(endMs+3.6e6);
+  const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),25000);
+  try{const r=await fetch(url,{signal:ctl.signal});if(!r.ok){let msg="";try{msg=(await r.json()).reason||""}catch(e){}throw new Error(msg||("HTTP "+r.status))}
+    const j=await r.json();return Array.isArray(j)?j:[j];}
+  finally{clearTimeout(t)}
+}
+function pairMetrics(a,b){
+  const dz=b.z-a.z; if(!(dz>80)) return null;
+  const ua=-a.ws*Math.sin(a.wd*rad),va=-a.ws*Math.cos(a.wd*rad),ub=-b.ws*Math.sin(b.wd*rad),vb=-b.ws*Math.cos(b.wd*rad);
+  const dv=Math.hypot(ub-ua,vb-va);                      // kt
+  const vws=dv/(dz*3.28084/1000);                         // kt per 1000 ft
+  const S=dv*0.5144/dz;
+  const tha=(a.T+273.15)*Math.pow(1000/a.p,0.2857),thb=(b.T+273.15)*Math.pow(1000/b.p,0.2857);
+  const N2=9.81/((tha+thb)/2)*(thb-tha)/dz;
+  return {vws,Ri:S>1e-6?N2/(S*S):99};
+}
+function analyzePoint(p,hourly){
+  const t0=Date.parse(hourly.time[0]+"Z");
+  const i=Math.max(0,Math.min(hourly.time.length-1,Math.round((p.ms-t0)/3.6e6)));
+  const g=k=>{const a=hourly[k];return a?a[i]:null};
+  const lv=LEVELS.map(L=>({p:L,z:g(`geopotential_height_${L}hPa`),ws:g(`wind_speed_${L}hPa`),wd:g(`wind_direction_${L}hPa`),T:g(`temperature_${L}hPa`)}))
+    .filter(o=>o.z!=null&&o.ws!=null&&o.wd!=null&&o.T!=null).sort((a,b)=>a.z-b.z);
+  const altM=p.altFt*0.3048;
+  let vws=0,Ri=99,wind=0;
+  for(let k=0;k<lv.length-1;k++){
+    const a=lv[k],b=lv[k+1];
+    if(b.z<altM-700||a.z>altM+700) continue;
+    const m=pairMetrics(a,b); if(!m) continue;
+    if(m.vws>vws) vws=m.vws; if(m.Ri<Ri) Ri=m.Ri;
+    wind=Math.max(wind,Math.abs(altM-a.z)<Math.abs(altM-b.z)?a.ws:b.ws);
+  }
+  return scorePoint(p,{vws,Ri,wind,cape:g("cape")||0,gust:g("wind_gusts_10m")||0});
+}
+function scorePoint(p,m){
+  let level=0,cause="",detail="";
+  // clear-air: vertical wind shear + Richardson number
+  let s=0;
+  if(m.vws>=6.5) s=3; else if(m.vws>=4.5) s=2; else if(m.vws>=3) s=1;
+  if(m.vws>=2.5&&m.Ri<0.5) s=Math.max(s,2); else if(m.vws>=2&&m.Ri<1) s=Math.max(s,1);
+  if(s>level){level=s;cause="shear";detail=`Сдвиг ветра ${m.vws.toFixed(1)} уз/1000 фт, ветер ${Math.round(m.wind)} уз${m.wind>=100?" (струйное течение)":""}`}
+  // convection
+  let c=0; if(m.cape>=1000) c=2; else if(m.cape>=300) c=1;
+  if(c>level){level=c;cause="conv";detail=`Возможна кучево-дождевая облачность, CAPE ${Math.round(m.cape)} Дж/кг. Грозы экипаж обходит по радару`}
+  // near the ground
+  if(p.altFt<9000){let w=0;if(m.gust>=38)w=3;else if(m.gust>=28)w=2;else if(m.gust>=18)w=1;
+    if(w>level){level=w;cause="gust";detail=`Порывы ветра у земли до ${Math.round(m.gust)} уз (${Math.round(m.gust*1.852)} км/ч)`}}
+  return {level,cause,detail,vws:+m.vws.toFixed(2),wind:Math.round(m.wind),cape:Math.round(m.cape),gust:Math.round(m.gust)};
+}
+function demoMetrics(p,i,n){
+  const f=p.f, hi=p.altFt>=20000;
+  let m={vws:1.2,Ri:5,wind:60,cape:40,gust:10};
+  if(hi&&f>0.36&&f<0.47) m={...m,vws:5.0,Ri:0.7,wind:138};
+  else if(hi&&((f>0.31&&f<=0.36)||(f>=0.47&&f<0.52))) m={...m,vws:3.4,wind:118};
+  else if(hi&&f>0.63&&f<0.69) m={...m,vws:3.2,Ri:0.9,wind:85};
+  if(f>0.86&&p.altFt<18000) m.cape=420;
+  if(i>=n-1) m.gust=22;
+  return scorePoint(p,m);
+}
+function buildZones(points,dur){
+  const zones=[];const half=points.length>1?dur/(points.length-1)/2:1;
+  let cur=null;
+  points.forEach(p=>{
+    if(p.level>0){
+      if(cur&&cur.lastIdx===p.idx-1){cur.end=p.min+half;cur.lastIdx=p.idx;if(p.level>cur.level){cur.level=p.level;cur.cause=p.cause;cur.detail=p.detail}}
+      else{cur={start:Math.max(0,p.min-half),end:p.min+half,level:p.level,cause:p.cause,detail:p.detail,lastIdx:p.idx};zones.push(cur)}
+    }
+  });
+  zones.forEach(z=>{z.end=Math.min(dur,z.end);delete z.lastIdx});
+  return zones;
+}
+
+/* ---------- build ---------- */
+async function build(){
+  const from=parsePlace($("from").value),to=parsePlace($("to").value);
+  const st=$("status");st.className="status";
+  if(!from||!to){st.textContent="Не нашёл аэропорт. Введите трёхбуквенный код (SVO) или координаты «55.97, 37.41».";st.className="status warn";return}
+  const dist=hav(from,to); if(dist<60){st.textContent="Пункты слишком близко друг к другу.";st.className="status warn";return}
+  const depMs=new Date($("dep").value).getTime(); if(!isFinite(depMs)){st.textContent="Укажите время вылета.";st.className="status warn";return}
+  const dur=Math.max(20,+$("dur").value||autoDur(dist));
+  const flSel=$("fl").value, flSrc=flSel==="auto"?"auto":"manual", fl=flSel==="auto"?autoFl(dist):+flSel, now=Date.now();
+  if(depMs>now+15*864e5){st.textContent="Прогноз доступен максимум на 15 дней вперёд.";st.className="status warn";return}
+  const n=Math.max(12,Math.min(60,Math.round(dist/120)));
+  const pts=gc(from,to,n).map((p,idx)=>{const min=p.f*dur;return{...p,idx,min,ms:depMs+min*6e4,altFt:altAt(min,dur,fl*100)}});
+  $("build").disabled=true;st.textContent="Загружаю прогноз ветра на высотах…";
+  let source="open-meteo";
+  try{
+    for(let b=0;b<pts.length;b+=20){
+      const chunk=pts.slice(b,b+20);
+      const res=await fetchBatch(chunk,depMs-3.6e6,depMs+dur*6e4);
+      chunk.forEach((p,k)=>{p.v={};FLS.forEach(F=>{p.v[F]=analyzePoint({...p,altFt:altAt(p.min,dur,F*100)},res[k].hourly)});Object.assign(p,p.v[fl])});
+      st.textContent=`Загружаю прогноз… ${Math.min(pts.length,b+20)} из ${pts.length} точек`;
+    }
+  }catch(e){
+    if(!IN_FRAME){
+      $("build").disabled=false;
+      st.textContent=(flight?"Сохранённый прогноз не тронут. ":"")+"Нет связи с погодным сервисом. Прогноз нужно загрузить один раз до вылета, пока есть интернет (Wi‑Fi или мобильная сеть в аэропорту). Дальше приложение работает без сети.";
+      st.className="status warn";return;
+    }
+    source="demo";pts.forEach((p,i)=>{p.v={};FLS.forEach(F=>{p.v[F]=demoMetrics({...p,altFt:altAt(p.min,dur,F*100)},i,pts.length)});Object.assign(p,p.v[fl])});
+    st.dataset.err=e&&e.message||"";
+  }
+  $("build").disabled=false;
+  const points=pts.map(p=>{const v={};FLS.forEach(F=>{const o=p.v[F];v[F]={level:o.level,cause:o.cause,detail:o.detail}});
+    return {idx:p.idx,lat:+p.lat.toFixed(3),lon:+p.lon.toFixed(3),min:+p.min.toFixed(1),altFt:Math.round(p.altFt),level:p.level,cause:p.cause,detail:p.detail,v}});
+  flight={from,to,depMs,fl,flSrc,dur,dist:Math.round(dist),points,zones:buildZones(points,dur),source,fetchedAt:Date.now()};
+  save();
+  st.textContent=source==="demo"
+    ?"Погодный сервис недоступен отсюда, поэтому показаны демонстрационные данные. Откройте приложение в браузере телефона с интернетом."
+    :"Готово. Прогноз сохранён в телефоне и будет доступен без сети.";
+  st.className=source==="demo"?"status warn":"status";
+  render();
+}
+
+/* ---------- render ---------- */
+function render(){
+  if(!flight) return;
+  $("results").hidden=false;$("flight").hidden=false;
+  const f=flight,maxL=Math.max(0,...f.zones.map(z=>z.level));
+  const ov=$("overall");ov.className="pill l"+maxL;
+  ov.innerHTML=`<span class="dot"></span>`;ov.append(maxL===0?"Спокойный маршрут":maxL===1?"Местами слабая болтанка":maxL===2?"Есть участки умеренной болтанки":"Есть участки сильной болтанки");
+  $("routeMeta").textContent=`${f.from.c||f.from.n} → ${f.to.c||f.to.n} · ${f.dist.toLocaleString("ru")} км · ${fmtDur(f.dur)} · FL${f.fl}`;
+  $("flHint").textContent=f.flSrc==="gps"?`FL${f.fl} определён по GPS в полёте`:f.flSrc==="auto"?`Подобран FL${f.fl} по длине рейса, в полёте уточню по GPS`:`Выбран FL${f.fl}, в полёте сверю с GPS`;
+  $("srcMeta").textContent=(f.source==="demo"?"Демонстрационные данные · ":"Open-Meteo · ")+"обновлено "+new Date(f.fetchedAt).toLocaleString("ru",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+  drawChart();
+  const ul=$("zones");ul.textContent="";
+  if(!f.zones.length){const li=document.createElement("li");li.innerHTML=`<span class="zt">—</span><span class="zn">По прогнозу весь маршрут спокойный</span>`;ul.append(li)}
+  f.zones.forEach(z=>{
+    const li=document.createElement("li");
+    const t=document.createElement("span");t.className="zt";t.textContent=`${fmtClock(z.start)}`;
+    const nm=document.createElement("span");nm.className="zn l"+z.level;nm.innerHTML=`<span class="dot l${z.level}" style="display:inline-block;margin-right:6px"></span>`;
+    nm.append(`${LV_NAME[z.level]} · ~${fmtDur(z.end-z.start)}`);
+    const d=document.createElement("span");d.className="zd";
+    d.textContent=`Около ${hhmm(f.depMs+z.start*6e4)} по времени телефона. ${z.detail}.`;
+    li.append(t,nm,d);ul.append(li);
+  });
+  updateFlight();
+}
+function lvColor(l){return["var(--calm)","var(--light)","var(--mod)","var(--sev)"][l]}
+function drawChart(){
+  const f=flight,W=360,H=170,L=34,R=8,T=10,B=40,pw=W-L-R,ph=H-T-B;
+  const x=m=>L+m/f.dur*pw, y=ft=>T+ph-ft/(f.fl*100+2000)*ph;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Профиль высоты и зоны болтанки"><rect x="${L}" y="${T}" width="${pw}" height="${ph}" fill="var(--band-bg)" rx="4"/>`;
+  f.zones.forEach(z=>{s+=`<rect x="${x(z.start).toFixed(1)}" y="${T}" width="${Math.max(2,x(z.end)-x(z.start)).toFixed(1)}" height="${ph}" fill="${lvColor(z.level)}" opacity=".22"/>`});
+  [10000,20000,30000].filter(v=>v<f.fl*100).forEach(v=>{s+=`<line x1="${L}" x2="${L+pw}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${L-4}" y="${y(v)+3}" text-anchor="end" font-size="9" fill="var(--muted)" font-family="var(--f-data)">FL${v/100}</text>`});
+  let d="";for(let m=0;m<=f.dur;m+=f.dur/120){d+=(d?"L":"M")+x(m).toFixed(1)+","+y(altAt(m,f.dur,f.fl*100)).toFixed(1)}
+  s+=`<path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2"/>`;
+  const bw=pw/(f.points.length);
+  f.points.forEach(p=>{s+=`<rect x="${(x(p.min)-bw/2).toFixed(1)}" y="${T+ph+6}" width="${(bw+0.4).toFixed(1)}" height="8" fill="${lvColor(p.level)}"/>`});
+  const step=f.dur>360?120:f.dur>150?60:30;
+  for(let m=0;m<=f.dur+0.1;m+=step){s+=`<text x="${x(m)}" y="${H-10}" text-anchor="${m===0?"start":"middle"}" font-size="9" fill="var(--muted)" font-family="var(--f-data)">${fmtClock(m).slice(1)}</text>`}
+  s+=`<text x="${L+pw}" y="${H-10}" text-anchor="end" font-size="9" fill="var(--muted)" font-family="var(--f-body)">после взлёта</text>`;
+  s+=`<line id="nowLine" x1="0" x2="0" y1="${T}" y2="${T+ph+14}" stroke="var(--ink)" stroke-width="1.5" visibility="hidden"/></svg>`;
+  $("chart").innerHTML=s;
+}
+
+/* ---------- flight mode ---------- */
+function curMin(){return clock?clock.minAtBase+(Date.now()-clock.baseMs)/6e4*clock.rate:null}
+function setClock(min,rate,mode){clock={baseMs:Date.now(),minAtBase:min,rate,mode};flight.zones.forEach(z=>{z.warned=z.start<min-0.01&&z.end<min;z.done=z.end<min})}
+function startFlight(mode){
+  initAudio();
+  if(mode==="sim"){setClock(-1,60,"sim")}else{setClock(0,1,"real");startGps()}
+  $("takeoff").hidden=true;$("sim").hidden=true;$("stop").hidden=false;
+  requestWake();clearInterval(timer);timer=setInterval(tick,1000);tick();
+  try{localStorage.setItem(KEY+".clock",JSON.stringify(clock))}catch(e){}
+}
+function stopFlight(){
+  clearInterval(timer);timer=null;clock=null;stopGps();
+  try{localStorage.removeItem(KEY+".clock")}catch(e){}
+  if(wakeLock){wakeLock.release().catch(()=>{});wakeLock=null}
+  $("takeoff").hidden=false;$("sim").hidden=false;$("stop").hidden=true;updateFlight();
+}
+function tick(){
+  const m=curMin(); if(m==null) return;
+  const lead=+$("lead").value,thr=+$("thr").value;
+  flight.zones.forEach(z=>{
+    if(z.level>=thr&&!z.warned&&z.start-m<=lead&&m<z.end){z.warned=true;showAlert(z,z.start-m)}
+    if(z.level>=thr&&z.warned&&!z.done&&m>=z.end){z.done=true;toast("Зона болтанки позади. Дальше по прогнозу спокойнее.")}
+  });
+  if(clock.mode==="sim"&&m>flight.dur+1){stopFlight();toast("Симуляция завершена.");return}
+  updateFlight();
+}
+function updateFlight(){
+  if(!flight) return;
+  const m=curMin(),line=document.getElementById("nowLine");
+  if(m==null){$("clock").textContent="—";$("nextZone").textContent="Нажмите «Взлетели», когда самолёт оторвётся от полосы. «Симуляция» прокрутит полёт за минуты, чтобы проверить сигналы.";if(line)line.setAttribute("visibility","hidden");return}
+  $("clock").textContent=`${fmtClock(Math.max(0,m))} · до посадки ${fmtDur(flight.dur-m)}`;
+  if(line){const xx=34+Math.max(0,Math.min(flight.dur,m))/flight.dur*318;line.setAttribute("x1",xx);line.setAttribute("x2",xx);line.setAttribute("visibility","visible")}
+  const inZ=flight.zones.find(z=>m>=z.start&&m<z.end);
+  const nx=flight.zones.find(z=>z.start>m);
+  let t="";
+  if(inZ) t=`Сейчас: ${LV_NAME[inZ.level].toLowerCase()}, ещё около ${fmtDur(inZ.end-m)}. `;
+  t+=nx?`Следующая зона: ${LV_NAME[nx.level].toLowerCase()} через ${fmtDur(nx.start-m)}, примерно на ${fmtDur(nx.end-nx.start)}.`:(inZ?"После неё до посадки спокойно.":"Впереди до посадки спокойно.");
+  $("nextZone").textContent=t;
+}
+function adjust(d){if(!clock){toast("Сначала нажмите «Взлетели».");return}setClock(curMin()+d,clock.rate,clock.mode);tick()}
+
+/* GPS */
+function startGps(){
+  if(!$("optGps").checked||!navigator.geolocation){$("posMeta").textContent="Режим таймера: позиция считается по времени от взлёта.";return}
+  $("posMeta").textContent="Ищу GPS. Положите телефон ближе к окну.";
+  try{gpsWatch=navigator.geolocation.watchPosition(onPos,()=>{$("posMeta").textContent="GPS недоступен, работаю по таймеру от взлёта."},{enableHighAccuracy:true,maximumAge:20000,timeout:60000})}catch(e){}
+}
+function stopGps(){if(gpsWatch!=null&&navigator.geolocation)navigator.geolocation.clearWatch(gpsWatch);gpsWatch=null}
+/* switch cruise level and re-score from stored variants */
+function applyFl(newFl,src){
+  if(!flight||!flight.points.every(p=>p.v&&p.v[newFl])){toast("Этот прогноз сохранён старой версией. Нажмите «Построить прогноз», чтобы менять эшелон.");return false}
+  const m=curMin(),old=flight.zones;
+  flight.fl=newFl;flight.flSrc=src;
+  flight.points.forEach(p=>{const v=p.v[newFl];p.level=v.level;p.cause=v.cause;p.detail=v.detail;p.altFt=Math.round(altAt(p.min,flight.dur,newFl*100))});
+  flight.zones=buildZones(flight.points,flight.dur);
+  if(m!=null) flight.zones.forEach(z=>{z.warned=z.end<m||old.some(o=>o.warned&&o.start<z.end&&o.end>z.start);z.done=z.end<m});
+  save();render();return true;
+}
+let gpsAlts=[],lastFlSwitch=0;
+function checkAltitude(pos,m){
+  const a=pos.coords.altitude,acc=pos.coords.altitudeAccuracy;
+  if(a==null||!isFinite(a)) return null;
+  if(acc!=null&&acc>200) return a;
+  gpsAlts.push(a);if(gpsAlts.length>3)gpsAlts.shift();
+  const [c0,c1]=cruiseWindow(flight.dur);
+  if(gpsAlts.length<3||m<c0+3||m>c1-3||Date.now()-lastFlSwitch<10*6e4) return a;
+  if(Math.max(...gpsAlts)-Math.min(...gpsAlts)>300) return a;
+  const ft=gpsAlts.reduce((s,x)=>s+x,0)/3*3.28084;
+  if(ft<24000||Math.abs(ft-flight.fl*100)<1500) return a;
+  const nf=FLS.reduce((b,F)=>Math.abs(F*100-ft)<Math.abs(b*100-ft)?F:b,FLS[0]);
+  if(nf!==flight.fl&&applyFl(nf,"gps")){lastFlSwitch=Date.now();$("fl").value=String(nf);toast(`По GPS самолёт на FL${nf}. Прогноз пересчитан под эту высоту.`)}
+  return a;
+}
+function onPos(pos){
+  if(!clock||clock.mode!=="real") return;
+  const gAlt=checkAltitude(pos,curMin());
+  const altTxt=gAlt!=null?` · высота ${(gAlt/1000).toFixed(1)} км`:"";
+  const me={lat:pos.coords.latitude,lon:pos.coords.longitude},P=flight.points;
+  let bi=0,bd=1e9;P.forEach((p,i)=>{const d=hav(me,p);if(d<bd){bd=d;bi=i}});
+  // refine between neighbours
+  let m=P[bi].min;
+  const nb=bi<P.length-1?bi+1:bi-1;
+  if(nb>=0&&nb!==bi){const a=P[Math.min(bi,nb)],b=P[Math.max(bi,nb)],ab=hav(a,b),ad=hav(a,me),bd2=hav(b,me);
+    const fr=Math.max(0,Math.min(1,(ad*ad-bd2*bd2+ab*ab)/(2*ab*ab)));m=a.min+(b.min-a.min)*fr}
+  const acc=pos.coords.accuracy||9999;
+  if(bd<200&&acc<5000){clock.baseMs=Date.now();clock.minAtBase=m;
+    const sp=pos.coords.speed!=null?` · ${Math.round(pos.coords.speed*3.6)} км/ч`:"";
+    $("posMeta").textContent=`GPS: ${Math.round(bd)} км от расчётного маршрута${sp}${altTxt}. Позиция уточнена.`}
+  else $("posMeta").textContent=`GPS: ${Math.round(bd)} км от маршрута${altTxt}, держусь таймера.`;
+}
+
+/* alerts */
+function initAudio(){try{if(!audio){const AC=window.AudioContext||window.webkitAudioContext;if(AC)audio=new AC()}if(audio&&audio.state==="suspended")audio.resume()}catch(e){}}
+function chime(){
+  if(!$("optSound").checked||!audio) return;
+  try{[[880,0],[660,0.45]].forEach(([f,t])=>{const o=audio.createOscillator(),g=audio.createGain();o.type="sine";o.frequency.value=f;
+    const s=audio.currentTime+t;g.gain.setValueAtTime(0,s);g.gain.linearRampToValueAtTime(0.35,s+0.02);g.gain.exponentialRampToValueAtTime(0.001,s+1.1);
+    o.connect(g).connect(audio.destination);o.start(s);o.stop(s+1.2)})}catch(e){}
+}
+function speak(txt){if(!$("optVoice").checked||!("speechSynthesis" in window))return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(txt);u.lang="ru-RU";u.rate=0.95;speechSynthesis.speak(u)}catch(e){}}
+function showAlert(z,inMin){
+  const when=inMin>0.5?`примерно через ${fmtDur(inMin)}`:"сейчас";
+  const al=$("alert");al.className="alert l"+z.level;
+  $("alTitle").textContent=`${LV_NAME[z.level]} ${when}`;
+  $("alText").textContent=(z.level>=2?"Пристегнитесь и уберите горячие напитки. ":"Хорошее время пристегнуться. ")+`Участок займёт около ${fmtDur(z.end-z.start)}. Это обычная часть полёта: самолёт рассчитан на гораздо более сильные нагрузки.`;
+  $("alCause").textContent=z.detail;
+  al.hidden=false;$("alOk").focus();
+  chime();try{navigator.vibrate&&navigator.vibrate([300,150,300])}catch(e){}
+  speak(`${LV_NAME[z.level]} ${when}. Пристегнитесь.`);
+}
+let toastT=null;
+function toast(t){const el=$("toast");el.textContent=t;el.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>el.hidden=true,5000)}
+async function requestWake(){try{if("wakeLock" in navigator)wakeLock=await navigator.wakeLock.request("screen")}catch(e){wakeLock=null}}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&clock){requestWake();tick()}});
+
+/* ---------- init ---------- */
+const dl=$("apList");AP.forEach(a=>{const o=document.createElement("option");o.value=`${a.c} — ${a.n}`;dl.append(o)});
+let durTouched=false;
+function refreshDur(){
+  const a=parsePlace($("from").value),b=parsePlace($("to").value);
+  if(a&&b){const d=hav(a,b);if(!durTouched)$("dur").value=autoDur(d);$("durHint").textContent=`${Math.round(d).toLocaleString("ru")} км по дуге · ${fmtDur(+$("dur").value||autoDur(d))} в пути`}
+}
+["from","to"].forEach(id=>$(id).addEventListener("change",refreshDur));
+$("dur").addEventListener("input",()=>{durTouched=true;refreshDur()});
+$("build").addEventListener("click",()=>{stopFlight();build()});
+$("takeoff").addEventListener("click",()=>startFlight("real"));
+$("sim").addEventListener("click",()=>startFlight("sim"));
+$("stop").addEventListener("click",stopFlight);
+$("minus").addEventListener("click",()=>adjust(-5));
+$("plus").addEventListener("click",()=>adjust(5));
+$("alOk").addEventListener("click",()=>{$("alert").hidden=true});
+$("lead").addEventListener("change",()=>clock&&tick());
+$("fl").addEventListener("change",()=>{
+  const v=$("fl").value;
+  if(!flight){return}
+  const nf=v==="auto"?autoFl(flight.dist):+v;
+  if(applyFl(nf,v==="auto"?"auto":"manual")) toast(`Прогноз пересчитан для FL${nf}.`);
+});
+
+const saved=load();
+if(saved&&saved.points){
+  flight=saved;
+  $("from").value=saved.from.c?`${saved.from.c} — ${saved.from.n}`:`${saved.from.lat}, ${saved.from.lon}`;
+  $("to").value=saved.to.c?`${saved.to.c} — ${saved.to.n}`:`${saved.to.lat}, ${saved.to.lon}`;
+  $("dep").value=localInput(new Date(saved.depMs));$("fl").value=saved.flSrc==="auto"?"auto":String(saved.fl);$("dur").value=saved.dur;durTouched=true;refreshDur();
+  $("status").textContent="Загружен сохранённый прогноз. Перед вылетом нажмите «Построить прогноз», чтобы обновить.";
+  render();
+  try{const c=JSON.parse(localStorage.getItem(KEY+".clock")||"null");if(c&&c.mode==="real"){clock=c;$("takeoff").hidden=true;$("sim").hidden=true;$("stop").hidden=false;flight.zones.forEach(z=>{const m=curMin();z.warned=z.start<m;z.done=z.end<m});startGps();requestWake();timer=setInterval(tick,1000);tick()}}catch(e){}
+}else{
+  const d=new Date();d.setDate(d.getDate()+1);d.setHours(10,0,0,0);
+  $("from").value="SVO — Москва Шереметьево";$("to").value="PVG — Шанхай Пудун";$("dep").value=localInput(d);refreshDur();
+  build();
+}
+})();
+</script>
+<script>if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}</script></body></html>
