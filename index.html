@@ -71,6 +71,19 @@ button:disabled{opacity:.5;cursor:default}
 .alert.l2 .box{border-top-color:var(--mod)} .alert.l3 .box{border-top-color:var(--sev)}
 .alert h3{font-family:var(--f-display);font-weight:500;font-size:22px;margin:0;text-wrap:balance}
 .alert p{margin:0}
+.evt{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:16;max-width:480px;margin:0 auto;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;box-shadow:0 8px 24px color-mix(in srgb,var(--ink) 18%,transparent);cursor:pointer}
+.evt b{font-size:15px}
+.evt span{font-size:14px;color:var(--muted)}
+.nextEvt{font-size:13px;color:var(--muted)}
+.cardhead{display:flex;justify-content:space-between;align-items:center;gap:8px}
+button.small{padding:6px 10px;font-size:13px}
+.flist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.flist li{display:flex;gap:6px}
+.fsel{flex:1;min-width:0;text-align:left;display:flex;align-items:center;gap:8px;font-weight:600;padding:9px 12px;flex-wrap:wrap}
+.fsel[aria-current="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.fsel .meta{margin-left:auto;white-space:nowrap}
+.fdel{padding:9px 12px;color:var(--muted);font-weight:500;white-space:nowrap}
+.fdel.armed{color:var(--sev);border-color:var(--sev)}
 .toast{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15;max-width:480px;margin:0 auto;background:var(--ink);color:var(--bg);border-radius:12px;padding:12px 14px;font-size:14px}
 @media (max-width:420px){.grid{grid-template-columns:1fr}.brand{font-size:24px}}
 @media (prefers-reduced-motion:no-preference){.alert .box{animation:pop .25s ease-out}@keyframes pop{from{transform:translateY(12px);opacity:.6}to{transform:none;opacity:1}}}
@@ -88,6 +101,12 @@ button:disabled{opacity:.5;cursor:default}
       <button type="button" data-lang="sl" lang="sl" aria-pressed="false">SL</button>
     </div>
   </header>
+
+  <section class="card" id="flightsCard" hidden aria-labelledby="hFlights">
+    <div class="cardhead"><h2 id="hFlights" data-i="myFlights">Мои рейсы</h2><button class="small" id="newFlight" data-i="newFlight">+ Новый рейс</button></div>
+    <ul class="flist" id="flist"></ul>
+    <p class="hint" style="margin:0" data-i="flightsHint"></p>
+  </section>
 
   <section class="card" aria-labelledby="hForm">
     <h2 id="hForm" data-i="hForm">Рейс</h2>
@@ -119,6 +138,7 @@ button:disabled{opacity:.5;cursor:default}
     <div class="flightbox">
       <div class="big" id="clock">—</div>
       <div class="next" id="nextZone"></div>
+      <div class="nextEvt" id="nextEvt"></div>
       <div class="meta" id="posMeta"></div>
     </div>
     <div class="row">
@@ -135,6 +155,7 @@ button:disabled{opacity:.5;cursor:default}
     <div class="toggles">
       <label><input type="checkbox" id="optSound" checked> <span data-i="sound">Звук</span></label>
       <label><input type="checkbox" id="optVoice" checked> <span data-i="voice">Голос</span></label>
+      <label><input type="checkbox" id="optEvents" checked> <span data-i="events">События полёта</span></label>
       <label><input type="checkbox" id="optGps" checked> GPS</label>
     </div>
   </section>
@@ -155,6 +176,7 @@ button:disabled{opacity:.5;cursor:default}
     <button class="primary" id="alOk" data-i="ok">Понятно</button>
   </div>
 </div>
+<div class="evt" id="evt" hidden role="status"><b id="evtTitle"></b><span id="evtText"></span></div>
 <div class="toast" id="toast" hidden role="status"></div>
 
 <script>
@@ -361,6 +383,21 @@ ru:{
  alStrong:"Пристегнитесь и уберите горячие напитки. ",alLight:"Хорошее время пристегнуться. ",
  alTail:l=>`Участок займёт около ${l}. Это обычная часть полёта: самолёт рассчитан на гораздо более сильные нагрузки.`,
  say:(lv,w)=>`${lv} ${w}. Пристегнитесь.`,ok:"Понятно",
+ events:"События полёта",nextEvt:(t,x)=>`Дальше через ${x}: ${t}`,
+ myFlights:"Мои рейсы",newFlight:"+ Новый рейс",del:"Удалить",delSure:"Точно?",
+ flightsHint:"Постройте прогноз на каждый рейс до вылета, пока есть интернет. Все рейсы хранятся в телефоне, нажмите на рейс, чтобы открыть его.",
+ newFlightHint:"Введите следующий рейс и нажмите «Построить прогноз». Предыдущие рейсы сохранятся.",
+ nextOpened:r=>`Рейс завершён. Открыт следующий: ${r}.`,deleted:"Рейс удалён.",
+ ev:{
+  gearUp:["Убираются шасси","Глухой удар и гул под полом: шасси уходят в ниши, закрываются створки. Так и должно быть."],
+  thrust:["Двигатели стали тише","Пилоты перевели двигатели со взлётного режима на режим набора. Самолёт продолжает набирать высоту."],
+  flapsUp:["Убираются закрылки","Слышно жужжание приводов, может показаться, что самолёт чуть проседает. Крыло переходит в конфигурацию для быстрого полёта."],
+  cruise:["Набрана крейсерская высота","Самолёт выровнялся, звук двигателей стал ровнее. Обычно примерно сейчас гаснет табло «Пристегните ремни»."],
+  descent:["Начинается снижение","Двигатели стихают, нос чуть опускается. Может закладывать уши: глотайте, зевайте или жуйте."],
+  spoilers:["Возможны воздушные тормоза","Нарастающий гул и лёгкая тряска значат, что пилоты подняли спойлеры на крыле, чтобы быстрее сбросить скорость или высоту."],
+  flapsDown:["Выпускаются закрылки","Жужжание приводов и чуть больше шума потока: крыло готовят к медленному полёту перед посадкой."],
+  gearDown:["Выпускаются шасси","Громкий гул, стук и вибрация под полом: шасси вышли и встали на замки. До посадки около 3–4 минут."],
+  landing:["Посадка","После касания двигатели резко загудят: это реверс тяги, так самолёт тормозит. Не отстёгивайтесь, пока горит табло."]},
  foot1:"Как считается: маршрут строится по дуге большого круга, к каждой точке подбирается высота по профилю набора, крейсера и снижения. Для неё берётся прогноз ветра и температуры на ближайших уровнях давления (Open-Meteo). Ясная болтанка оценивается по сдвигу ветра и числу Ричардсона, грозовая по CAPE, болтанка у земли по порывам ветра.",
  foot2:"Прогноз загрузите до посадки в самолёт, пока есть интернет: он сохранится в телефоне. В полёте приложение работает без сети, по таймеру от взлёта и по GPS, если телефон ловит спутники у окна.",
  foot3:"На iPhone держите приложение открытым на экране: в фоне или при заблокированном экране iOS его приостанавливает, и предупреждения не придут. Приложение не даёт экрану погаснуть, поэтому лучше подключить зарядку. Вибрации на iPhone нет, сигнал звуковой и голосом.",
@@ -417,6 +454,21 @@ en:{
  alStrong:"Fasten your seatbelt and put away hot drinks. ",alLight:"A good moment to fasten your seatbelt. ",
  alTail:l=>`It should last about ${l}. This is a normal part of flying: the aircraft is built for much stronger loads.`,
  say:(lv,w)=>`${lv} ${w}. Please fasten your seatbelt.`,ok:"Got it",
+ events:"Flight events",nextEvt:(t,x)=>`Next in ${x}: ${t}`,
+ myFlights:"My flights",newFlight:"+ New flight",del:"Delete",delSure:"Sure?",
+ flightsHint:"Get a forecast for each flight before departure while you have internet. All flights are kept on your phone; tap one to open it.",
+ newFlightHint:"Enter the next flight and tap “Get forecast”. Your other flights stay saved.",
+ nextOpened:r=>`Flight complete. Opened the next one: ${r}.`,deleted:"Flight deleted.",
+ ev:{
+  gearUp:["Landing gear retracting","A thump and rumble under the floor is the gear folding into its bays and the doors closing. Completely normal."],
+  thrust:["Engines quieter","The pilots have reduced takeoff thrust to climb thrust. The aircraft is still climbing."],
+  flapsUp:["Flaps retracting","You may hear whirring and feel a slight sinking sensation. The wing is being set up for faster flight."],
+  cruise:["Cruising altitude reached","The aircraft has levelled off and the engine sound has settled. The seatbelt sign usually goes off around now."],
+  descent:["Descent begins","The engines get quieter and the nose dips slightly. Your ears may pop: swallow, yawn or chew."],
+  spoilers:["Speed brakes may be used","A rising rumble and light shaking means the pilots have raised the spoilers on the wing to lose speed or height faster."],
+  flapsDown:["Flaps extending","Whirring and a bit more wind noise: the wing is being prepared for slow flight before landing."],
+  gearDown:["Landing gear extending","A loud rumble, clunk and vibration under the floor: the gear is down and locked. About 3–4 minutes to landing."],
+  landing:["Touchdown","Right after touchdown the engines roar: that's reverse thrust slowing the aircraft. Keep your seatbelt on until the sign goes off."]},
  foot1:"How it works: the route follows the great-circle arc, and each point gets an altitude from a climb, cruise and descent profile. For that altitude the app takes the wind and temperature forecast at the nearest pressure levels (Open-Meteo). Clear-air turbulence is estimated from wind shear and the Richardson number, convective turbulence from CAPE, and low-level turbulence from wind gusts.",
  foot2:"Load the forecast before boarding while you have internet; it is saved on your phone. In flight the app works offline, using the timer since takeoff and GPS if the phone picks up satellites by the window.",
  foot3:"On iPhone, keep the app open on screen: iOS pauses it in the background or when the screen locks, and alerts won't arrive. The app keeps the screen on, so it's best to keep the phone charging. Web apps can't vibrate on iPhone, so alerts use sound and voice.",
@@ -473,6 +525,21 @@ sl:{
  alStrong:"Pripnite se in odložite vroče pijače. ",alLight:"Dober trenutek, da se pripnete. ",
  alTail:l=>`Trajalo bo približno ${l}. To je običajen del leta: letalo je zasnovano za precej večje obremenitve.`,
  say:(lv,w)=>`${lv} ${w}. Pripnite se.`,ok:"Razumem",
+ events:"Dogodki leta",nextEvt:(t,x)=>`Naprej čez ${x}: ${t}`,
+ myFlights:"Moji leti",newFlight:"+ Nov let",del:"Izbriši",delSure:"Res?",
+ flightsHint:"Za vsak let pripravite napoved pred odhodom, dokler imate internet. Vsi leti ostanejo v telefonu; tapnite let, da ga odprete.",
+ newFlightHint:"Vnesite naslednji let in tapnite »Pripravi napoved«. Drugi leti ostanejo shranjeni.",
+ nextOpened:r=>`Let je končan. Odprt je naslednji: ${r}.`,deleted:"Let je izbrisan.",
+ ev:{
+  gearUp:["Podvozje se uvlači","Udarec in bobnenje pod tlemi pomenita, da se podvozje pospravlja v ležišča in se zapirajo vratca. Povsem običajno."],
+  thrust:["Motorji so tišji","Piloti so moč motorjev zmanjšali z vzletne na moč za vzpenjanje. Letalo se še naprej vzpenja."],
+  flapsUp:["Zakrilca se uvlačijo","Slišite lahko brnenje in občutite rahlo pogrezanje. Krilo se pripravlja na hitrejši let."],
+  cruise:["Dosežena potovalna višina","Letalo leti vodoravno, zvok motorjev se je umiril. Znak za pripenjanje navadno ugasne približno zdaj."],
+  descent:["Začenja se spuščanje","Motorji utihnejo, nos se rahlo spusti. Lahko vam zamaši ušesa: požirajte, zehajte ali žvečite."],
+  spoilers:["Možna uporaba zračnih zavor","Naraščajoče bobnenje in rahlo tresenje pomenita, da so piloti dvignili zaviralce na krilu, da hitreje zmanjšajo hitrost ali višino."],
+  flapsDown:["Zakrilca se izvlačijo","Brnenje in nekoliko več hrupa zraka: krilo se pripravlja na počasen let pred pristankom."],
+  gearDown:["Podvozje se izvlači","Glasno bobnenje, udarec in tresenje pod tlemi: podvozje je spuščeno in zaklenjeno. Do pristanka približno 3–4 minute."],
+  landing:["Pristanek","Takoj po dotiku tal motorji zabučijo: to je obratni potisk, s katerim letalo zavira. Ostanite pripeti, dokler znak ne ugasne."]},
  foot1:"Kako deluje: pot sledi loku velikega kroga, vsaka točka pa dobi višino iz profila vzpenjanja, križarjenja in spuščanja. Za to višino aplikacija vzame napoved vetra in temperature na najbližjih tlačnih ploskvah (Open-Meteo). Turbulenca v jasnem zraku se oceni iz striženja vetra in Richardsonovega števila, konvektivna iz CAPE, turbulenca pri tleh pa iz sunkov vetra.",
  foot2:"Napoved naložite pred vkrcanjem, dokler imate internet; shrani se v telefon. Med letom aplikacija deluje brez povezave, po časovniku od vzleta in po GPS, če telefon ob oknu ujame satelite.",
  foot3:"Na iPhonu naj bo aplikacija odprta na zaslonu: v ozadju ali pri zaklenjenem zaslonu jo iOS ustavi in opozorila ne pridejo. Aplikacija preprečuje, da bi zaslon ugasnil, zato je telefon bolje priključiti na polnilnik. Spletne aplikacije na iPhonu ne morejo vibrirati, zato so opozorila zvočna in glasovna.",
@@ -496,8 +563,81 @@ let timer=null, gpsWatch=null, wakeLock=null, audio=null;
 let statusState=null, posState=null, alertZone=null;
 
 /* ---------- storage ---------- */
-function save(){try{localStorage.setItem(KEY,JSON.stringify(flight))}catch(e){}}
-function load(){try{const s=localStorage.getItem(KEY);return s?JSON.parse(s):null}catch(e){return null}}
+const LIST_KEY="shtil.flights.v2", ACTIVE_KEY="shtil.active", MAX_FLIGHTS=8;
+let flights=[];
+function newId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+function saveAll(){try{localStorage.setItem(LIST_KEY,JSON.stringify(flights));localStorage.setItem(ACTIVE_KEY,flight?flight.id:"")}catch(e){}}
+function save(){
+  if(!flight) return;
+  if(!flight.id) flight.id=newId();
+  const i=flights.findIndex(f=>f.id===flight.id);
+  if(i>=0) flights[i]=flight; else flights.push(flight);
+  flights.sort((a,b)=>a.depMs-b.depMs);
+  while(flights.length>MAX_FLIGHTS){const j=flights.findIndex(f=>f.id!==flight.id);flights.splice(j,1)}
+  saveAll();renderList();
+}
+function loadAll(){
+  let list=[],active="";
+  try{list=JSON.parse(localStorage.getItem(LIST_KEY)||"[]")||[];active=localStorage.getItem(ACTIVE_KEY)||""}catch(e){list=[]}
+  if(!list.length){try{const old=JSON.parse(localStorage.getItem(KEY)||"null");if(old&&old.points){old.id=newId();list=[old];active=old.id}}catch(e){}}
+  const now=Date.now();
+  list=list.filter(f=>f&&f.points&&f.depMs+f.dur*6e4>now-3*864e5);   // forget flights that ended more than 3 days ago
+  list.forEach(f=>{if(!f.id)f.id=newId()});
+  list.sort((a,b)=>a.depMs-b.depMs);
+  flights=list;
+  return list.find(f=>f.id===active)||null;
+}
+function sameFlight(a,b){return Math.abs(a.depMs-b.depMs)<30*6e4&&hav(a.from,b.from)<5&&hav(a.to,b.to)<5}
+function routeLabel(f){return `${f.from.c||f.from.n} → ${f.to.c||f.to.n}`}
+function fmtDay(ms){return new Date(ms).toLocaleString(LOCALE[lang],{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}
+function renderList(){
+  const card=$("flightsCard"),ul=$("flist");
+  card.hidden=!flights.length;ul.textContent="";
+  flights.forEach(f=>{
+    const li=document.createElement("li");
+    const b=document.createElement("button");b.type="button";b.className="fsel";b.setAttribute("aria-current",String(!!flight&&f.id===flight.id));
+    const maxL=Math.max(0,...(f.zones||[]).map(z=>z.level));
+    const d=document.createElement("span");d.className="dot l"+maxL;
+    const r=document.createElement("span");r.textContent=routeLabel(f);
+    const m=document.createElement("span");m.className="meta";m.textContent=fmtDay(f.depMs);
+    b.append(d,r,m);b.addEventListener("click",()=>selectFlight(f.id));
+    const x=document.createElement("button");x.type="button";x.className="fdel";x.textContent=T("del");
+    x.addEventListener("click",()=>{
+      if(!x.classList.contains("armed")){x.classList.add("armed");x.textContent=T("delSure");setTimeout(()=>{if(x.isConnected){x.classList.remove("armed");x.textContent=T("del")}},3000);return}
+      deleteFlight(f.id);
+    });
+    li.append(b,x);ul.append(li);
+  });
+}
+function fillForm(f){
+  $("from").value=placeLabel(f.from);$("to").value=placeLabel(f.to);
+  $("dep").value=localInput(new Date(f.depMs));$("fl").value=f.flSrc==="auto"?"auto":String(f.fl);$("dur").value=f.dur;durTouched=true;refreshDur();
+}
+function selectFlight(id){
+  const f=flights.find(x=>x.id===id); if(!f) return;
+  if(clock&&clock.fid!==id) stopFlight();
+  flight=f;fillForm(f);saveAll();renderList();setStatus(()=>T("loadedSaved"));render();
+}
+function deleteFlight(id){
+  const wasActive=flight&&flight.id===id;
+  if(wasActive&&clock) stopFlight();
+  flights=flights.filter(f=>f.id!==id);
+  if(wasActive){const nxt=flights.find(f=>f.depMs+f.dur*6e4>Date.now())||flights[flights.length-1]||null;flight=null;
+    if(nxt){selectFlight(nxt.id)}else{saveAll();clearView()}}
+  else saveAll();
+  renderList();toast(T("deleted"));
+}
+function clearView(){$("results").hidden=true;$("flight").hidden=true}
+function startNewFlight(){
+  if(clock&&clock.mode==="sim") stopFlight();
+  const prev=flight||flights[flights.length-1]||null;
+  if(!(clock&&clock.mode==="real")){flight=null;clearView()}
+  durTouched=false;$("dur").value="";$("fl").value="auto";
+  if(prev){$("from").value=placeLabel(prev.to);$("to").value="";$("dep").value=localInput(new Date(prev.depMs+prev.dur*6e4+2*36e5))}
+  else{$("from").value="";$("to").value=""}
+  saveAll();renderList();setStatus(()=>T("newFlightHint"));
+  $("to").focus();
+}
 
 /* ---------- helpers ---------- */
 const pad=n=>String(n).padStart(2,"0");
@@ -657,7 +797,10 @@ async function build(){
   $("build").disabled=false;
   const points=pts.map(p=>{const v={};FLS.forEach(F=>{const o=p.v[F];v[F]={level:o.level,cause:o.cause,val:o.val}});
     return {idx:p.idx,lat:+p.lat.toFixed(3),lon:+p.lon.toFixed(3),min:+p.min.toFixed(1),altFt:Math.round(p.altFt),level:p.level,cause:p.cause,val:p.val,v}});
-  flight={from,to,depMs,fl,flSrc,dur,dist:Math.round(dist),points,zones:buildZones(points,dur),source,fetchedAt:Date.now()};
+  const nf={from,to,depMs,fl,flSrc,dur,dist:Math.round(dist),points,zones:buildZones(points,dur),source,fetchedAt:Date.now()};
+  const twin=flights.find(f=>sameFlight(f,nf));
+  nf.id=twin?twin.id:newId();
+  flight=nf;
   save();
   setStatus(()=>source==="demo"?T("demoNote"):T("done"),source==="demo");
   render();
@@ -665,7 +808,8 @@ async function build(){
 
 /* ---------- render ---------- */
 function render(){
-  if(!flight) return;
+  renderList();
+  if(!flight){clearView();return}
   $("results").hidden=false;$("flight").hidden=false;
   const f=flight,maxL=Math.max(0,...f.zones.map(z=>z.level));
   const ov=$("overall");ov.className="pill l"+maxL;ov.textContent="";
@@ -707,10 +851,19 @@ function drawChart(){
 
 /* ---------- flight mode ---------- */
 function curMin(){return clock?clock.minAtBase+(Date.now()-clock.baseMs)/6e4*clock.rate:null}
-function setClock(min,rate,mode){clock={baseMs:Date.now(),minAtBase:min,rate,mode};flight.zones.forEach(z=>{z.warned=z.start<min-0.01&&z.end<min;z.done=z.end<min})}
+let evFired={};
+function flightEvents(){
+  const d=flight.dur,[c0,c1]=cruiseWindow(d),list=[["gearUp",0.15],["thrust",0.8],["flapsUp",Math.min(2,c0*0.4)],["cruise",c0],["descent",c1]];
+  if(d-c1>14) list.push(["spoilers",c1+(d-c1)*0.45]);
+  list.push(["flapsDown",Math.max(c1+0.5,d-7)],["gearDown",Math.max(c1+1,d-4)],["landing",d]);
+  return list.map(([k,at])=>({k,at}));
+}
+function markEvents(min){evFired={};flightEvents().forEach(e=>{if(e.at<min-0.01)evFired[e.k]=1})}
+function setClock(min,rate,mode){const fid=clock&&clock.fid;clock={baseMs:Date.now(),minAtBase:min,rate,mode,fid};markEvents(min);flight.zones.forEach(z=>{z.warned=z.start<min-0.01&&z.end<min;z.done=z.end<min})}
 function startFlight(mode){
   initAudio();
   if(mode==="sim"){setClock(-1,60,"sim")}else{setClock(0,1,"real");startGps()}
+  clock.fid=flight.id;
   $("takeoff").hidden=true;$("sim").hidden=true;$("stop").hidden=false;
   requestWake();clearInterval(timer);timer=setInterval(tick,1000);tick();
   try{localStorage.setItem(KEY+".clock",JSON.stringify(clock))}catch(e){}
@@ -728,13 +881,26 @@ function tick(){
     if(z.level>=thr&&!z.warned&&z.start-m<=lead&&m<z.end){z.warned=true;showAlert(z,z.start-m)}
     if(z.level>=thr&&z.warned&&!z.done&&m>=z.end){z.done=true;toast(T("zonePassed"))}
   });
+  flightEvents().forEach(e=>{
+    if(evFired[e.k]||m<e.at) return;
+    evFired[e.k]=1;
+    if(m<e.at+3&&$("optEvents").checked&&$("alert").hidden) queueEvent(e.k);
+  });
   if(clock.mode==="sim"&&m>flight.dur+1){stopFlight();toast(T("simDone"));return}
+  if(clock.mode==="real"&&m>flight.dur+10){
+    const done=flight;stopFlight();
+    const nxt=flights.find(f=>f.id!==done.id&&f.depMs>done.depMs);
+    if(nxt){selectFlight(nxt.id);toast(T("nextOpened",routeLabel(nxt)))}
+    return;
+  }
   updateFlight();
 }
 function updateFlight(){
   if(!flight) return;
   const m=curMin(),line=document.getElementById("nowLine");
-  if(m==null){$("clock").textContent="—";$("nextZone").textContent=T("idle");if(line)line.setAttribute("visibility","hidden");return}
+  if(m==null){$("clock").textContent="—";$("nextZone").textContent=T("idle");$("nextEvt").textContent="";if(line)line.setAttribute("visibility","hidden");return}
+  const ne=$("optEvents").checked?flightEvents().find(e=>e.at>m&&!evFired[e.k]):null;
+  $("nextEvt").textContent=ne?T("nextEvt",T("ev")[ne.k][0],fmtDur(Math.max(1,ne.at-m))):"";
   $("clock").textContent=T("clock",fmtClock(Math.max(0,m)),fmtDur(flight.dur-m));
   if(line){const xx=34+Math.max(0,Math.min(flight.dur,m))/flight.dur*318;line.setAttribute("x1",xx);line.setAttribute("x2",xx);line.setAttribute("visibility","visible")}
   const inZ=flight.zones.find(z=>m>=z.start&&m<z.end);
@@ -828,6 +994,20 @@ function showAlert(z,inMin){
   chime();try{navigator.vibrate&&navigator.vibrate([300,150,300])}catch(e){}
   speakZone(z,inMin);
 }
+let evtT=null,evtKey=null,evtQ=[],evtShownAt=0;
+function queueEvent(k){evtQ.push(k);pumpEvents()}
+function pumpEvents(){if(!evtQ.length)return;const wait=4000-(Date.now()-evtShownAt);if(evtKey&&wait>0){setTimeout(pumpEvents,wait+50);return}evtShownAt=Date.now();showEvent(evtQ.shift());if(evtQ.length)setTimeout(pumpEvents,4050)}
+function paintEvent(){if(!evtKey)return;const e=T("ev")[evtKey];$("evtTitle").textContent=e[0];$("evtText").textContent=e[1]}
+function showEvent(k){
+  evtKey=k;paintEvent();$("evt").hidden=false;clearTimeout(evtT);evtT=setTimeout(()=>{$("evt").hidden=true;evtKey=null},20000);
+  if($("optSound").checked&&audio){try{const o=audio.createOscillator(),g=audio.createGain(),s=audio.currentTime;o.type="sine";o.frequency.value=587;
+    g.gain.setValueAtTime(0,s);g.gain.linearRampToValueAtTime(0.18,s+0.02);g.gain.exponentialRampToValueAtTime(0.001,s+0.8);o.connect(g).connect(audio.destination);o.start(s);o.stop(s+0.9)}catch(e){}}
+  if($("optVoice").checked&&"speechSynthesis" in window){
+    let use=lang,v=voiceFor(lang);if(!v&&lang==="sl"){const en=voiceFor("en");if(en){use="en";v=en}}
+    const txt=(I18N[use].ev||I18N.ru.ev)[k][0];
+    try{const u=new SpeechSynthesisUtterance(txt);u.lang=LOCALE[use];if(v)u.voice=v;u.rate=0.95;speechSynthesis.speak(u)}catch(e){}
+  }
+}
 let toastT=null;
 function toast(t){const el=$("toast");el.textContent=t;el.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>el.hidden=true,5000)}
 async function requestWake(){try{if("wakeLock" in navigator)wakeLock=await navigator.wakeLock.request("screen")}catch(e){wakeLock=null}}
@@ -859,7 +1039,7 @@ function setLang(l,persist){
   refreshDur();paintStatus();
   if(posState) $("posMeta").textContent=posState();
   if(flight) render(); else updateFlight();
-  paintAlert();
+  paintAlert();paintEvent();renderList();
   if(persist){try{localStorage.setItem(LANG_KEY,l)}catch(e){}
     try{history.replaceState(null,"",location.pathname+location.search+"#"+l)}catch(e){}}
 }
@@ -890,6 +1070,9 @@ $("stop").addEventListener("click",stopFlight);
 $("minus").addEventListener("click",()=>adjust(-5));
 $("plus").addEventListener("click",()=>adjust(5));
 $("alOk").addEventListener("click",()=>{$("alert").hidden=true;alertZone=null});
+$("evt").addEventListener("click",()=>{$("evt").hidden=true;evtKey=null});
+$("optEvents").addEventListener("change",updateFlight);
+$("newFlight").addEventListener("click",startNewFlight);
 $("lead").addEventListener("change",()=>clock&&tick());
 $("fl").addEventListener("change",()=>{
   const v=$("fl").value;
@@ -899,14 +1082,16 @@ $("fl").addEventListener("change",()=>{
 });
 
 setLang(initialLang(),false);
-const saved=load();
-if(saved&&saved.points){
+let saved=loadAll();
+if(!saved&&flights.length) saved=flights.find(f=>f.depMs+f.dur*6e4>Date.now())||flights[flights.length-1];
+if(saved){
   flight=saved;
-  $("from").value=placeLabel(saved.from);$("to").value=placeLabel(saved.to);
-  $("dep").value=localInput(new Date(saved.depMs));$("fl").value=saved.flSrc==="auto"?"auto":String(saved.fl);$("dur").value=saved.dur;durTouched=true;refreshDur();
+  fillForm(saved);
   setStatus(()=>T("loadedSaved"));
-  render();
-  try{const c=JSON.parse(localStorage.getItem(KEY+".clock")||"null");if(c&&c.mode==="real"){clock=c;$("takeoff").hidden=true;$("sim").hidden=true;$("stop").hidden=false;flight.zones.forEach(z=>{const m=curMin();z.warned=z.start<m;z.done=z.end<m});startGps();requestWake();timer=setInterval(tick,1000);tick()}}catch(e){}
+  saveAll();render();
+  try{const c=JSON.parse(localStorage.getItem(KEY+".clock")||"null");
+    if(c&&c.mode==="real"&&c.fid&&c.fid!==flight.id){const f=flights.find(x=>x.id===c.fid);if(f){flight=f;fillForm(f);saveAll();render()}}
+    if(c&&c.mode==="real"&&(!c.fid||c.fid===flight.id)){clock=c;clock.fid=flight.id;markEvents(curMin());$("takeoff").hidden=true;$("sim").hidden=true;$("stop").hidden=false;flight.zones.forEach(z=>{const m=curMin();z.warned=z.start<m;z.done=z.end<m});startGps();requestWake();timer=setInterval(tick,1000);tick()}}catch(e){}
 }else{
   const d=new Date();d.setDate(d.getDate()+1);d.setHours(10,0,0,0);
   const dflt=lang==="sl"?["LJU","IST"]:lang==="en"?["LHR","JFK"]:["SVO","PVG"];
