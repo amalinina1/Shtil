@@ -306,6 +306,3914 @@ GRU|Сан-Паулу|-23.432|-46.469
 SYD|Сидней|-33.946|151.177
 JNB|Йоханнесбург|-26.134|28.242
 ADD|Аддис-Абеба|8.978|38.799`.split("\n").map(l=>{const[c,n,a,o]=l.split("|");return{c,n,lat:+a,lon:+o}});
+/* every other airport with scheduled flights (OurAirports, public domain); names in English */
+const AP2=`AAA|Anaa|-17.353|-145.510
+AAC|El Arish|31.055|33.828
+AAE|Annaba Rabah Bitat|36.827|7.813
+AAK|Buariki Aranuka|0.185|173.637
+AAL|Aalborg|57.095|9.850
+AAN|Al Ain|24.262|55.609
+AAP|Samarinda Aji Pangeran Tumenggung Pranoto|-0.374|117.250
+AAR|Aarhus|56.303|10.618
+AAT|Altay Xuedu|47.750|88.086
+AAX|Araxá Romeu Zema|-19.563|-46.960
+AAY|Al Ghaydah|16.193|52.174
+AAZ|Quezaltenango|14.866|-91.502
+ABA|Abakan|53.740|91.385
+ABB|Asaba|6.204|6.665
+ABD|Abadan Ayatollah Jami|30.368|48.230
+ABE|Allentown/Bethlehem Lehigh Valley|40.652|-75.443
+ABI|Abilene|32.411|-99.682
+ABJ|Abidjan Félix-Houphouët-Boigny|5.261|-3.926
+ABK|Kebri Dahar|6.733|44.241
+ABL|Ambler|67.106|-157.855
+ABM|Bamaga Northern Peninsula|-10.946|142.455
+ABQ|Albuquerque International Sunport|35.040|-106.609
+ABR|Aberdeen|45.449|-98.422
+ABS|Abu Simbel|22.376|31.612
+ABT|Al-Baha King Saud Bin Abdulaziz (Al Baha)|20.299|41.636
+ABU|Atambua AA Bere Tallo (Haliwen)|-9.075|124.903
+ABV|Abuja Nnamdi Azikiwe|9.007|7.263
+ABX|East Albury Albury|-36.067|146.959
+ABY|Albany Southwest Georgia|31.533|-84.196
+ABZ|Aberdeen|57.202|-2.198
+ACA|Acapulco General Juan N. Álvarez|16.757|-99.753
+ACC|Accra Kotoka|5.605|-0.167
+ACE|San Bartolomé César Manrique-Lanzarote|28.945|-13.605
+ACF|Aral Tarim|40.435|81.262
+ACH|St. Gallen Sankt Gallen Altenrhein|47.485|9.561
+ACI|Saint Anne Alderney|49.706|-2.215
+ACK|Nantucket Memorial|41.253|-70.060
+ACT|Waco|31.611|-97.230
+ACV|Arcata/Eureka California Redwood Coast-Humboldt |40.978|-124.109
+ACX|Xingyi Wanfenglin|25.083|104.961
+ACY|Atlantic City|39.456|-74.578
+ADB|Gaziemir Adnan Menderes|38.292|27.157
+ADE|Aden|12.830|45.030
+ADF|Adıyaman|37.731|38.469
+ADJ|Marka International (Amman Civil)|31.973|35.992
+ADK|Adak|51.884|-176.643
+ADL|Adelaide|-34.948|138.533
+ADQ|Kodiak|57.750|-152.494
+ADU|Ardabil|38.326|48.424
+ADZ|San Andrés Gustavo Rojas Pinilla|12.584|-81.711
+AEB|Baise (Bose) Bama|23.721|106.960
+AEP|Buenos Aires Aeroparque Jorge Newbery|-34.559|-58.416
+AES|Ålesund|62.560|6.111
+AET|Allakaket|66.552|-152.622
+AEU|Abu Musa Island|25.876|55.033
+AEX|Alexandria|31.326|-92.547
+AEY|Akureyri|65.657|-18.072
+AFA|San Rafael Suboficial Ay Santiago Germano|-34.588|-68.404
+AFL|Alta Floresta Piloto Osvaldo Marques Dias|-9.866|-56.106
+AFZ|Sabzevar|36.168|57.595
+AGA|Agadir Al Massira|30.322|-9.412
+AGE|Wangerooge|53.783|7.920
+AGH|Ängelholm-Helsingborg|56.296|12.847
+AGI|Wageningen|5.841|-56.673
+AGJ|Aguni|26.593|127.240
+AGP|Málaga-Costa del Sol|36.678|-4.500
+AGR|Agra / Agra Air Force Station|27.158|77.961
+AGS|Augusta Regional At Bush Field|33.370|-81.965
+AGT|Ciudad del Este Guaraní|-25.456|-54.844
+AGU|Aguascalientes|21.700|-102.318
+AGX|Agatti|10.824|72.176
+AHA|Ambikapur Maa Mahamaya|22.988|83.196
+AHB|Abha|18.240|42.657
+AHE|Ahe Atoll Ahe|-14.428|-146.257
+AHO|Alghero-Fertilia|40.632|8.291
+AHU|Al Hoceima Cherif Al Idrissi|35.177|-3.840
+AIA|Alliance|42.053|-102.804
+AIN|Wainwright|70.638|-159.995
+AIP|Adampur|31.434|75.759
+AIT|Aitutaki|-18.837|-159.761
+AIU|Atiu Island Enua|-19.968|-158.119
+AJA|Ajaccio Napoléon Bonaparte|41.924|8.803
+AJF|Al-Jawf|29.783|40.101
+AJI|Ağrı|39.656|43.026
+AJL|Aizawl Lengpui|23.841|92.620
+AJN|Ouani|-12.131|44.430
+AJR|Arvidsjaur|65.590|19.282
+AJU|Aracaju - Santa Maria|-10.984|-37.073
+AKA|Ankang Fuqiang|32.757|108.873
+AKB|Atka|52.220|-174.206
+AKF|Kufra|24.179|23.314
+AKI|Akiak|60.903|-161.231
+AKJ|Higashikagura Asahikawa|43.671|142.447
+AKK|Akhiok|56.939|-154.183
+AKL|Auckland|-37.012|174.786
+AKN|King Salmon|58.678|-156.652
+AKP|Anaktuvuk Pass|68.134|-151.743
+AKR|Akure|7.247|5.301
+AKS|Auki Gwaunaru'u|-8.703|160.682
+AKU|Aksu Hongqipo|41.263|80.292
+AKV|Akulivik|60.819|-78.149
+AKX|Aktobe|50.248|57.204
+AKY|Sittwe|20.133|92.871
+ALB|Albany|42.748|-73.802
+ALC|Alicante-Elche Miguel Hernández|38.282|-0.558
+ALF|Alta|69.976|23.372
+ALG|Algiers Houari Boumediene|36.694|3.215
+ALH|Albany|-34.943|117.809
+ALO|Waterloo|42.557|-92.400
+ALP|Aleppo|36.181|37.227
+ALS|Alamosa San Luis Valley /Bergman Field|37.435|-105.867
+ALW|Walla Walla|46.095|-118.288
+AMA|Rick Husband Amarillo|35.218|-101.706
+AMD|Ahmedabad Sardar Vallabh Patel|23.077|72.635
+AMH|Arba Minch|6.039|37.590
+AMM|Amman Queen Alia|31.723|35.993
+AMQ|Ambon Pattimura|-3.710|128.089
+AMV|Amderma|69.764|61.557
+ANC|Ted Stevens Anchorage|61.179|-149.993
+ANF|Antofagasta Andrés Sabella Gálvez|-23.445|-70.445
+ANI|Aniak|61.582|-159.543
+ANR|Antwerp (Deurne)|51.191|4.463
+ANS|Andahuaylas|-13.706|-73.350
+ANU|Osbourn V. C. Bird|17.137|-61.793
+ANV|Anvik|62.647|-160.191
+ANX|Andøya, Andenes|69.295|16.139
+AOE|Eskişehir Hasan Polatkan|39.812|30.519
+AOG|Anshan Teng'ao / Anshan|41.105|122.854
+AOI|Falconara Marittima Marche|43.616|13.362
+AOJ|Aomori|40.734|140.689
+AOK|Karpathos Island Karpathos|35.421|27.146
+AOO|Altoona Blair County|40.296|-78.320
+AOR|Alor Satar Sultan Abdul Halim|6.190|100.398
+APK|Apataki|-15.574|-146.415
+APL|Nampula|-15.106|39.282
+APN|Alpena County|45.078|-83.560
+APO|Carepa Antonio Roldán Betancur|7.812|-76.716
+APW|Apia Faleolo|-13.830|-172.008
+AQA|Araraquara|-21.812|-48.133
+AQG|Anqing Tianzhushan / Anqing North|30.582|117.050
+AQI|Qaisumah–Hafar Al-Batin|28.336|46.127
+AQJ|Aqaba King Hussein|29.612|35.018
+AQP|Arequipa Rodríguez Ballón|-16.341|-71.569
+ARC|Arctic Village|68.115|-145.579
+ARD|Kabola Alor Island - Mali|-8.132|124.597
+ARH|Archangelsk Talagi|64.600|40.717
+ARI|Arica Chacalluta|-18.348|-70.339
+ARK|Arusha|-3.368|36.633
+ARM|Armidale|-30.528|151.617
+ART|Watertown|43.992|-76.022
+ARU|Araçatuba|-21.141|-50.425
+ARW|Arad|46.176|21.264
+ASB|Ashgabat|37.987|58.361
+ASD|Andros Town|24.698|-77.796
+ASE|Aspen-Pitkin County (Sardy Field)|39.223|-106.869
+ASF|Astrakhan Narimanovo Boris M. Kustodiev|46.283|48.011
+ASI|Cat Hill RAF Ascension Island|-7.970|-14.393
+ASJ|Amami|28.431|129.713
+ASK|Yamoussoukro|6.903|-5.366
+ASM|Asmara|15.292|38.911
+ASO|Asosa|10.019|34.586
+ASP|Alice Springs|-23.807|133.903
+ASR|Kayseri Erkilet|38.770|35.495
+ASU|Asunción Silvio Pettirossi|-25.240|-57.519
+ASV|Ol Tukai Amboseli|-2.645|37.253
+ASW|Aswan|23.961|32.820
+ATC|Arthur's Town|24.629|-75.674
+ATK|Atqasuk Edward Burnell Sr Memorial|70.467|-157.436
+ATL|Hartsfield Jackson Atlanta|33.637|-84.428
+ATM|Altamira Interstate|-3.253|-52.254
+ATQ|Amritsar Sri Guru Ram Das Ji|31.710|74.797
+ATT|Atmautluak|60.867|-162.273
+ATW|Appleton|44.259|-88.519
+ATY|Watertown|44.914|-97.155
+ATZ|Asyut|27.046|31.013
+AUA|Oranjestad Queen Beatrix|12.501|-70.014
+AUC|Arauca Santiago Perez|7.069|-70.737
+AUG|Augusta State|44.321|-69.797
+AUK|Alakanuk|62.683|-164.722
+AUL|Aur Atoll Aur Island|8.145|171.173
+AUQ|Hiva Oa Island Hiva Oa-Atuona|-9.769|-139.011
+AUR|Aurillac|44.891|2.422
+AUS|Austin Bergstrom|30.198|-97.662
+AUU|Aurukun|-13.354|141.720
+AUX|Araguaína|-7.228|-48.241
+AVA|Anshun Huangguoshu|26.261|105.873
+AVK|Arvaikheer|46.250|102.802
+AVL|Asheville|35.435|-82.542
+AVN|Avignon Caumont|43.907|4.902
+AVP|Wilkes-Barre/Scranton|41.337|-75.724
+AVR|Amravati|20.815|77.718
+AVV|Geelong/Melbourne Melbourne Avalon|-38.040|144.467
+AWA|Hawassa|7.101|38.396
+AWK|Wake Island|19.282|166.637
+AWZ|Ahvaz Qasem Soleimani|31.336|48.764
+AXA|The Valley Clayton J. Lloyd|18.205|-63.054
+AXD|Alexandroupolis Alexandroupoli Democritus|40.856|25.956
+AXF|Alxa Left Banner Bayanhot|38.748|105.584
+AXJ|Amakusa|32.482|130.159
+AXM|Armenia El Eden|4.453|-75.766
+AXP|Spring Point|22.442|-73.971
+AXR|Arutua|-15.248|-146.617
+AXT|Akita|39.616|140.219
+AXU|Axum|14.147|38.773
+AYJ|Faizabad Maharshi Valmiki|26.748|82.164
+AYP|Ayacucho Air Force Colonel Alfredo Mendivil Duar|-13.155|-74.204
+AYQ|Yulara Ayers Rock Connellan|-25.186|130.977
+AZA|Mesa Gateway|33.308|-111.655
+AZD|Yazd Shahid Sadooghi|31.905|54.277
+AZI|Abu Dhabi Al Bateen Executive|24.427|54.460
+AZN|Andijan|40.728|72.294
+AZO|Kalamazoo/Battle Creek|42.232|-85.550
+AZR|Adrar Touat-Cheikh Sidi Mohamed Belkebir|27.838|-0.186
+AZS|Samana Samaná El Catey|19.269|-69.737
+BAH|Manama Bahrain|26.267|50.638
+BAL|Batman|37.929|41.117
+BAQ|Barranquilla Ernesto Cortissoz|10.890|-74.781
+BAR|Qionghai Bo'ao|19.141|110.453
+BAS|Ballalae|-6.991|155.887
+BAV|Baotou Donghe|40.560|109.997
+BAX|Barnaul Gherman Titov|53.361|83.540
+BAY|Tăuții-Măgherăuș Maramureș|47.658|23.464
+BAZ|Barcelos|-0.981|-62.919
+BBA|Balmaceda|-45.916|-71.689
+BBG|Butaritari|3.086|172.811
+BBI|Bhubaneswar Biju Patnaik|20.251|85.815
+BBK|Kasane|-17.832|25.166
+BBM|Battambang|13.096|103.224
+BBN|Bario|3.735|115.479
+BBO|Berbera|10.385|44.937
+BBQ|Codrington Burton-Nibbs|17.621|-61.798
+BBR|Basse-Terre Baillif|16.014|-61.743
+BBU|Bucharest Băneasa Aurel Vlaicu|44.503|26.103
+BCA|Baracoa Gustavo Rizo|20.365|-74.506
+BCD|Bacolod City Bacolod-Silay|10.776|123.019
+BCH|Baucau|-8.486|126.400
+BCI|Barcaldine|-23.566|145.302
+BCM|Bacău George Enescu|46.522|26.910
+BCO|Jinka|5.750|36.560
+BCU|Sir Abubakar Tafawa Balewa Bauchi State|10.483|9.744
+BDA|Hamilton L.F. Wade|32.364|-64.678
+BDB|Bundaberg|-24.905|152.323
+BDD|Badu Island|-10.150|142.174
+BDH|Bandar Lengeh|26.532|54.825
+BDJ|Banjarbaru Syamsudin Noor|-3.440|114.761
+BDL|Hartford Bradley|41.939|-72.688
+BDO|Bandung Husein Sastranegara|-6.901|107.576
+BDP|Bhadrapur|26.571|88.080
+BDQ|Vadodara|22.336|73.226
+BDS|Brindisi|40.658|17.947
+BDT|Gbadolite|4.253|20.975
+BDU|Målselv Bardufoss|69.056|18.540
+BEB|Balivanich Benbecula|57.481|-7.363
+BED|Bedford Laurence G Hanscom Field|42.470|-71.289
+BEF|Bluefields|11.991|-83.774
+BEJ|Tanjung Redeb - Borneo Island Kalimarau|2.148|117.431
+BEK|Bareilly Air Force Station|28.422|79.451
+BEL|Belém Val de Cans/Júlio Cezar Ribeiro|-1.379|-48.476
+BEM|Oulad Yaich Beni Mellal|32.402|-6.316
+BEN|Benina|32.097|20.270
+BES|Brest Bretagne|48.448|-4.419
+BET|Bethel|60.780|-161.838
+BEU|Bedourie|-24.346|139.460
+BEW|Beira|-19.796|34.908
+BEY|Beirut Rafic Hariri|33.820|35.487
+BFD|Bradford|41.803|-78.640
+BFF|Scottsbluff Western Neb. Rgnl/William B. Heilig|41.874|-103.596
+BFI|Seattle King County - Boeing Field|47.527|-122.300
+BFJ|Bijie Feixiong|27.267|105.472
+BFL|Bakersfield Meadows Field|35.434|-119.057
+BFN|Bloemfontein Bram Fischer|-29.093|26.302
+BFQ|Puerto Piña Bahia Piña|7.587|-78.180
+BFS|Belfast|54.658|-6.216
+BFV|Buriram Buri Ram|15.229|103.253
+BFY|Bengbu Tenghu|33.166|117.058
+BGA|Bucaramanga Palonegro|7.127|-73.185
+BGC|Bragança|41.858|-6.707
+BGF|Bangui M'Poko|4.398|18.519
+BGG|Bingöl|38.860|40.594
+BGI|Bridgetown Grantley Adams|13.075|-59.491
+BGK|Big Creek|16.519|-88.408
+BGM|Greater Binghamton/Edwin A Link field|42.209|-75.980
+BGO|Bergen, Flesland|60.293|5.218
+BGR|Bangor|44.806|-68.827
+BGW|Baghdad / New Al Muthana|33.263|44.235
+BGY|Orio al Serio Il Caravaggio|45.669|9.709
+BHB|Hancock County-Bar Harbor|44.450|-68.362
+BHD|George Best Belfast City|54.618|-5.872
+BHE|Blenheim Woodbourne|-41.518|173.870
+BHH|Bisha|19.984|42.621
+BHI|Bahía Blanca Comandante Espora|-38.725|-62.169
+BHJ|Bhuj|23.288|69.670
+BHK|Bukhara|39.775|64.482
+BHM|Birmingham-Shuttlesworth|33.563|-86.751
+BHO|Bhopal Raja Bhoj|23.288|77.337
+BHQ|Broken Hill|-32.001|141.472
+BHR|Bharatpur|27.678|84.429
+BHS|Bathurst|-33.407|149.651
+BHU|Bhavnagar|21.752|72.185
+BHV|Bahawalpur|29.348|71.718
+BHX|Birmingham, West Midlands Birmingham|52.454|-1.748
+BHY|Beihai Fucheng|21.539|109.294
+BIA|Bastia-Poretta|42.553|9.484
+BID|Block Island State|41.168|-71.579
+BIH|Bishop Eastern Sierra|37.373|-118.364
+BIK|Biak Frans Kaisiepo|-1.190|136.108
+BIL|Billings Logan|45.809|-108.541
+BIM|South Bimini|25.700|-79.265
+BIO|Bilbao|43.301|-2.911
+BIQ|Biarritz Pays Basque|43.468|-1.523
+BIR|Biratnagar|26.482|87.264
+BIS|Bismarck|46.773|-100.747
+BJA|Béjaïa Soummam–Abane Ramdane|36.713|5.070
+BJB|Bojnord|37.493|57.308
+BJC|Denver Rocky Mountain Metropolitan|39.909|-105.117
+BJF|Båtsfjord|70.600|29.693
+BJL|Banjul|13.338|-16.652
+BJM|Bujumbura Melchior Ndadaye|-3.324|29.319
+BJR|Bahir Dar|11.608|37.322
+BJV|Milas Bodrum|37.249|27.664
+BJX|Silao Guanajuato|20.993|-101.480
+BJZ|Badajoz|38.891|-6.821
+BKC|Buckland|65.982|-161.149
+BKG|Branson|36.532|-93.201
+BKI|Kota Kinabalu|5.933|116.049
+BKM|Bakalalan|3.974|115.618
+BKN|Balkanabat|39.681|54.206
+BKO|Bamako Modibo Keita|12.534|-7.950
+BKQ|Blackall|-24.432|145.430
+BKS|Bengkulu Fatmawati Soekarno|-3.864|102.339
+BKW|Beaver Raleigh County Memorial|37.787|-81.124
+BKZ|Bukoba|-1.332|31.821
+BLA|Barcelona General José Antonio Anzoategui|10.111|-64.692
+BLB|Panamá City Panamá Pacífico|8.915|-79.600
+BLD|Boulder City|35.947|-114.859
+BLE|Borlange Dala|60.422|15.515
+BLI|Bellingham|48.793|-122.538
+BLJ|Batna Mostefa Ben Boulaid|35.752|6.309
+BLL|Billund|55.740|9.157
+BLQ|Bologna Guglielmo Marconi|44.535|11.289
+BLR|Kempegowda Bengaluru|13.198|77.706
+BLV|Belleville Scott AFB/Midamerica|38.545|-89.835
+BLW|Beledweyne|4.767|45.239
+BLZ|Blantyre Chileka|-15.677|34.972
+BMA|Stockholm-Bromma|59.354|17.942
+BME|Broome|-17.949|122.228
+BMI|Bloomington/Normal Central Illinois at Bloomingt|40.477|-88.916
+BMK|Borkum|53.596|6.709
+BMO|Banmaw|24.270|97.248
+BMR|Baltrum|53.725|7.373
+BMU|Bima Sultan Muhammad Salahuddin|-8.537|118.685
+BMV|Buon Ma Thuot|12.668|108.120
+BMW|Bordj Badji Mokhtar|21.378|0.927
+BMY|Île Art - Waala|-19.721|163.661
+BNA|Nashville|36.124|-86.678
+BNB|Boende|-0.287|20.884
+BND|Bandar Abbas|27.218|56.378
+BNE|Brisbane|-27.384|153.117
+BNI|Benin|6.317|5.600
+BNK|Ballina Byron Gateway|-28.833|153.561
+BNN|Brønnøysund, Brønnøy|65.461|12.217
+BNS|Barinas|8.615|-70.214
+BNX|Mahovljani Banja Luka|44.941|17.298
+BNY|Bellona/Anua|-11.302|159.798
+BOB|Motu Mute Bora Bora|-16.444|-151.751
+BOC|Bocas del Toro "Isla Colón"|9.341|-82.251
+BOD|Bordeaux–Mérignac|44.829|-0.715
+BOG|Bogota El Dorado|4.702|-74.147
+BOH|Bournemouth|50.780|-1.840
+BOI|Boise Air Terminal/Gowen Field|43.564|-116.223
+BOJ|Burgas|42.570|27.515
+BON|Kralendijk Flamingo|12.131|-68.269
+BOO|Bodø|67.269|14.365
+BOR|Ton Phueng Bokeo|20.324|100.165
+BOS|Boston Logan|42.362|-71.008
+BOT|Bosset|-7.237|141.106
+BOY|Bobo Dioulasso|11.160|-4.331
+BPE|Qinhuangdao Beidaihe|39.666|119.061
+BPL|Bole Alashankou|44.895|82.300
+BPN|Balikpapan Sultan Aji Muhammad Sulaiman Sepingga|-1.268|116.895
+BPS|Porto Seguro|-16.438|-39.081
+BPT|Beaumont/Port Arthur Jack Brooks|29.951|-94.021
+BPX|Qamdo Bangda|30.554|97.108
+BPY|Besalampy|-16.745|44.482
+BQB|Busselton Margaret River|-33.687|115.400
+BQG|Bogorodskoye|52.381|140.449
+BQJ|Batagay|67.648|134.695
+BQK|Brunswick Golden Isles|31.259|-81.466
+BQL|Boulia|-22.913|139.900
+BQN|Aguadilla Rafael Hernández|18.495|-67.129
+BQS|Blagoveschensk Ignatyevo|50.427|127.416
+BQT|Brest|52.108|23.897
+BQU|Bequia J F Mitchell|12.988|-61.262
+BRA|Barreiras Dom Ricardo Weberberger|-12.079|-45.009
+BRC|San Carlos de Bariloche Teniente Luis Candelaria|-41.151|-71.158
+BRD|Brainerd Lakes|46.403|-94.130
+BRE|Bremen|53.047|8.789
+BRI|Bari Karol Wojtyła|41.139|16.761
+BRK|Bourke|-30.039|145.952
+BRL|Burlington Southeast Iowa|40.783|-91.126
+BRM|Barquisimeto Jacinto Lara|10.043|-69.359
+BRN|Bern|46.913|7.499
+BRO|Brownsville South Padre Island|25.907|-97.425
+BRQ|Brno-Tuřany|49.151|16.694
+BRR|Eoligarry Barra|57.023|-7.443
+BRS|Bristol|51.382|-2.716
+BRW|Utqiaġvik Wiley Post Will Rogers Memorial|71.285|-156.766
+BRX|Barahona Maria Montez|18.251|-71.120
+BSA|Bosaso Bender Qassim|11.275|49.139
+BSB|Brasília Presidente Juscelino Kubitschek|-15.869|-47.921
+BSC|Bahía Solano José Celestino Mutis|6.203|-77.395
+BSD|Baoshan Yunrui|25.053|99.168
+BSG|Bata|1.905|9.806
+BSK|Biskra - Mohamed Khider|34.793|5.739
+BSL|Bâle / Mulhouse EuroAirport Basel–Mulhouse–Freib|47.601|7.521
+BSO|Basco|20.451|121.980
+BSR|Basra|30.549|47.662
+BSX|Pathein|16.815|94.780
+BSZ|Bishkek Manas|43.061|74.478
+BTC|Batticaloa|7.705|81.677
+BTH|Batam Hang Nadim|1.121|104.119
+BTI|Barter Island Long Range Radar Station|70.134|-143.582
+BTJ|Banda Aceh Sultan Iskandar Muda|5.525|95.420
+BTK|Bratsk|56.370|101.702
+BTM|Butte Bert Mooney|45.955|-112.497
+BTR|Baton Rouge Metropolitan|30.533|-91.150
+BTS|Bratislava M. R. Štefánik|48.170|17.213
+BTT|Bettles|66.914|-151.529
+BTU|Bintulu|3.124|113.020
+BTV|Patrick Leahy Burlington|44.472|-73.153
+BTW|Batu Licin Bersujud|-3.412|115.995
+BUA|Buka Island Buka|-5.422|154.673
+BUC|Burketown|-17.749|139.534
+BUF|Buffalo Niagara|42.940|-78.732
+BUI|Bokondini|-3.685|138.677
+BUN|Buenaventura Gerardo Tobar López|3.820|-76.990
+BUQ|Bulawayo Joshua Mqabuko Nkomo|-20.016|28.623
+BUR|Hollywood Burbank/Bob Hope|34.203|-118.358
+BUS|Alexander Kartveli Batumi|41.609|41.600
+BUT|Jakar Bathpalathang|27.562|90.747
+BUU|Muara Bungo|-1.542|102.182
+BUX|Bunia|1.566|30.221
+BUZ|Bushehr|28.945|50.835
+BVA|Beauvais-Tillé|49.454|2.113
+BVB|Boa Vista Atlas Brasil Cantanhede|2.846|-60.691
+BVC|Rabil Aristides Pereira|16.136|-22.889
+BVE|Brive Souillac|45.040|1.486
+BVG|Berlevåg|70.872|29.034
+BVH|Vilhena Brigadeiro Camarão|-12.694|-60.098
+BVI|Birdsville|-25.897|139.348
+BVJ|Bovanenkovo|70.315|68.334
+BVS|Breves|-1.637|-50.444
+BWA|Siddharthanagar Gautam Buddha|27.505|83.410
+BWI|Baltimore/Washington International Thurgood Mars|39.175|-76.668
+BWK|Gornji Humac Brač|43.284|16.678
+BWN|Bandar Seri Begawan Brunei|4.944|114.928
+BWO|Balakovo|51.858|47.746
+BWT|Burnie Wynyard|-40.997|145.726
+BWX|Rogojampi, Banyuwangi Banyuwangi|-8.310|114.340
+BXG|Bendigo|-36.739|144.330
+BXH|Balkhash|46.894|75.005
+BXR|Bam|29.084|58.450
+BXT|Bontang-Borneo Island LNG Badak|0.122|117.477
+BXU|Butuan Bancasi|8.951|125.479
+BXY|Baikonur Krayniy|45.622|63.211
+BYK|Bouaké|7.739|-5.074
+BYM|Bayamo Carlos Manuel de Cespedes|20.396|-76.621
+BYN|Bayankhongor|46.163|100.704
+BYO|Bonito|-21.247|-56.452
+BYR|Læsø|57.277|11.000
+BYW|Blakely Island|48.579|-122.824
+BZE|Belize City Philip S. W. Goldson|17.540|-88.304
+BZG|Ignacy Jan Paderewski Bydgoszcz|53.097|17.978
+BZI|Balıkesir|39.619|27.926
+BZL|Barisal|22.801|90.301
+BZN|Bozeman Yellowstone|45.779|-111.154
+BZO|Bolzano|46.459|11.326
+BZR|Béziers Vias|43.324|3.354
+BZV|Brazzaville Maya-Maya|-4.252|15.253
+BZX|Bazhong Enyang|31.738|106.645
+CAB|Cabinda|-5.598|12.188
+CAC|Cascavel Coronel Adalberto Mendes da Silva|-25.000|-53.501
+CAE|Columbia Metropolitan|33.938|-81.123
+CAF|Carauari|-4.871|-66.898
+CAG|Cagliari Elmas|39.251|9.054
+CAH|Ca Mau City Cà Mau|9.178|105.178
+CAJ|Canaima|6.232|-62.855
+CAK|Akron Canton|40.916|-81.442
+CAL|Campbeltown|55.437|-5.686
+CAP|Cap Haitien|19.726|-72.201
+CAT|Cascais|38.725|-9.355
+CAU|Caruaru|-8.282|-36.014
+CAW|Campos dos Goytacazes Bartolomeu Lisandro|-21.698|-41.302
+CAY|Matoury Cayenne – Félix Eboué|4.820|-52.361
+CAZ|Cobar|-31.538|145.794
+CBB|Cochabamba Jorge Wilsterman|-17.421|-66.177
+CBH|Béchar Boudghene Ben Ali Lotfi|31.646|-2.270
+CBO|Datu Odin Sinsuat Cotabato (Awang)|7.165|124.210
+CBQ|Calabar Margaret Ekpo|4.976|8.347
+CBR|Canberra|-35.307|149.195
+CBT|Catumbela|-12.479|13.487
+CCA|Chimore|-16.977|-65.146
+CCC|Cayo Coco Jardines Del Rey|22.461|-78.328
+CCE|New Cairo Capital|30.065|31.840
+CCF|Carcassonne Salvaza|43.216|2.306
+CCJ|Calicut|11.136|75.955
+CCK|West Island Cocos (Keeling) Islands|-12.192|96.834
+CCP|Concepcion Carriel Sur|-36.772|-73.063
+CCR|Concord Buchanan Field|37.990|-122.057
+CCS|Maiquetía Simón Bolívar|10.602|-66.991
+CCU|Kolkata Netaji Subhash Chandra Bose|22.654|88.448
+CCV|Craig Cove|-16.265|167.924
+CCZ|Chub Cay|25.417|-77.881
+CDB|Cold Bay|55.208|-162.725
+CDC|Cedar City|37.701|-113.099
+CDE|Chengde Puning|41.123|118.074
+CDP|Kadapa|14.513|78.769
+CDR|Chadron|42.838|-103.095
+CDT|Castellón de la Plana Castellón-Costa Azahar|40.214|0.073
+CDV|Cordova Merle K (Mudhole) Smith|60.492|-145.478
+CEB|Cebu City/Lapu-Lapu City Mactan Cebu|10.309|123.980
+CEC|Crescent City Jack Mc Namara Field|41.779|-124.236
+CED|Ceduna|-32.131|133.710
+CEE|Cherepovets|59.274|38.016
+CEI|Mae Fah Luang - Chiang Rai|19.952|99.883
+CEK|Kurchatov Chelyabinsk|55.303|61.505
+CEL|Canela|-29.370|-50.832
+CEM|Central|65.574|-144.781
+CEN|Ciudad Obregón|27.393|-109.833
+CEZ|Cortez|37.303|-108.628
+CFB|Cabo Frio|-22.921|-42.072
+CFE|Clermont-Ferrand Auvergne|45.787|3.169
+CFG|Cienfuegos Jaime Gonzalez|22.150|-80.414
+CFK|Chlef Aboubakr Belkaid|36.217|1.341
+CFN|Donegal|55.044|-8.341
+CFR|Caen Carpiquet|49.177|-0.455
+CFS|Coffs Harbour|-30.321|153.116
+CFU|Kerkyra Corfu Ioannis Kapodistrias|39.601|19.912
+CGB|Cuiabá Várzea Grande–Marechal Rondon|-15.653|-56.117
+CGD|Changde Taohuayuan|28.919|111.640
+CGH|São Paulo Congonhas–Deputado Freitas Nobre|-23.628|-46.655
+CGI|Cape Girardeau|37.225|-89.571
+CGK|Jakarta Soekarno-Hatta|-6.126|106.656
+CGM|Mambajao Camiguin|9.254|124.709
+CGN|Köln Cologne Bonn|50.866|7.143
+CGO|Zhengzhou Xinzheng|34.526|113.849
+CGP|Chattogram Shah Amanat|22.250|91.813
+CGQ|Changchun Longjia|43.996|125.685
+CGR|Campo Grande|-20.470|-54.674
+CGY|Laguindingan|8.612|124.456
+CHA|Chattanooga Metropolitan (Lovell Field)|35.035|-85.204
+CHC|Christchurch|-43.489|172.532
+CHG|Shuangta, Chaoyang Chaoyang|41.538|120.435
+CHH|Chachapoyas|-6.202|-77.856
+CHM|Chimbote FAP Lieutenant Jaime Andres de Montreui|-9.150|-78.524
+CHO|Charlottesville Albemarle|38.139|-78.453
+CHQ|Souda Chania|35.531|24.151
+CHS|Charleston|32.896|-80.038
+CHT|Te One Inia William Tuuta Memorial|-43.812|-176.465
+CHU|Chuathbaluk|61.579|-159.216
+CHX|Changuinola Captain Manuel Niño|9.459|-82.515
+CHY|Choiseul Bay|-6.712|156.396
+CIA|Rome Ciampino–G. B. Pastine|41.799|12.595
+CID|Cedar Rapids The Eastern Iowa|41.885|-91.711
+CIF|Chifeng Yulong|42.160|118.841
+CIH|Changzhi Wangcun|36.248|113.126
+CIJ|Cobija Capitán Aníbal Arab|-11.039|-68.783
+CIK|Chalkyitsik|66.645|-143.740
+CIT|Shymkent|42.365|69.476
+CIU|Kincheloe Chippewa County|46.242|-84.462
+CIW|Canouan|12.699|-61.342
+CIX|Chiclayo Capitán FAP José A. Quiñones González|-6.789|-79.828
+CIY|Comiso|36.996|14.609
+CJA|Cajamarca Mayor General FAP Armando Revoredo Igl|-7.139|-78.489
+CJB|Coimbatore|11.030|77.043
+CJC|Calama El Loa|-22.498|-68.904
+CJJ|Cheongju /Cheongju (K-59/G-513)|36.716|127.500
+CJL|Chitral|35.886|71.800
+CJM|Chumphon|10.711|99.362
+CJN|Cijulang Nusawiru|-7.720|108.489
+CJS|Ciudad Juárez Abraham González|31.637|-106.429
+CJU|Jeju City Jeju|33.512|126.493
+CJZ|Cajazeiras Pedro Vieira Moreira|-6.883|-38.616
+CKB|Bridgeport North Central West Virginia|39.297|-80.228
+CKD|Crooked Creek|61.870|-158.138
+CKH|Chokurdah Chokurdakh|70.623|147.902
+CKS|Parauapebas Carajás|-6.118|-50.003
+CKW|Christmas Creek Mine Christmas Creek|-22.354|119.643
+CKX|Chicken|64.066|-141.951
+CKY|Conakry Ahmed Sékou Touré|9.577|-13.612
+CKZ|Çanakkale|40.138|26.427
+CLD|Carlsbad McClellan-Palomar|33.128|-117.280
+CLE|Cleveland Hopkins|41.412|-81.850
+CLJ|Cluj-Napoca Avram Iancu Cluj|46.786|23.686
+CLL|College Station Easterwood Field|30.589|-96.364
+CLO|Cali Alfonso Bonilla Aragon|3.543|-76.382
+CLP|Clarks Point|58.834|-158.529
+CLQ|Colima Licenciado Miguel de la Madrid|19.277|-103.577
+CLT|Charlotte Douglas|35.214|-80.943
+CLV|Caldas Novas Nelson Ribeiro Guimarães|-17.725|-48.606
+CLY|Calvi Sainte Catherine|42.530|8.793
+CMA|Cunnamulla|-28.030|145.622
+CME|Ciudad del Carmen|18.652|-91.799
+CMF|Chambéry Aix les Bains|45.638|5.880
+CMG|Corumbá|-19.012|-57.673
+CMH|John Glenn Columbus|39.998|-82.892
+CMI|Savoy University of Illinois Willard|40.040|-88.276
+CMN|Casablanca Mohammed V|33.367|-7.590
+CMU|Kundiawa Chimbu|-6.024|144.971
+CMW|Camaguey Ignacio Agramonte|21.420|-77.848
+CMX|Hancock Houghton County Memorial|47.168|-88.489
+CNB|Coonamble|-30.981|148.378
+CNC|Coconut Island|-10.050|143.070
+CND|Constanța Mihail Kogălniceanu|44.362|28.488
+CNF|Belo Horizonte Tancredo Neves|-19.636|-43.967
+CNI|Dalian Changhai Dachangshandao|39.266|122.667
+CNJ|Cloncurry|-20.669|140.504
+CNM|Carlsbad Cavern City Air Terminal|32.338|-104.263
+CNN|Kannur|11.916|75.545
+CNP|Neerlerit Inaat|70.743|-22.650
+CNQ|Corrientes|-27.445|-58.762
+CNS|Cairns|-16.879|145.749
+CNX|Chiang Mai|18.767|98.963
+CNY|Moab Canyonlands|38.755|-109.755
+COD|Cody Yellowstone|44.520|-109.024
+COK|Kochi Cochin|10.151|76.401
+COL|Coll Island Coll|56.602|-6.618
+COO|Cotonou Cadjehoun|6.357|2.384
+COQ|Choibalsan|48.135|114.647
+COR|Cordoba Ingeniero Aeronáutico Ambrosio L.V. Tara|-31.312|-64.208
+COS|City of Colorado Springs|38.806|-104.701
+COU|Columbia|38.818|-92.220
+COV|Tarsus Çukurova|36.891|35.071
+CPC|Chapelco/San Martin de los Andes Aviador C. Camp|-40.075|-71.137
+CPD|Coober Pedy|-29.038|134.722
+CPE|Campeche Ingeniero Alberto Acuña Ongay|19.816|-90.500
+CPO|Copiapo Desierto de Atacama|-27.261|-70.779
+CPR|Casper-Natrona County|42.907|-106.462
+CPT|Cape Town|-33.974|18.604
+CPV|Campina Grande Presidente João Suassuna|-7.270|-35.896
+CPX|Culebra Benjamin Rivera Noriega|18.313|-65.304
+CQW|Wulong Chongqing Xiannüshan|29.466|107.694
+CRA|Craiova|44.318|23.889
+CRD|Comodoro Rivadavia General Enrique Mosconi|-45.787|-67.463
+CRI|Colonel Hill|22.746|-74.182
+CRK|Mabalacat Clark / Clark|15.186|120.560
+CRL|Brussels South Charleroi|50.462|4.460
+CRM|Catarman|12.502|124.635
+CRP|Corpus Christi|27.770|-97.501
+CRU|Carriacou Island Lauriston|12.476|-61.473
+CRV|Isola di Capo Rizzuto Crotone Sant'Anna Pythagor|38.997|17.080
+CRW|Charleston Yeager|38.373|-81.593
+CRZ|Türkmenabat|38.931|63.564
+CSA|Colonsay|56.057|-6.243
+CSG|Columbus|32.516|-84.940
+CSH|Solovetsky Islands Solovki|65.030|35.731
+CSK|Cap Skirring|12.395|-16.748
+CSW|Cabo San Lucas|22.949|-109.939
+CSY|Cheboksary|56.090|47.347
+CTA|Catania-Fontanarossa|37.467|15.066
+CTC|Catamarca Coronel Felipe Varela|-28.593|-65.751
+CTD|Chitré Alonso Valderrama|7.988|-80.410
+CTG|Cartagena Rafael Nuñez|10.442|-75.513
+CTL|Charleville|-26.413|146.262
+CTM|Chetumal|18.505|-88.328
+CTN|Cooktown|-15.444|145.183
+CTS|Sapporo New Chitose|42.775|141.690
+CUA|Comondú Ciudad Constitución|25.054|-111.615
+CUC|Cúcuta Camilo Daza|7.928|-72.511
+CUE|Cuenca Mariscal Lamar|-2.889|-78.984
+CUF|Levaldigi Cuneo|44.547|7.623
+CUK|Caye Caulker|17.735|-88.033
+CUL|Culiacán Bachigualato Federal|24.765|-107.475
+CUM|Cumaná Antonio José de Sucre|10.450|-64.130
+CUP|Carúpano General Francisco Bermúdez|10.660|-63.262
+CUQ|Coen|-13.761|143.113
+CUR|Willemstad Hato|12.189|-68.960
+CUU|Chihuahua General Roberto Fierro Villalobos|28.703|-105.964
+CUZ|Cusco Alejandro Velasco Astete|-13.536|-71.939
+CVG|Cincinnati / Covington Cincinnati Northern Kentu|39.049|-84.668
+CVM|Ciudad Victoria General Pedro Jose Mendez|23.703|-98.956
+CVN|Clovis|34.427|-103.079
+CVQ|Carnarvon|-24.884|113.666
+CVU|Corvo|39.672|-31.114
+CWA|Mosinee Central Wisconsin|44.777|-89.670
+CWB|Curitiba-Afonso Pena|-25.529|-49.176
+CWJ|Lincang Cangyuan Washan|23.276|99.373
+CWL|Cardiff|51.397|-3.343
+CWS|Center Island|48.490|-122.832
+CXB|Cox's Bazar|21.458|91.963
+CXI|Kiritimati Cassidy|1.986|-157.350
+CXJ|Caxias Do Sul Hugo Cantergiani|-29.197|-51.188
+CXP|Cilacap Tunggul Wulung|-7.645|109.034
+CXR|Nha Trang/nha Trang aiurportCam Ranh Cam Ranh / |11.998|109.219
+CYA|Les Cayes Antoine-Simon|18.271|-73.788
+CYB|West End Charles Kirkconnell|19.687|-79.883
+CYC|Caye Chapel|17.684|-88.045
+CYF|Chefornak|60.137|-164.279
+CYI|Shuishang Chiayi|23.463|120.391
+CYO|Cayo Largo del Sur Vilo Acuña|21.617|-81.546
+CYP|Calbayog City Calbayog|12.073|124.545
+CYS|Cheyenne Regional Jerry Olson Field|41.156|-104.812
+CYT|Yakataga|60.081|-142.495
+CYU|Cuyo|10.858|121.069
+CYX|Cherskiy|68.741|161.338
+CYZ|Cauayan City Cauayan|16.930|121.753
+CZE|Coro José Leonardo Chirinos|11.415|-69.681
+CZH|Corozal|18.382|-88.412
+CZL|Constantine Mohamed Boudiaf|36.276|6.620
+CZM|Cozumel|20.515|-86.929
+CZS|Cruzeiro do Sul|-7.600|-72.770
+CZU|Corozal Las Brujas|9.333|-75.286
+CZX|Changzhou Benniu|31.920|119.775
+DAB|Daytona Beach|29.183|-81.059
+DAC|Dhaka Hazrat Shahjalal|23.843|90.398
+DAL|Dallas Love Field|32.845|-96.848
+DAM|Damascus|33.411|36.516
+DAR|Dar es Salaam Julius Nyerere|-6.873|39.207
+DAT|Datong Yungang|40.061|113.481
+DAU|Daru|-9.087|143.208
+DAV|David Enrique Malek|8.389|-82.436
+DAX|Dazhou Dachuan|31.130|107.430
+DAY|James M. Cox Dayton|39.902|-84.219
+DBA|Dalbandin|28.878|64.400
+DBB|El Alamein|30.924|28.462
+DBC|Baicheng Chang'an|45.505|123.020
+DBM|Debre Markos|10.322|37.742
+DBO|Dubbo City|-32.217|148.575
+DBQ|Dubuque|42.402|-90.710
+DBR|Darbhanga|26.193|85.917
+DCA|Ronald Reagan Washington|38.852|-77.038
+DCF|Canefield|15.337|-61.392
+DCM|Castres Mazamet|43.556|2.289
+DCY|Garzê Daocheng Yading|29.316|100.060
+DDC|Dodge City|37.763|-99.966
+DDG|Dandong Langtou|40.025|124.287
+DDR|Xigazê Shigatse Tingri|28.605|86.798
+DEA|Dera Ghazi Khan|29.961|70.486
+DEB|Debrecen|47.489|21.616
+DEC|Decatur|39.835|-88.866
+DED|Dehradun Jolly Grant|30.189|78.177
+DEE|Yuzhno-Kurilsk Mendeleyevo|43.961|145.685
+DEF|Dezful|32.434|48.398
+DEM|Dembidollo|8.554|34.858
+DEN|Denver|39.860|-104.674
+DEX|Nop Goliat Dekai|-4.856|139.482
+DFW|Dallas-Fort Worth Dallas Fort Worth|32.897|-97.038
+DGA|Dangriga|16.983|-88.231
+DGH|Deoghar|24.447|86.705
+DGO|Durango General Guadalupe Victoria|24.125|-104.528
+DGT|Dumaguete City Sibulan|9.334|123.302
+DHA|Dhahran King Abdulaziz|26.265|50.152
+DHM|Kangra|32.165|76.263
+DHN|Dothan|31.321|-85.450
+DHX|Kediri Dhoho|-7.750|111.947
+DIA|Doha|25.259|51.566
+DIB|Dibrugarh|27.484|95.017
+DIE|Antisiranana Arrachart|-12.349|49.292
+DIG|Diqing Shangri-La|27.794|99.677
+DIK|Dickinson Theodore Roosevelt|46.798|-102.802
+DIL|Dili Presidente Nicolau Lobato|-8.547|125.525
+DIN|Dien Bien Phu|21.397|103.008
+DIR|Dire Dawa Aba Tenna Dejazmach Yilma|9.624|41.855
+DIU|Diu|20.714|70.922
+DIY|Diyarbakır|37.894|40.201
+DJB|Jambi Sultan Thaha|-1.639|103.645
+DJE|Mellita Djerba Zarzis|33.874|10.777
+DJG|Tiska Djanet|24.285|9.464
+DJJ|Sentani Dortheys Hiyo Eluay|-2.580|140.520
+DJT|West Palm Beach President Donald J. Trump|26.683|-80.096
+DKA|Katsina Umaru Musa Yar'adua|13.008|7.660
+DKR|Dakar Léopold Sédar Senghor|14.742|-17.479
+DLA|Douala|4.006|9.719
+DLE|Dole Tavaux|47.039|5.428
+DLG|Dillingham|59.045|-158.505
+DLH|Duluth|46.842|-92.199
+DLI|Da Lat Lien Khuong|11.751|108.367
+DLM|Dalaman|36.713|28.793
+DLR|Dalnerechensk|45.880|133.738
+DLU|Dali Fengyi|25.649|100.319
+DLZ|Dalanzadgad|43.609|104.368
+DMB|Taraz|42.854|71.304
+DMD|Doomadgee|-17.940|138.822
+DMK|Bangkok Don Mueang|13.913|100.607
+DMM|Ad Dammam King Fahd|26.469|49.798
+DMU|Dimapur|25.884|93.771
+DNA|Okinawa Kadena|26.352|127.769
+DND|Dundee|56.452|-3.026
+DNH|Dunhuang Mogao|40.162|94.813
+DNZ|Denizli Çardak|37.786|29.701
+DOD|Dodoma|-6.171|35.756
+DOG|Dongola|19.154|30.430
+DOL|Deauville Normandie|49.365|0.154
+DOM|Marigot Douglas-Charles|15.547|-61.301
+DOP|Dolpa|28.986|82.819
+DOV|Dover Civil Air Terminal/Dover Air Force Base|39.130|-75.466
+DOY|Dongying Shengli|37.501|118.790
+DPL|Dipolog|8.602|123.342
+DPO|Devonport|-41.170|146.430
+DPT|Deputatskiy|69.393|139.890
+DQA|Daqing Sartu|46.751|125.139
+DQM|Duqm|19.502|57.634
+DRG|Deering|66.069|-162.767
+DRJ|Drietabbetje|4.111|-54.673
+DRO|Durango La Plata County|37.152|-107.754
+DRP|Legazpi Bicol|13.112|123.677
+DRS|Dresden|51.134|13.768
+DRV|Baa Atoll Dharavandhoo|5.156|73.130
+DRW|Darwin / RAAF Darwin|-12.415|130.882
+DSD|Grande Anse La Désirade|16.297|-61.084
+DSE|Dessie Kombolcha|11.110|39.726
+DSI|Destin Executive|30.400|-86.471
+DSM|Des Moines|41.534|-93.657
+DSN|Ordos Ejin Horo|39.494|109.860
+DSO|Sŏndŏng-ni Sondok|39.745|127.474
+DSS|Dakar Blaise Diagne|14.671|-17.073
+DSY|Ta Noun Dara Sakor|10.914|103.227
+DTB|Siborong-Borong Silangit|2.260|98.992
+DTD|Datadawai-Borneo Island Datadawai|0.807|114.529
+DTM|Dortmund|51.518|7.612
+DTR|Decatur Shores|48.500|-122.814
+DTU|Heihe Wudalianchi Dedu|48.441|126.128
+DTW|Detroit Metropolitan Wayne County|42.214|-83.354
+DUD|Dunedin|-45.929|170.198
+DUE|Chitato Dundo|-7.401|20.819
+DUJ|DuBois|41.178|-78.899
+DUM|Dumai Pinang Kampai|1.609|101.433
+DUR|Durban King Shaka|-29.614|31.120
+DUS|Düsseldorf|51.290|6.767
+DUT|Unalaska Tom Madsen (Dutch Harbor)|53.899|-166.545
+DVL|Devils Lake|48.115|-98.909
+DVO|Davao Francisco Bangoy|7.126|125.646
+DWB|Soalala|-16.102|45.359
+DWC|Dubai Al Maktoum|24.896|55.162
+DWD|Dawadmi|24.450|44.121
+DXJ|Xiangxi Biancheng|28.497|109.522
+DXN|Gautam Buddha Nagar Noida|28.180|77.612
+DYG|Zhangjiajie Hehua|29.105|110.443
+DYR|Anadyr Ugolny Yuri Ryktheu|64.735|177.741
+DYU|Dushanbe|38.544|68.823
+DZA|Dzaoudzi Pamandzi|-12.809|45.282
+DZH|Dazhou Jinya|31.049|107.436
+DZN|Zhezkazgan|47.709|67.738
+EAA|Eagle|64.778|-141.150
+EAM|Najran|17.611|44.419
+EAR|Kearney|40.727|-99.007
+EAS|Hondarribia San Sebastián|43.356|-1.791
+EAT|Wenatchee Pangborn Memorial|47.399|-120.207
+EAU|Eau Claire Chippewa Valley|44.866|-91.484
+EAX|Kwatta Eduard Alexander Gummels|5.864|-55.190
+EBA|Campo nell'Elba Marina di Campo|42.761|10.240
+EBB|Entebbe|0.042|32.444
+EBD|El-Obeid|13.153|30.233
+EBH|El Bayadh|33.722|1.093
+EBJ|Esbjerg|55.526|8.553
+EBL|Arbil Erbil|36.236|43.947
+ECN|Tymbou Ercan|35.153|33.507
+ECP|Panama City Beach Northwest Florida Beaches|30.357|-85.795
+EDI|Ingliston, Edinburgh Edinburgh|55.950|-3.372
+EDL|Eldoret|0.404|35.239
+EDO|Edremit Balıkesir Koca Seyit|39.553|27.010
+EDR|Pormpuraaw|-14.896|141.609
+EEK|Eek|60.213|-162.044
+EES|Berenice Troglodytica Berenice / Banas Cape|23.980|35.460
+EFL|Kefallinia Island Kefalonia "Anna Pollatou"|38.120|20.500
+EGC|Bergerac Dordogne-Périgord|44.825|0.519
+EGE|Eagle County|39.643|-106.918
+EGS|Egilsstaðir|65.283|-14.401
+EGX|Egegik|58.184|-157.375
+EHU|Ezhou Huahu|30.341|115.039
+EIE|Yeniseysk|58.474|92.113
+EIN|Eindhoven|51.450|5.375
+EIS|Beef Island Terrance B. Lettsome|18.445|-64.542
+EJA|Barrancabermeja Yariguíes|7.024|-73.807
+EJH|Al Wajh|26.199|36.476
+EJT|Enejit Island Enejit|6.040|171.985
+EKO|Elko|40.825|-115.792
+EKS|Shakhtyorsk|49.190|142.083
+ELC|Elcho Island|-12.019|135.571
+ELD|El Dorado South Arkansas at Goodwin Field|33.221|-92.813
+ELF|El Fasher|13.615|25.325
+ELG|El Menia El Golea|30.581|2.862
+ELH|North Eleuthera|25.476|-76.681
+ELI|Elim|64.615|-162.272
+ELM|Elmira/Corning Elmira Corning|42.160|-76.892
+ELP|El Paso|31.810|-106.376
+ELQ|Qassim Prince Naif bin Abdulaziz|26.303|43.774
+ELS|East London King Phalo|-33.036|27.826
+ELU|Guemar - مطار قمار بالوادي|33.511|6.777
+EMA|Nottingham, Leicestershire East Midlands|52.831|-1.328
+EMD|Emerald|-23.567|148.179
+EME|Emden|53.391|7.228
+EMK|Emmonak|62.786|-164.491
+ENA|Kenai|60.571|-151.245
+ENE|H. Hasan Aroeboesman (Ende)|-8.849|121.661
+ENF|Enontekio|68.363|23.424
+ENH|Enshi Xujiaping|30.320|109.485
+ENI|El Nido|11.202|119.416
+ENO|Encarnación Teniente Ramon A. Ayub Gonzalez|-27.228|-55.838
+ENT|Eniwetok Atoll Eniwetok|11.341|162.328
+ENU|Enegu Akanu Ibiam|6.474|7.560
+ENY|Yan'an Nanniwan|36.479|109.464
+EOH|Medellín Enrique Olaya Herrera|6.220|-75.591
+EOI|Eday|59.191|-2.772
+EPR|Esperance|-33.684|121.823
+EPU|Pärnu|58.419|24.473
+EQS|Esquel Brigadier Antonio Parodi|-42.908|-71.140
+ERC|Erzincan|39.710|39.527
+ERF|Erfurt-Weimar|50.978|10.961
+ERH|Errachidia Moulay Ali Cherif|31.948|-4.398
+ERI|Erie International Tom Ridge Field|42.083|-80.174
+ERL|Erenhot Saiwusu|43.424|112.091
+ERS|Windhoek Eros|-22.605|17.079
+ERZ|Erzurum|39.957|41.170
+ESB|Ankara Esenboğa|40.128|32.995
+ESC|Escanaba Delta County|45.723|-87.089
+ESD|Eastsound Orcas Island|48.708|-122.910
+ESL|Elista|46.374|44.331
+ESM|Tachina Carlos Concha Torres|0.979|-79.627
+ESR|El Salvador Ricardo García Posada|-26.311|-69.765
+ESU|Essaouira-Mogador|31.397|-9.682
+ETM|Eilat Ramon|29.727|35.014
+ETR|Santa Rosa - Artillery Colonel Victor Larrea|-3.442|-79.997
+ETZ|Goin Metz-Nancy-Lorraine|48.982|6.251
+EUA|Eua Island Kaufana|-21.378|-174.958
+EUG|Eugene|44.125|-123.212
+EUN|El Aaiún Laayoune Hassan I|27.142|-13.225
+EUX|Oranjestad F. D. Roosevelt|17.497|-62.979
+EVE|Evenes Harstad/Narvik|68.491|16.678
+EVG|Sveg|62.048|14.423
+EVV|Evansville|38.037|-87.532
+EWB|New Bedford|41.676|-70.957
+EWN|New Bern Coastal Carolina|35.073|-77.043
+EXT|Exeter, Devon Exeter|50.734|-3.414
+EYK|Beloyarskiy|63.687|66.699
+EYP|El Alcaravan - Yopal|5.319|-72.384
+EYW|Key West|24.556|-81.760
+EZE|Buenos Aires Ezeiza - Ministro Pistarini|-34.822|-58.536
+EZS|Elazığ|38.598|39.283
+FAE|Vágar|62.063|-7.276
+FAI|Fairbanks|64.815|-147.856
+FAO|Faro - Gago Coutinho|37.016|-7.971
+FAR|Fargo Hector|46.921|-96.816
+FAT|Fresno Yosemite|36.776|-119.718
+FAV|Fakarava|-16.054|-145.657
+FAY|Fayetteville - Grannis Field|34.991|-78.880
+FBD|Fayzabad|37.122|70.520
+FBE|Francisco Beltrão Paulo Abdala|-26.059|-53.064
+FBM|Lubumbashi|-11.591|27.531
+FCA|Kalispell Glacier Park|48.311|-114.256
+FCN|Wurster Nordseeküste Sea- Cuxhaven/Nordholz / No|53.768|8.659
+FDE|Førde, Bringeland|61.391|5.757
+FDF|Fort-de-France Martinique Aimé Césaire|14.591|-61.003
+FDH|Bodensee Friedrichshafen|47.671|9.511
+FDU|Bandundu|-3.311|17.382
+FEG|Fergana|40.359|71.745
+FEN|Fernando de Noronha|-3.855|-32.423
+FEZ|Fes Saïss|33.927|-4.978
+FGU|Fangatau|-15.820|-140.888
+FHZ|Fakahina|-15.992|-140.164
+FIE|Fair Isle|59.535|-1.629
+FIH|Kinshasa Ndjili|-4.386|15.445
+FIZ|Fitzroy Crossing|-18.184|125.560
+FJR|Fujairah|25.108|56.328
+FKB|Rheinmünster Karlsruhe Baden-Baden|48.779|8.081
+FKI|Kisangani Bangoka|0.482|25.338
+FKQ|Fakfak|-2.921|132.267
+FKS|Sukagawa Fukushima|37.227|140.431
+FLA|Florencia Gustavo Artunduaga Paredes|1.589|-75.564
+FLG|Flagstaff Pulliam|35.140|-111.670
+FLL|Fort Lauderdale Hollywood|26.073|-80.153
+FLN|Florianópolis Hercílio Luz|-27.670|-48.553
+FLO|Florence|34.185|-79.724
+FLR|Firenze Florence, Peretola|43.809|11.203
+FLS|Whitemark Flinders Island|-40.092|147.993
+FLW|Santa Cruz das Flores Flores|39.455|-31.131
+FLZ|Sibolga Dr. Ferdinand Lumban Tobing|1.557|98.887
+FMA|Formosa|-26.213|-58.228
+FMI|Kalemie|-5.876|29.250
+FMM|Memmingen Allgau|47.988|10.238
+FMO|Greven Münster Osnabrück|52.134|7.688
+FMT|Faresmaathodaa Faresmaathoda|0.193|73.197
+FNA|Freetown Lungi|8.616|-13.195
+FNC|Funchal Cristiano Ronaldo|32.698|-16.775
+FND|Funadhoo|6.162|73.288
+FNI|Nîmes/Garons Nîmes-Arles-Camargue|43.757|4.416
+FNJ|Pyongyang Sunan|39.224|125.670
+FNT|Flint Bishop|42.969|-83.743
+FOA|Foula|60.122|-2.053
+FOC|Fuzhou Changle|25.929|119.673
+FOD|Fort Dodge|42.553|-94.191
+FOG|Foggia Gino Lisa|41.434|15.535
+FON|La Fortuna Arenal|10.469|-84.579
+FOR|Fortaleza Pinto Martins|-3.776|-38.532
+FPO|Freeport Grand Bahama|26.558|-78.696
+FRD|Friday Harbor|48.524|-123.025
+FRE|Fera Island Fera/Maringe|-8.107|159.577
+FRL|Forlì-Luigi Ridolfi|44.195|12.070
+FRO|Florø|61.584|5.025
+FRS|San Benito Mundo Maya|16.914|-89.866
+FRW|Francistown Phillip Gaonwe Matante|-21.159|27.469
+FSC|Figari Sud-Corse|41.502|9.097
+FSD|Sioux Falls|43.585|-96.741
+FSH|Singkil Syekh Hamzah Fansyuri|2.270|97.968
+FSM|Fort Smith|35.337|-94.367
+FSP|Saint-Pierre Pointe-Blanche|46.763|-56.175
+FSZ|Makinohara / Shimada Mount Fuji Shizuoka|34.795|138.191
+FTA|Futuna Island Futuna|-19.516|170.232
+FTE|El Calafate - Commander Armando Tola|-50.280|-72.053
+FTI|Fitiuta Village Fitiuta|-14.216|-169.424
+FTU|Tôlanaro|-25.038|46.956
+FTW|Fort Worth Meacham|32.820|-97.361
+FUE|El Matorral Fuerteventura|28.453|-13.864
+FUG|Yingzhou, Fuyang Fuyang Xiguan|32.882|115.734
+FUJ|Goto Fukue|32.666|128.833
+FUK|Fukuoka|33.586|130.451
+FUN|Funafuti|-8.524|179.197
+FUO|Foshan Shadi|23.082|113.071
+FUT|Futuna Island Pointe Vele|-14.312|-178.066
+FWA|Fort Wayne|40.979|-85.194
+FYJ|Fuyuan Dongji|48.197|134.363
+FYN|Fuyun Koktokay|46.804|89.512
+FYU|Fort Yukon|66.572|-145.250
+GAJ|Higashine Yamagata|38.412|140.371
+GAL|Galena Edward G. Pitka Sr|64.736|-156.937
+GAM|Gambell|63.768|-171.733
+GAN|Gan|-0.693|73.153
+GAQ|Gao|16.248|-0.005
+GAU|Guwahati Lokpriya Gopinath Bordoloi|26.107|91.585
+GAX|Gamba|-2.785|10.047
+GAY|Gaya|24.744|84.951
+GBB|Gabala|40.809|47.725
+GBE|Gaborone Sir Seretse Khama|-24.555|25.918
+GBI|Kalaburagi|17.308|76.965
+GBJ|Grand-Bourg Marie-Galante|15.869|-61.270
+GBZ|Claris Great Barrier|-36.241|175.472
+GCC|Gillette Northeast Wyoming|44.349|-105.539
+GCH|Gachsaran|30.334|50.834
+GCI|Saint Peter Port Guernsey|49.435|-2.602
+GCK|Garden City|37.928|-100.724
+GCM|George Town Owen Roberts|19.293|-81.358
+GCN|Grand Canyon - Tusayan Grand Canyon National Par|35.952|-112.147
+GDB|Gondia|21.527|80.290
+GDE|Gode|5.935|43.579
+GDL|Guadalajara|20.523|-103.310
+GDN|Gdańsk Lech Wałęsa|54.378|18.466
+GDQ|Azezo Gondar|12.520|37.434
+GDT|Cockburn Town JAGS McCartney|21.445|-71.142
+GDV|Glendive Dawson Community|47.138|-104.807
+GDX|Magadan Sokol|59.911|150.720
+GDZ|Gelendzhik|44.582|38.012
+GEA|Nouméa Magenta|-22.258|166.473
+GEG|Spokane|47.620|-117.534
+GEL|Santo Ângelo|-28.283|-54.170
+GEM|Mengomeyén President Obiang Nguema|1.676|11.025
+GEO|Georgetown Cheddi Jagan|6.499|-58.254
+GER|Nueva Gerona Rafael Cabrera|21.835|-82.784
+GES|General Santos|6.057|125.096
+GET|Moonyoonooka Geraldton|-28.796|114.707
+GEV|Gällivare|67.132|20.815
+GFF|Griffith|-34.251|146.067
+GFK|Grand Forks|47.949|-97.176
+GGF|Almeirim|-1.480|-52.578
+GGG|Longview East Texas|32.384|-94.712
+GGJ|Guaíra|-24.081|-54.192
+GGR|Garowe|8.458|48.568
+GGS|Gobernador Gregores|-48.783|-70.150
+GGT|Moss Town Exuma|23.563|-75.878
+GGW|Glasgow Valley County Wokal Field|48.213|-106.615
+GHA|El Atteuf Noumérat - Moufdi Zakaria|32.384|3.794
+GHB|Governor's Harbour|25.285|-76.331
+GHV|Brașov-Ghimbav|45.706|25.523
+GIB|Gibraltar|36.152|-5.350
+GIC|Boigu Island|-9.233|142.218
+GID|Gitega|-3.417|29.911
+GIG|Rio de Janeiro Galeão – Tom Jobim|-22.810|-43.251
+GIL|Gilgit|35.919|74.334
+GIS|Gisborne|-38.663|177.978
+GIZ|Jizan / King Abdullah bin Abdulaziz|16.901|42.586
+GJA|Guanaja La Laguna|16.445|-85.907
+GJL|Tahir Jijel Ferhat Abbas|36.794|5.874
+GJT|Grand Junction|39.127|-108.529
+GKA|Goronka Goroka|-6.082|145.392
+GKK|Huvadhu Atoll Kooddoo|0.732|73.434
+GKN|Gulkana|62.156|-145.455
+GLA|Glasgow|55.872|-4.433
+GLF|Golfito|8.654|-83.182
+GLH|Greenville Mid Delta|33.483|-90.986
+GLK|Galcaio|6.781|47.455
+GLT|Gladstone|-23.870|151.225
+GLV|Golovin|64.550|-163.007
+GMA|Gemena|3.235|19.771
+GMB|Gambela|8.129|34.563
+GME|Gomel|52.527|31.017
+GMI|Gasmata Island|-6.271|150.331
+GMO|Gombe Lawanti|10.299|10.900
+GMP|Seoul Gimpo|37.558|126.791
+GMQ|Golog Maqên|34.418|100.301
+GMR|Totegegie|-23.080|-134.890
+GMZ|Alajero, La Gomera Island La Gomera|28.030|-17.215
+GNB|Grenoble Alpes Isère|45.363|5.329
+GND|Saint George's Maurice Bishop|12.004|-61.785
+GNJ|Ganja|40.739|46.320
+GNS|Gunungsitoli Binaka|1.166|97.705
+GNU|Goodnews|59.118|-161.575
+GNV|Gainesville|29.690|-82.272
+GNY|Şanlıurfa GAP|37.446|38.896
+GOA|Genova Genoa Cristoforo Colombo|44.412|8.841
+GOH|Nuuk|64.191|-51.679
+GOI|Vasco da Gama Goa Dabolim|15.380|73.833
+GOJ|Nizhny Novgorod / Strigino|56.227|43.785
+GOM|Goma|-1.667|29.238
+GOP|Gorakhpur|26.740|83.450
+GOQ|Golmud|36.401|94.786
+GOT|Göteborg Landvetter|57.663|12.280
+GOU|Garoua|9.335|13.372
+GOV|Nhulunbuy Gove|-12.269|136.818
+GOX|Mopa Manohar|15.744|73.861
+GOY|Tura Mountain|64.334|100.433
+GPA|Patras Araxos Agamemnon|38.151|21.426
+GPI|Guapi|2.570|-77.898
+GPS|Isla Baltra Seymour Galapagos Ecological|-0.454|-90.266
+GPT|Gulfport Biloxi|30.406|-89.070
+GRB|Green Bay Austin Straubel|44.483|-88.131
+GRI|Grand Island Central Nebraska|40.967|-98.310
+GRJ|George|-34.006|22.379
+GRK|Fort Cavazos Killeen / Robert Gray Army|31.067|-97.829
+GRO|Girona-Costa Brava|41.905|2.762
+GRQ|Groningen Eelde|53.119|6.578
+GRR|Grand Rapids Gerald R. Ford|42.881|-85.523
+GRV|Akhmat Kadyrov Grozny|43.388|45.700
+GRW|Santa Cruz da Graciosa Graciosa|39.092|-28.030
+GRX|F.G.L. Granada-Jaén|37.189|-3.777
+GRY|Grímsey/Sandvík Grímsey|66.546|-18.017
+GRZ|Feldkirchen bei Graz Graz|46.991|15.440
+GSM|Qeshm|26.755|55.902
+GSO|Greensboro Piedmont Triad|36.099|-79.937
+GSP|Greenville/Greer/Spartanburg Greenville-Spartanb|34.896|-82.219
+GST|Gustavus|58.425|-135.707
+GSV|Saratov Gagarin|51.713|46.171
+GTA|Gatokae|-8.738|158.203
+GTE|Groote Eylandt|-13.972|136.459
+GTF|Great Falls|47.482|-111.371
+GTO|Gorontalo Jalaluddin|0.637|122.850
+GTR|Columbus/W Point/Starkville Golden Triangle|33.450|-88.591
+GUA|Guatemala City La Aurora|14.583|-90.528
+GUB|San Quintín Guerrero Negro|28.026|-114.024
+GUC|Gunnison Crested Butte|38.535|-106.935
+GUM|Hagåtña Antonio B. Won Pat|13.485|144.797
+GUP|Gallup|35.512|-108.788
+GUR|Gurney|-10.311|150.334
+GUW|Atyrau|47.121|51.820
+GUZ|Guarapari|-20.646|-40.492
+GVR|Governador Valadares Coronel Altino Machado|-18.896|-41.983
+GWD|Gurandani New Gwadar|25.297|62.499
+GWL|Gwalior|26.293|78.228
+GWT|Westerland Sylt|54.913|8.340
+GXF|Seiyun Hadhramaut|15.966|48.788
+GXG|Negage|-7.755|15.288
+GXH|Gannan Xiahe|34.819|102.622
+GYA|Guayaramerín|-10.889|-65.381
+GYE|Guayaquil José Joaquín de Olmedo|-2.157|-79.884
+GYM|Guaymas General José María Yáñez|27.969|-110.925
+GYN|Goiânia Santa Genoveva|-16.632|-49.221
+GYS|Guangyuan Panlong|32.390|105.695
+GYU|Guyuan Liupanshan|36.079|106.217
+GYY|Gary/Chicago|41.617|-87.413
+GYZ|Cosmo Newbery Gruyere|-28.035|123.815
+GZG|Garzê Garze Gesar|31.758|99.554
+GZO|Gizo Nusatupe|-8.098|156.864
+GZP|Gazipaşa-Alanya|36.299|32.297
+GZT|Gaziantep Oğuzeli|36.947|37.479
+HAA|Hasvik|70.487|22.140
+HAC|Hachijojima|33.115|139.786
+HAD|Halmstad|56.691|12.820
+HAH|Moroni Prince Said Ibrahim|-11.534|43.272
+HAJ|Hannover|52.461|9.685
+HAK|Haikou Meilan|19.935|110.459
+HAL|Halali|-19.029|16.459
+HAM|Hamburg Helmut Schmidt|53.630|9.988
+HAQ|Haa Dhaalu Atoll Hanimaadhoo|6.743|73.167
+HAS|Hail|27.438|41.686
+HAU|Haugesund, Karmøy|59.345|5.208
+HAV|Havana José Martí|22.989|-82.409
+HBA|Hobart|-42.837|147.513
+HBE|Alexandria|30.932|29.696
+HBQ|Haibei Qilian|38.008|100.645
+HBX|Hubballi|15.361|75.082
+HCJ|Hechi Jinchengjiang|24.804|107.711
+HCR|Holy Cross|62.188|-159.775
+HCZ|Chenzhou Beihu|25.753|112.845
+HDD|Hyderabad|25.318|68.366
+HDF|Zirchow Heringsdorf|53.879|14.152
+HDG|Handan|36.525|114.424
+HDK|Kulhudhuffushi|6.631|73.068
+HDM|Hamadan|34.866|48.561
+HDN|Hayden Yampa Valley|40.481|-107.218
+HDO|Ghaziabad Hindon / Hindon Air Force Station|28.708|77.359
+HDS|Eastgate / Air Force Base Hoedspruit|-24.362|31.053
+HDY|Hat Yai|6.933|100.393
+HEA|Guzara Herat - Khwaja Abdullah Ansari|34.210|62.228
+HEH|Heho|20.747|96.792
+HEI|Oesterdeichstrich Heide-Büsum|54.153|8.902
+HEK|Heihe Aihui|50.172|127.309
+HER|Heraklion International Nikos Kazantzakis|35.340|25.180
+HET|Hohhot Baita|40.850|111.825
+HFA|Uri Michaeli Haifa|32.810|35.044
+HFE|Hefei Xinqiao|31.988|116.977
+HFN|Höfn Hornafjörður|64.296|-15.227
+HFS|Råda Hagfors|60.020|13.579
+HFT|Hammerfest|70.680|23.669
+HGA|Hargeisa Egal|9.514|44.083
+HGD|Hughenden|-20.815|144.225
+HGI|Itanagar Donyi Polo Hollongi|26.967|93.639
+HGL|Helgoland-Düne|54.185|7.916
+HGN|Mae Hong Son|19.301|97.976
+HGO|Korhogo|9.387|-5.557
+HGR|Hagerstown Regional Richard A Henson Field|39.709|-77.728
+HGU|Mount Hagen Kagamuga|-5.828|144.299
+HHH|Hilton Head Island Hilton Head|32.224|-80.698
+HHN|Frankfurt am Main Frankfurt-Hahn|49.946|7.262
+HHQ|Hua Hin|12.636|99.951
+HHR|Jack Northrop Field Hawthorne|33.923|-118.335
+HHZ|Hikueru|-17.548|-142.612
+HIA|Huai'an Lianshui|33.793|119.127
+HIB|Hibbing Range|47.385|-92.837
+HID|Horn Island|-10.586|142.293
+HII|Lake Havasu City|34.571|-114.358
+HIJ|Hiroshima|34.436|132.919
+HIL|Shilavo|6.078|44.764
+HIN|Sacheon / Sacheon|35.089|128.072
+HIR|Honiara|-9.428|160.055
+HJB|Hejing Bayinbuluke|42.976|83.996
+HJJ|Huaihua Zhijiang|27.443|109.705
+HJR|Khajuraho|24.817|79.919
+HKD|Hakodate|41.770|140.822
+HKK|Hokitika|-42.714|170.985
+HKN|Kimbe Hoskins|-5.464|150.407
+HLA|Johannesburg Lanseria|-25.939|27.927
+HLD|Hulunbuir Hailar|49.209|119.822
+HLE|Jamestown Saint Helena|-15.959|-5.646
+HLH|Ulanhot Yilelite|46.195|122.008
+HLN|Helena|46.607|-111.983
+HLP|Jakarta Halim Perdanakusuma|-6.267|106.890
+HLZ|Hamilton|-37.867|175.332
+HMA|Khanty-Mansiysk Khanty Mansiysk|61.029|69.086
+HMB|Suhaj|26.343|31.743
+HME|Hassi Messaoud-Oued Irara Krim Belkacem|31.673|6.140
+HMI|Hami|42.841|93.669
+HMO|Hermosillo General Ignacio L. Pesqueira|29.093|-111.053
+HMS|Muara Teweh Haji Muhammad Sidik|-1.026|114.929
+HMV|Hemavan|65.806|15.083
+HNA|Iwate Hanamaki|39.429|141.135
+HNH|Hoonah|58.096|-135.410
+HNL|Honolulu, Oahu Daniel K. Inouye|21.318|-157.926
+HNM|Hana|20.796|-156.014
+HNS|Haines|59.244|-135.524
+HNY|Hengyang Nanyue|26.722|112.618
+HOB|Hobbs Lea County|32.688|-103.217
+HOF|Hofuf Al-Ahsa|25.285|49.485
+HOG|Holguin Frank Pais|20.785|-76.316
+HOI|Otepa Hao|-18.075|-140.946
+HOK|Lajamanu Hooker Creek|-18.337|130.638
+HOM|Homer|59.644|-151.479
+HOR|Horta|38.520|-28.716
+HOT|Hot Springs Memorial Field|34.479|-93.096
+HOU|Houston William P. Hobby|29.645|-95.277
+HOV|Ørsta-Volda, Hovden|62.180|6.074
+HPA|Lifuka Island|-19.777|-174.341
+HPB|Hooper Bay|61.524|-166.147
+HPG|Shennongjia Hongping|31.626|110.340
+HPH|Haiphong Cat Bi|20.817|106.724
+HPN|White Plains Westchester County|41.067|-73.708
+HQL|Tashikuergan Hongqilafu|37.661|75.289
+HQQ|Anyang Hongqiqu|35.871|114.462
+HRE|Harare Robert Gabriel Mugabe|-17.932|31.093
+HRF|Hoarafushi|6.970|72.896
+HRI|Mattala Rajapaksa|6.284|81.124
+HRL|Harlingen Valley|26.229|-97.654
+HRO|Harrison Boone County|36.262|-93.155
+HSA|Turkıstan Hazrat Sultan|43.311|68.550
+HSC|Shaoguan Danxia|24.979|113.421
+HSG|Kyushu Saga|33.150|130.302
+HSL|Huslia|65.698|-156.351
+HSN|Zhoushan Putuoshan|29.934|122.362
+HSR|Rajkot|22.379|71.039
+HSS|Hisar Maharaja Agrasen|29.186|75.741
+HSV|Huntsville|34.636|-86.774
+HTA|Chita-Kadala|52.025|113.306
+HTG|Khatanga|71.978|102.491
+HTI|Hamilton Island|-20.358|148.952
+HTN|Hotan|37.039|79.865
+HTS|Huntington Tri-State / Milton J. Ferguson Field|38.367|-82.558
+HTT|Mengnai Huatugou|38.202|90.838
+HTY|Antakya Hatay|36.361|36.286
+HUE|Akwi Humera|13.830|36.882
+HUG|Huehuetenango|15.317|-91.506
+HUH|Huahine-Fare|-16.687|-151.022
+HUI|Huế Phu Bai|16.401|107.704
+HUN|Hualien City Hualien Chiashan|24.023|121.618
+HUO|Holingol Huolinhe|45.487|119.407
+HUS|Hughes|66.041|-154.263
+HUU|Huánuco Alferez Fap David Figueroa Fernandini|-9.879|-76.205
+HUX|Bahías de Huatulco|15.775|-96.260
+HUY|Grimsby, Lincolnshire Humberside|53.576|-0.350
+HUZ|Huizhou Pingtan|23.050|114.600
+HVB|Hervey Bay|-25.320|152.881
+HVD|Khovd|47.954|91.628
+HVG|Honningsvåg, Valan|71.010|25.984
+HVN|Tweed New Haven|41.263|-72.888
+HVR|Havre City County|48.541|-109.763
+HWR|Halwara|30.749|75.630
+HXD|Haixi Delingha|37.125|97.269
+HYA|Hyannis Cape Cod Gateway|41.669|-70.280
+HYD|Hyderabad Rajiv Gandhi|17.231|78.430
+HYN|Taizhou Luqiao|28.562|121.429
+HYS|Hays|38.845|-99.273
+HZA|Heze Mudan|35.213|115.737
+HZG|Hanzhong Chenggu|33.134|107.204
+HZH|Liping|26.322|109.150
+IAA|Igarka|67.437|86.622
+IAD|Washington Dulles|38.944|-77.456
+IAG|Niagara Falls|43.107|-78.946
+IAH|Houston George Bush Intercontinental|29.984|-95.341
+IAM|Zarzaitine - In Aménas|28.052|9.643
+IAN|Kiana Bob Baker Memorial|66.976|-160.439
+IAO|Del Carmen Siargao|9.859|126.014
+IAR|Tunoshna Golden Ring Yaroslavl|57.561|40.157
+IAS|Iaşi|47.180|27.621
+IBA|Ibadan|7.362|3.978
+IBB|Puerto Villamil General Villamil|-0.943|-90.953
+IBE|Ibagué Perales|4.422|-75.133
+IBR|Omitama Ibaraki|36.181|140.414
+IBZ|Ibiza|38.873|1.373
+ICC|Isla de Coche Andrés Miguel Salazar Marcano|10.794|-63.982
+ICI|Cicia|-17.743|-179.342
+ICT|Wichita Dwight D. Eisenhower|37.650|-97.429
+IDA|Idaho Falls|43.515|-112.071
+IDR|Indore Devi Ahilya Bai Holkar|22.721|75.801
+IEG|Nowe Kramsko Zielona Góra-Babimost|52.139|15.799
+IFJ|Ísafjörður|66.058|-23.135
+IFN|Isfahan Shahid Beheshti|32.755|51.884
+IGA|Matthew Town Inagua|20.975|-73.667
+IGD|Iğdır|39.977|43.877
+IGG|Igiugig|59.324|-155.902
+IGR|Puerto Iguazu Cataratas Del Iguazú|-25.737|-54.473
+IGT|Sunzha Magas|43.323|45.013
+IGU|Foz do Iguaçu Cataratas|-25.594|-54.489
+IIA|Inis Meáin Inishmaan|53.093|-9.568
+IJK|Izhevsk|56.835|53.462
+IKA|Tehran Imam Khomeini|35.416|51.152
+IKG|Karakol|42.508|78.408
+IKI|Iki|33.749|129.785
+IKO|Nikolski Air Station|52.942|-168.849
+IKS|Tiksi|71.698|128.903
+IKU|Tamchy Issyk-Kul|42.586|76.701
+ILD|Lleida-Alguaire|41.728|0.535
+ILF|Ilford|56.052|-95.619
+ILG|Wilmington|39.679|-75.606
+ILI|Iliamna|59.754|-154.911
+ILM|Wilmington|34.272|-77.905
+ILO|Cabatuan Iloilo|10.833|122.493
+ILP|Île des Pins|-22.589|167.456
+ILQ|Ilo General Jorge Fernandez Maldon|-17.695|-71.344
+ILR|Ilorin/Ogbomosho General Tunde Idiagbon|8.440|4.494
+ILS|San Salvador Ilopango|13.700|-89.120
+ILY|Isle of Islay, Argyll and Bute Islay|55.683|-6.258
+IMF|Imphal Bir Tikendrajit|24.760|93.897
+IMK|Simikot|29.971|81.819
+IMP|Imperatriz Prefeito Renato Moreira|-5.531|-47.460
+IMT|Kingsford Ford|45.819|-88.115
+INB|Independence|16.535|-88.442
+INC|Yinchuan Hedong|38.323|106.393
+IND|Indianapolis|39.717|-86.294
+INH|Inhambane|-23.876|35.409
+INI|Niš Constantine the Great|43.337|21.856
+INL|International Falls Falls|48.566|-93.403
+INN|Innsbruck|47.260|11.344
+INO|Inongo|-1.947|18.286
+INQ|Inis Oírr Inisheer|53.065|-9.511
+INU|Yaren Nauru|-0.548|166.920
+INV|Inverness, Highland Inverness|57.542|-4.048
+INZ|In Salah|27.251|2.512
+IOA|Ioannina King Pyrrhus|39.696|20.823
+IOM|Castletown, Rushen Isle of Man|54.083|-4.624
+IOR|Inis Mór Inishmore|53.107|-9.654
+IOS|Ilhéus Bahia - Jorge Amado|-14.816|-39.033
+IPC|Isla De Pascua Mataveri|-27.165|-109.421
+IPH|Ipoh Sultan Azlan Shah|4.567|101.092
+IPI|Ipiales San Luis|0.862|-77.672
+IPL|Imperial County|32.835|-115.574
+IPN|Ipatinga Usiminas|-19.471|-42.488
+IPT|Williamsport|41.242|-76.922
+IQM|Qiemo Yudu|38.235|85.465
+IQN|Qingyang Xifeng|35.803|107.599
+IQQ|Iquique Diego Aracena|-20.536|-70.181
+IQT|Iquitos Coronel FAP Francisco Secada Vignetta|-3.785|-73.309
+IRA|Kirakira Ngorangora|-10.450|161.898
+IRC|Circle City (New)|65.828|-144.076
+IRG|Lockhart River|-12.787|143.305
+IRJ|La Rioja Capitan V A Almonacid|-29.382|-66.796
+IRK|Kirksville|40.093|-92.545
+IRP|Isiro Matari|2.828|27.588
+IRZ|Santa Isabel do Rio Negro Tapuruquara|-0.379|-64.993
+ISA|Mount Isa|-20.666|139.488
+ISB|Attock Islamabad|33.549|72.826
+ISC|St. Mary's, Isles of Scilly St. Mary's|49.913|-6.292
+ISE|Isparta Süleyman Demirel|37.855|30.368
+ISG|New Ishigaki|24.396|124.245
+ISK|Nashik|20.119|73.913
+ISL|Istanbul İstanbul Atatürk|40.972|28.824
+ISP|Islip Long Island MacArthur|40.796|-73.102
+ISU|Sulaymaniyah Jalal Talabani|35.560|45.315
+ITB|Itaituba|-4.242|-56.001
+ITH|Ithaca Tompkins|42.491|-76.458
+ITM|Osaka Itami|34.781|135.441
+ITO|Hilo|19.721|-155.045
+ITU|Kurilsk Iturup|45.256|147.955
+IUE|Alofi Niue|-19.080|-169.923
+IVC|Invercargill|-46.412|168.313
+IVL|Ivalo|68.607|27.405
+IWA|Ivanovo South|56.939|40.941
+IWD|Ironwood Gogebic Iron County|46.525|-90.132
+IWJ|Masuda Iwami|34.676|131.790
+IWK|Iwakuni Kintaikyo|34.146|132.247
+IXA|Agartala - Maharaja Bir Bikram|23.887|91.240
+IXB|Siliguri Bagdogra|26.681|88.329
+IXC|Chandigarh Shaheed Bhagat Singh|30.674|76.788
+IXD|Allahabad Prayagraj|25.440|81.734
+IXE|Mangaluru|12.955|74.887
+IXG|Belgaum Belagavi|15.859|74.618
+IXI|Lilabari North Lakhimpur|27.296|94.097
+IXJ|Jammu|32.689|74.838
+IXK|Keshod|21.317|70.270
+IXL|Leh Kushok Bakula Rimpochee|34.136|77.547
+IXM|Madurai|9.835|78.093
+IXP|Pathankot|32.234|75.634
+IXR|Ranchi Birsa Munda|23.314|85.322
+IXS|Silchar|24.913|92.979
+IXU|Aurangabad|19.863|75.396
+IXY|Kandla|23.113|70.100
+IXZ|Port Blair Veer Savarkar / INS Utkrosh|11.640|92.729
+IZA|Juiz de Fora Presidente Itamar Franco|-21.513|-43.173
+IZO|Izumo Enmusubi|35.414|132.890
+IZT|General Antonio Cárdenas Rodríguez / Ixtepec|16.446|-95.094
+JAC|Jackson Hole|43.607|-110.738
+JAE|Jaén Shumba|-5.592|-78.774
+JAF|Jaffna|9.792|80.070
+JAI|Jaipur|26.824|75.812
+JAN|Jackson-Medgar Wiley Evers|32.311|-90.076
+JAU|Jauja Francisco Carle|-11.783|-75.473
+JAV|Ilulissat|69.243|-51.057
+JAX|Jacksonville|30.492|-81.688
+JBB|Jember Notohadinegoro|-8.242|113.693
+JBK|Qitai Jiangbulake|44.166|89.550
+JBQ|La Isabela|18.573|-69.986
+JBR|Jonesboro|35.832|-90.646
+JCK|Julia Creek|-20.668|141.723
+JCL|České Budějovice South Bohemian|48.948|14.428
+JDF|Juiz de Fora Francisco de Assis|-21.791|-43.386
+JDH|Jodhpur|26.251|73.049
+JDO|Juazeiro do Norte Orlando Bezerra de Menezes|-7.219|-39.269
+JDZ|Jingdezhen Luojia|29.339|117.176
+JED|Jeddah King Abdulaziz|21.680|39.157
+JEE|Carrefour Sanon Jérémie|18.663|-74.170
+JEG|Aasiaat|68.722|-52.785
+JEJ|Ailinglapalap Atoll Jeh|7.565|168.962
+JER|St. Peter Jersey|49.208|-2.196
+JFR|Paamiut|62.015|-49.671
+JGA|Jamnagar|22.465|70.013
+JGB|Jagdalpur|19.074|82.037
+JGD|Jiagedaqi Daxing'anling Elunchun|50.371|124.118
+JGN|Jiayuguan|39.859|98.339
+JGS|Ji'an Jinggangshan|26.857|114.737
+JHB|Johor Bahru Senai|1.641|103.670
+JHG|Jinghong Xishuangbanna Gasa|21.975|100.762
+JHM|Lahaina Kapalua|20.963|-156.673
+JHS|Sisimiut|66.951|-53.729
+JIB|Djibouti City Djibouti-Ambouli|11.547|43.160
+JIC|Jinchang Jinchuan|38.542|102.348
+JIJ|Jijiga Gerad Wilwal|9.332|42.912
+JIK|Ikaria Island Ikaria|37.683|26.347
+JIM|Jimma|7.666|36.817
+JIO|Tiakur Jos Orno Imsula|-8.141|127.910
+JIQ|Qianjiang Wulingshan|29.513|108.831
+JIU|Jiujiang Lushan|29.477|115.801
+JJD|Cruz Comandante Ariston Pessoa|-2.906|-40.357
+JJG|Jaguaruna Humberto Ghizzo Bortoluzzi|-28.675|-49.060
+JJM|Meru-Kinna Mulika Lodge|0.165|38.195
+JJN|Quanzhou Jinjiang|24.796|118.589
+JJU|Qaqortoq|60.764|-46.065
+JKG|Jönköping|57.758|14.069
+JKH|Chios Island|38.343|26.141
+JKL|Kalymnos Island Kalymnos|36.963|26.941
+JKR|Janakpur|26.709|85.922
+JLG|Jalgaon|20.963|75.627
+JLN|Joplin|37.152|-94.498
+JLR|Jabalpur|23.178|80.052
+JMJ|Pu'er Lancang Jingmai|22.418|99.784
+JMK|Mykonos Island|37.435|25.348
+JMO|Jomsom|28.780|83.723
+JMS|Jamestown|46.930|-98.678
+JMU|Jiamusi Songjiang|46.843|130.464
+JNG|Jining Da'an|35.647|116.743
+JNH|Xiuzhou, Hangzhou Jiaxing Nanhu|30.698|120.663
+JNU|Juneau|58.355|-134.574
+JNX|Naxos Island|37.081|25.368
+JNZ|Jinzhou Bay|40.936|121.277
+JOE|Joensuu|62.659|29.619
+JOG|Yogyakarta Adisutjipto|-7.788|110.432
+JOI|Joinville Lauro Carneiro de Loyola|-26.225|-48.797
+JOL|Jolo|6.054|121.011
+JOS|Jos Yakubu Gowon|9.640|8.869
+JPA|João Pessoa Presidente Castro Pinto|-7.149|-34.951
+JPE|Paragominas Nagib Demachki|-3.020|-47.316
+JPR|Ji-Paraná|-10.871|-61.847
+JQA|Uummannaq Qaarsut|70.734|-52.696
+JRG|Jharsuguda|21.913|84.050
+JRH|Jorhat|26.730|94.175
+JRO|Arusha Kilimanjaro|-3.427|37.074
+JSA|Jaisalmer|26.889|70.865
+JSH|Crete Island Sitia|35.216|26.101
+JSI|Skiathos Island|39.177|23.504
+JSJ|Jiansanjiang Shidi|47.108|132.658
+JSK|Bandar-e-Jask Jask|25.655|57.802
+JSR|Jashore Jessore|23.184|89.161
+JST|John Murtha Johnstown Cambria County|40.316|-78.834
+JSU|Maniitsoq|65.412|-52.939
+JSY|Syros Island Syros|37.423|24.951
+JTC|Bauru/Arealva–Moussa Nakhal Tobias State|-22.161|-49.070
+JTR|Santorini Island Santorini|36.400|25.479
+JTY|Astypalaia Island Astypalaia|36.580|26.376
+JUB|Juba|4.872|31.601
+JUH|Chizhou Jiuhuashan|30.740|117.686
+JUI|Juist|53.681|7.056
+JUJ|San Salvador de Jujuy Gobernador Horacio Guzman|-24.393|-65.098
+JUL|Juliaca Inca Manco Capac|-15.468|-70.157
+JUM|Jumla|29.274|82.193
+JUV|Upernavik|72.790|-56.131
+JUZ|Quzhou|28.966|118.899
+JXA|Jixi Xingkaihu|45.293|131.193
+JYV|Jyväskylän Maalaiskunta Jyväskylä|62.400|25.678
+JZH|Ngawa Jiuzhai Huanglong|32.853|103.682
+KAA|Kasama|-10.210|31.123
+KAB|Kariba|-16.520|28.885
+KAC|Qamishli|37.021|41.191
+KAD|Kaduna|10.696|7.320
+KAI|Kaieteur Falls Kaieteur|5.177|-59.489
+KAJ|Kajaani|64.285|27.692
+KAL|Kaltag|64.319|-158.742
+KAN|Mallam Aminu Kano|12.046|8.524
+KAO|Kuusamo|65.988|29.239
+KAT|Awanui Kaitaia|-35.070|173.287
+KAW|Kawthoung|10.049|98.538
+KAX|Kalbarri|-27.693|114.259
+KBC|Birch Creek|66.274|-145.824
+KBL|Kabul|34.566|69.212
+KBP|Boryspil|50.345|30.895
+KBR|Kota Baharu Sultan Ismail Petra|6.167|102.293
+KBU|Stagen Gusti Syamsir Alam|-3.295|116.164
+KBV|Krabi|8.096|98.989
+KCA|Kuqa Qiuci|41.678|82.873
+KCG|Chignik|56.312|-158.373
+KCH|Kuching|1.487|110.353
+KCM|Kahramanmaraş|37.539|36.954
+KCQ|Chignik Lake|56.255|-158.775
+KCT|Galle Koggala|5.994|80.320
+KCY|Krasnoyarsk Cheremshanka|56.178|92.546
+KCZ|Nankoku Kochi Ryoma|33.545|133.670
+KDD|Khuzdar|27.791|66.647
+KDH|Kandahar Ahmad Shah Baba|31.506|65.848
+KDI|Kendari Haluoleo|-4.082|122.418
+KDL|Kärdla|58.991|22.831
+KDM|Huvadhu Atoll Kaadedhdhoo|0.488|72.997
+KDO|Kadhdhoo|1.859|73.522
+KDU|Skardu|35.339|75.539
+KDV|Vunisea|-19.058|178.157
+KEB|Nanwalek|59.352|-151.925
+KEF|Reykjavík Keflavik|63.985|-22.606
+KEJ|Alexei Leonov Kemerovo|55.270|86.107
+KEM|Kemi / Tornio Kemi-Tornio|65.779|24.582
+KEP|Nepalgunj|28.104|81.667
+KER|Kerman Ayatollah Hashemi Rafsanjani|30.271|56.950
+KET|Kengtung|21.302|99.636
+KEW|Keewaywin|52.991|-92.836
+KFG|Kalkgurung|-17.432|130.808
+KFP|False Pass|54.848|-163.407
+KFS|Kastamonu|41.314|33.796
+KGA|Kananga|-5.900|22.469
+KGC|Kingscote|-35.714|137.521
+KGE|Kagau Island Kaghau|-7.330|157.585
+KGF|Karaganda Sary-Arka|49.671|73.334
+KGI|Broadwood Kalgoorlie Boulder|-30.792|121.465
+KGK|Koliganek|59.727|-157.259
+KGL|Kigali|-1.969|30.140
+KGP|Kogalym|62.190|74.534
+KGS|Kos Island Kos "Ippokratis"|36.795|27.091
+KGT|Garzê Kangding|30.142|101.739
+KGX|Grayling|62.895|-160.066
+KHD|Khoram Abad|33.435|48.283
+KHG|Kashgar Laining|39.542|76.020
+KHH|Kaohsiung|22.577|120.350
+KHI|Karachi Jinnah|24.907|67.161
+KHK|Khark|29.261|50.322
+KHM|Kanti|25.988|95.674
+KHN|Nanchang Changbei|28.865|115.903
+KHS|Khasab|26.171|56.241
+KHT|Khost|33.285|69.807
+KHV|Khabarovsk Novy|48.528|135.189
+KHX|Kihihi Savannah|-0.717|29.700
+KHZ|Kauehi|-15.781|-145.128
+KIE|Kieta Aropa|-6.306|155.728
+KIF|Kingfisher Lake|53.013|-89.855
+KIH|Kish Island Kish|26.525|53.980
+KIJ|Niigata|37.954|139.112
+KIK|Kirkuk|35.470|44.349
+KIM|Kimberley|-28.805|24.765
+KIN|Kingston Norman Manley|17.936|-76.787
+KIO|Kili Island Kili|5.644|169.125
+KIR|Farranfore Kerry|52.181|-9.524
+KIS|Kisumu|-0.086|34.729
+KIT|Kithira Island Kithira|36.274|23.017
+KJB|Orvakal Kurnool|15.716|78.169
+KJH|Kaili Huangping|26.972|107.988
+KJI|Burqin Kanas|48.222|86.996
+KJT|Kertajati|-6.647|108.166
+KKA|Koyuk Alfred Adams|64.939|-161.154
+KKC|Khon Kaen|16.467|102.784
+KKE|Kerikeri|-35.259|173.913
+KKH|Kongiganak|59.961|-162.881
+KKI|Akiachak|60.914|-161.493
+KKJ|Kitakyushu|33.846|131.035
+KKN|Kirkenes, Høybuktmoen|69.726|29.891
+KKR|Raitahiti Kaukura|-15.663|-146.885
+KKS|Kashan|33.895|51.577
+KKW|Kikwit|-5.036|18.786
+KKX|Kikai|28.321|129.928
+KLG|Kalskag|61.536|-160.341
+KLH|Kolhapur|16.665|74.289
+KLN|Larsen Bay|57.535|-153.976
+KLO|Kalibo|11.679|122.376
+KLP|Seruyan Kuala Pembuang|-3.376|112.537
+KLR|Kalmar|56.686|16.288
+KLU|Klagenfurt am Wörthersee Klagenfurt|46.643|14.338
+KLV|Karlovy Vary|50.203|12.915
+KLW|Klawock|55.579|-133.076
+KLX|Kalamata|37.068|22.025
+KMA|Kerema|-7.964|145.771
+KMC|King Khaled Military City|27.901|45.528
+KME|Kamembe|-2.462|28.908
+KMI|Miyazaki|31.877|131.449
+KMJ|Kumamoto|32.837|130.855
+KMN|Kamina City|-8.729|24.991
+KMO|Manokotak|58.932|-158.902
+KMQ|Kanazawa Komatsu / JASDF Komatsu|36.393|136.407
+KMS|Kumasi Prempeh I|6.715|-1.591
+KMW|Kostroma Sokerkino|57.797|41.019
+KND|Kindu|-2.919|25.915
+KNG|Kaimana Utarom|-3.645|133.695
+KNH|Shang-I Kinmen|24.428|118.359
+KNK|Kokhanok|59.433|-154.802
+KNO|Beringin Kualanamu|3.638|98.871
+KNQ|Koné|-21.054|164.839
+KNS|King Island|-39.877|143.878
+KNU|Kanpur|26.404|80.410
+KNW|New Stuyahok|59.452|-157.374
+KNX|East Kimberley Regional (Kununurra)|-15.778|128.708
+KOA|Kailua-Kona Ellison Onizuka Kona at Keāhole|19.739|-156.046
+KOC|Koumac|-20.546|164.256
+KOE|Kupang El Tari|-10.172|123.671
+KOI|Kirkwall, Orkney Islands Kirkwall|58.958|-2.905
+KOJ|Kagoshima|31.803|130.719
+KOK|Kokkola / Kruunupyy Kokkola-Pietarsaari|63.721|23.143
+KOP|Nakhon Phanom|17.384|104.643
+KOS|Preah Sihanouk Sihanouk|10.571|103.632
+KOT|Kotlik|63.031|-163.533
+KOV|Kokshetau|53.329|69.595
+KOW|Ganzhou Huangjin|25.853|114.779
+KOZ|Ouzinkie|57.942|-152.464
+KPN|Kipnuk|59.932|-164.028
+KPO|Pohang (G-815/K-3)|35.988|129.420
+KPV|Perryville|55.907|-159.161
+KPW|Keperveem|67.845|166.140
+KQA|Akutan|54.145|-165.604
+KQH|Kishangarh Ajmer|26.591|74.813
+KQR|Karara|-29.217|116.687
+KQT|Bokhtar|37.866|68.864
+KRB|Karumba|-17.457|140.830
+KRC|Sungai Penuh Departi Parbo|-2.094|101.470
+KRE|Kirundo|-2.545|30.095
+KRF|Nyland Kramfors-Sollefteå Höga Kusten|63.049|17.769
+KRI|Kikori|-7.424|144.250
+KRK|Balice Kraków John Paul II|50.078|19.785
+KRL|Korla Licheng|41.615|86.141
+KRN|Kiruna|67.822|20.337
+KRO|Kurgan|55.475|65.416
+KRP|Midtjyllands / Karup|56.297|9.104
+KRS|Kristiansand|58.204|8.085
+KRT|Khartoum|15.589|32.553
+KRW|Turkmenbaşy|40.063|53.005
+KRY|Karamay|45.467|84.953
+KSA|Okat Kosrae|5.357|162.958
+KSC|Košice|48.663|21.241
+KSD|Karlstad|59.445|13.337
+KSF|Calden Kassel|51.418|9.392
+KSH|Kermanshah Shahid Ashrafi Esfahani|34.346|47.158
+KSJ|Kasos Island Kasos|35.421|26.910
+KSL|Kassala|15.387|36.329
+KSM|St Mary's|62.061|-163.302
+KSN|Kostanay|53.207|63.550
+KSO|Argos Orestiko Kastoria Aristotle|40.446|21.282
+KSQ|Karshi|38.802|65.773
+KSR|Benteng Selayar - Haji Aroeppala|-6.179|120.437
+KSU|Kristiansund, Kvernberget|63.112|7.825
+KSY|Kars|40.562|43.115
+KSZ|Kotlas|61.236|46.697
+KTA|Karratha|-20.712|116.773
+KTD|Kitadaitōjima Kitadaito|25.945|131.327
+KTG|Ketapang Rahadi Osman|-1.817|109.963
+KTI|Phnom Penh Techo|11.360|104.921
+KTM|Kathmandu Tribhuvan|27.697|85.359
+KTN|Ketchikan|55.356|-131.714
+KTP|Tinson Pen|17.989|-76.824
+KTS|Brevig Mission|65.332|-166.468
+KTT|Kittilä|67.701|24.847
+KTW|Katowice Wojciech Korfanty|50.476|19.081
+KUA|Kuantan|3.775|103.209
+KUD|Kudat|6.924|116.837
+KUF|Samara Kurumoch|53.505|50.164
+KUG|Kubin Island|-10.226|142.220
+KUH|Kushiro|43.041|144.193
+KUK|Kasigluk|60.873|-162.525
+KUM|Yakushima|30.386|130.659
+KUN|Kaunas|54.964|24.086
+KUO|Kuopio / Siilinjärvi Kuopio|63.007|27.798
+KUS|Kulusuk|65.574|-37.124
+KUT|Kopitnari David the Builder Kutaisi|42.177|42.485
+KUU|Bhuntar Kullu Manali|31.877|77.154
+KUV|Gunsan / Gunsan|35.904|126.616
+KVA|Kavala Alexander the Great|40.913|24.619
+KVC|King Cove|55.116|-162.266
+KVG|Kavieng|-2.579|150.808
+KVK|Kirovsk-Apatity|67.463|33.585
+KVL|Kivalina|67.735|-164.560
+KVM|Markovo|64.665|170.418
+KVO|Kraljevo Morava|43.818|20.587
+KVX|Kirov Pobedilovo|58.504|49.348
+KWA|Kwajalein Bucholz Army Air Field|8.720|167.732
+KWB|Karimunjawa Dewadaru|-5.801|110.478
+KWE|Guiyang Longdongbao|26.542|106.804
+KWI|Kuwait City Kuwait|29.224|47.970
+KWJ|Gwangju|35.123|126.805
+KWK|Kwigillingok|59.876|-163.169
+KWL|Guilin Liangjiang|25.220|110.040
+KWM|Kowanyama|-15.485|141.753
+KWN|Quinhagak|59.755|-161.845
+KWT|Kwethluk|60.790|-161.444
+KWZ|Kolwezi|-10.766|25.506
+KXB|Kolaka Sangia Nibandera|-4.338|121.524
+KXF|Koro Island|-17.346|179.422
+KXK|Komsomolsk-on-Amur|50.409|136.934
+KXO|Kisoro|-1.284|29.720
+KYA|Konya|37.979|32.562
+KYD|Orchid Island Lanyu|22.027|121.535
+KYK|Karluk|57.566|-154.454
+KYP|Kyaukpyu|19.426|93.535
+KYS|Kayes Dag Dag|14.483|-11.399
+KYU|Koyukuk|64.876|-157.727
+KYZ|Kyzyl|51.669|94.401
+KZI|Kozani Filippos|40.286|21.841
+KZO|Kyzylorda Korkyt Ata|44.707|65.592
+KZR|Altıntaş Zafer|39.111|30.130
+KZS|Kastelorizo Island Kastelorizo|36.142|29.576
+LAD|Luanda Quatro de Fevereiro|-8.858|13.231
+LAE|Lae Nadzab Tomodachi|-6.568|146.727
+LAF|West Lafayette Purdue University|40.413|-86.939
+LAJ|Lages|-27.782|-50.282
+LAK|Aklavik/Freddie Carmichael|68.223|-135.006
+LAL|Lakeland Linder|27.989|-82.021
+LAN|Lansing Capital Region|42.778|-84.586
+LAO|Laoag City Laoag|18.175|120.531
+LAP|La Paz Manuel Márquez de León|24.072|-110.363
+LAQ|Al Albraq Al Abraq|32.789|21.955
+LAR|Laramie|41.312|-105.675
+LAS|Las Vegas Harry Reid|36.083|-115.152
+LAU|Lamu Manda|-2.252|40.913
+LAW|Lawton Fort Sill|34.568|-98.417
+LBA|Leeds, West Yorkshire Leeds Bradford|53.866|-1.661
+LBB|Lubbock Preston Smith|33.664|-101.823
+LBC|Lübeck Blankensee|53.805|10.719
+LBD|Khujand|40.215|69.695
+LBE|Latrobe Arnold Palmer|40.276|-79.405
+LBF|North Platte Lee Bird Field|41.126|-100.684
+LBG|Paris-Le Bourget|48.962|2.437
+LBJ|Labuan Bajo, Manggarai Barat Komodo|-8.481|119.888
+LBL|Liberal Mid-America|37.044|-100.960
+LBP|Long Banga|3.202|115.402
+LBR|Lábrea|-7.279|-64.770
+LBS|Labasa|-16.467|179.340
+LBU|Labuan|5.302|115.248
+LBV|Libreville Leon M'ba|0.459|9.412
+LBW|Long Bawan Yuvai Semaring|3.900|115.690
+LCA|Larnaca|34.875|33.625
+LCE|La Ceiba Golosón|15.742|-86.853
+LCG|Culleredo A Coruña|43.302|-8.377
+LCH|Lake Charles|30.126|-93.223
+LCJ|Łódź Władysław Reymont|51.722|19.398
+LCK|Columbus Rickenbacker|39.814|-82.928
+LCR|Virgilio Barco Vargas (La Chorrera)|-1.456|-72.801
+LCX|Longyan Liancheng Guanzhishan|25.676|116.746
+LCY|London City|51.505|0.055
+LDB|Londrina Governor José Richa|-23.334|-51.128
+LDE|Tarbes/Lourdes/Pyrénées Tarbes-Lourdes-Pyrénées|43.179|-0.006
+LDG|Leshukonskoye|64.896|45.723
+LDH|Lord Howe Island|-31.538|159.075
+LDS|Yichun Lindu|47.752|129.019
+LDU|Lahad Datu|5.032|118.324
+LDX|Saint-Laurent-du-Maroni|5.482|-54.035
+LDY|Derry, Derry and Strabane City of Derry|55.043|-7.161
+LEA|Exmouth Learmonth|-22.235|114.090
+LEB|Lebanon|43.626|-72.304
+LEC|Lençóis Coronel Horácio de Mattos|-12.482|-41.277
+LEI|Almería|36.844|-2.370
+LEJ|Schkeuditz Leipzig/Halle|51.421|12.233
+LEL|Lake Evella|-12.499|135.806
+LEN|La Virgen del Camino León|42.591|-5.653
+LEQ|Land's End, Cornwall Land's End|50.103|-5.671
+LER|Leinster|-27.843|120.703
+LET|Leticia Alfredo Vásquez Cobo|-4.191|-69.942
+LEU|La Seu d'Urgell Pyrenees and Andorra Pirineus - |42.339|1.409
+LEV|Bureta Levuka|-17.711|178.759
+LEX|Lexington Blue Grass|38.035|-84.607
+LFM|Lamerd|27.373|53.189
+LFQ|Linfen Yaodu|36.133|111.641
+LFT|Lafayette|30.205|-91.988
+LFW|Lomé–Tokoin|6.166|1.255
+LGA|New York LaGuardia|40.777|-73.873
+LGB|Long Beach|33.817|-118.150
+LGG|Grâce-Hollogne Liège|50.639|5.444
+LGI|Deadman's Cay|23.179|-75.094
+LGK|Langkawi|6.330|99.729
+LGL|Long Datih Long Lellang|3.421|115.154
+LGZ|Shannan Longzi|28.422|92.348
+LHE|Lahore Allama Iqbal|31.522|74.404
+LHG|Lightning Ridge|-29.453|147.977
+LHL|Lachin|39.884|46.363
+LHS|Las Heras|-46.539|-68.965
+LHW|Lanzhou Zhongchuan|36.515|103.620
+LIF|Lifou|-20.775|167.239
+LIG|Limoges/Bellegarde Limoges|45.863|1.179
+LIH|Lihue, Kauai Lihue|21.974|-159.337
+LIK|Likiep Island Likiep|9.823|169.308
+LIL|Lesquin Lille|50.567|3.102
+LIM|Lima Jorge Chávez|-12.022|-77.114
+LIN|Segrate Milano Linate|45.445|9.277
+LIO|Limón|9.958|-83.022
+LIR|Liberia Daniel Oduber Quirós|10.593|-85.544
+LIT|Little Rock Bill & Hillary Clinton /Adams Field|34.729|-92.224
+LIW|Loikaw|19.691|97.215
+LJG|Lijiang Sanyi|26.677|100.245
+LKA|Tiwatobi Larantuka Gewayentana|-8.274|123.002
+LKB|Lakeba Island|-18.199|-178.817
+LKI|Lubang Lasikin|2.411|96.328
+LKL|Lakselv, Banak|70.069|24.973
+LKM|Lolak Bolaang Mongondow|0.889|124.034
+LKN|Leknes|68.152|13.609
+LKO|Lucknow Chaudhary Charan Singh|26.761|80.889
+LLA|Luleå|65.544|22.122
+LLB|Qiannan Libo|25.453|107.962
+LLF|Yongzhou Lingling|26.339|111.610
+LLK|Lankaran|38.758|48.807
+LLO|Bua - Palopo Lagaligo|-3.082|120.245
+LLV|Lüliang Dawu|37.683|111.143
+LLW|Lumbadzi Kamuzu|-13.789|33.781
+LMA|Minchumina|63.886|-152.302
+LMC|La Macarena|2.176|-73.787
+LMM|Los Mochis Valle del Fuerte|25.686|-109.081
+LMN|Limbang|4.808|115.010
+LMP|Lampedusa|35.498|12.618
+LMY|Lake Murray|-7.010|141.494
+LNB|Lamen Bay|-16.584|168.159
+LNE|Lonorore|-15.866|168.172
+LNJ|Lincang Boshang|23.738|100.025
+LNK|Lincoln|40.845|-96.762
+LNL|Longnan Chengzhou|33.790|105.790
+LNO|Leonora|-28.878|121.315
+LNS|Lancaster|40.122|-76.296
+LNU|Malinau Robert Atty Bessing|3.575|116.620
+LNV|Londolovit|-3.044|152.629
+LNY|Lanai City Lanai|20.786|-156.951
+LNZ|Linz-Hörsching|48.235|14.188
+LOD|Longana|-15.307|167.967
+LOE|Loei|17.439|101.722
+LOH|La Toma Ciudad de Catamayo|-3.996|-79.372
+LOO|Laghouat - Molay Ahmed Medeghri|33.764|2.928
+LOP|Mataram Lombok|-8.760|116.278
+LOS|Lagos Murtala Muhammed|6.577|3.321
+LPA|Gran Canaria Island Gran Canaria|27.932|-15.387
+LPB|La Paz / El Alto El Alto|-16.510|-68.189
+LPD|La Pedrera|-1.325|-69.581
+LPF|Liupanshui Yuezhao|26.609|104.979
+LPI|Linköping City|58.405|15.684
+LPL|Liverpool John Lennon|53.335|-2.850
+LPM|Lamap|-16.461|167.829
+LPP|Lappeenranta|61.045|28.145
+LPQ|Luang Phabang|19.904|102.167
+LPS|Lopez Island|48.484|-122.938
+LPT|Lampang|18.271|99.504
+LPU|Long Apung-Borneo Island Long Apung|1.707|114.970
+LPX|Liepāja|56.518|21.097
+LPY|Chaspuzac, Haute-Loire Le Puy-Loudes|45.081|3.763
+LQM|Puerto Leguízamo Caucaya|-0.182|-74.771
+LRD|Laredo|27.544|-99.462
+LRE|Longreach|-23.432|144.277
+LRH|La Rochelle Île de Ré|46.179|-1.195
+LRL|Niamtougou|9.767|1.091
+LRM|La Romana Casa De Campo|18.452|-68.911
+LRR|Lar|27.675|54.383
+LRS|Leros Island Leros|37.185|26.800
+LRU|Las Cruces|32.289|-106.922
+LRV|Gran Roque Island Los Roques|11.947|-66.668
+LSA|Losuia|-8.506|151.081
+LSC|La Serena-Coquimbo La Florida|-29.916|-71.200
+LSE|La Crosse|43.879|-91.257
+LSG|Leshan|29.439|103.749
+LSH|Lashio|22.978|97.752
+LSI|Lerwick, Shetland Sumburgh|59.879|-1.296
+LSP|Paraguaná Josefa Camejo|11.781|-70.151
+LSR|Kutacane Alas Leuser|3.391|97.864
+LST|Launceston|-41.545|147.211
+LSW|Lhok Seumawe-Sumatra Island Malikus Saleh|5.227|96.950
+LSY|Lismore|-28.831|153.258
+LTD|Ghadames|30.145|9.702
+LTH|Ho Chi Minh City Long Thanh (Under Construction)|10.773|107.041
+LTI|Altai|46.376|96.221
+LTK|Latakia|35.401|35.949
+LTM|Lethem|3.373|-59.789
+LTN|Luton, Luton London Luton|51.875|-0.368
+LTO|Loreto|25.990|-111.348
+LTT|Saint-Tropez La Môle|43.205|6.482
+LTU|Latur Murod Kond|18.412|76.465
+LTX|Latacunga Cotopaxi|-0.907|-78.616
+LUA|Lukla Tenzing-Hillary|27.687|86.729
+LUD|Luderitz|-26.687|15.243
+LUG|Agno Lugano|46.004|8.911
+LUK|Cincinnati Lunken Field|39.102|-84.419
+LUM|Dehong Mangshi|24.401|98.532
+LUN|Lusaka Kenneth Kaunda|-15.331|28.453
+LUP|Kalaupapa|21.211|-156.974
+LUQ|San Luis Brigadier Mayor D Cesar Raul Ojeda|-33.273|-66.356
+LUR|Cape Lisburne LRRS|68.875|-166.110
+LUV|Langgur Karel Sadsuitubun|-5.760|132.759
+LUX|Luxembourg-Findel|49.627|6.212
+LUZ|Lublin|51.240|22.713
+LVI|Livingstone Harry Mwanga Nkumbula|-17.822|25.820
+LVO|Laverton|-28.614|122.429
+LWB|Lewisburg Greenbrier Valley|37.858|-80.400
+LWK|Lerwick, Shetland Islands Lerwick / Tingwall|60.192|-1.244
+LWN|Gyumri Shirak|40.750|43.859
+LWO|Lviv|49.812|23.956
+LWS|Lewiston Nez Perce County|46.375|-117.015
+LWY|Lawas|4.849|115.408
+LXA|Shannan Lhasa Gonggar|29.298|90.912
+LXG|Luang Namtha|20.967|101.400
+LXR|Luxor|25.671|32.706
+LXS|Limnos Island Limnos|39.917|25.236
+LYA|Luoyang Beijiao|34.741|112.388
+LYC|Lycksele|64.548|18.716
+LYG|Lianyungang Huaguoshan|34.414|119.179
+LYH|Lynchburg - Preston Glenn Field|37.327|-79.200
+LYI|Linyi Qiyang|35.053|118.412
+LYP|Faisalabad|31.365|72.995
+LYR|Longyearbyen Svalbard, Longyear|78.246|15.466
+LYS|Colombier-Saugnieu, Rhône Lyon Saint-Exupéry|45.726|5.090
+LZG|Nanchong Langzhong Gucheng|31.502|106.034
+LZH|Liuzhou Bailian / Bailian|24.207|109.391
+LZN|Matsu Nangan|26.160|119.958
+LZO|Luzhou Yunlong|29.030|105.468
+LZY|Nyingchi Mainling|29.303|94.335
+MAA|Chennai|12.990|80.169
+MAB|Marabá João Correa da Rocha|-5.369|-49.138
+MAF|Midland International Air and Space Port|31.942|-102.202
+MAG|Madang|-5.207|145.789
+MAH|Mahón Menorca|39.863|4.219
+MAJ|Majuro Atoll Marshall Islands|7.065|171.272
+MAK|Malakal|9.559|31.652
+MAM|Matamoros General Servando Canales|25.770|-97.525
+MAN|Manchester, Greater Manchester Manchester|53.349|-2.280
+MAO|Manaus Eduardo Gomes|-3.039|-60.050
+MAQ|Mae Sot|16.700|98.545
+MAR|Maracaibo La Chinita|10.558|-71.729
+MAS|Manus Island Momote|-2.062|147.424
+MAU|Maupiti|-16.427|-152.244
+MAZ|Mayaguez Eugenio Maria De Hostos|18.256|-67.148
+MBA|Mombasa Moi|-4.035|39.594
+MBD|Mafeking Mmabatho|-25.798|25.548
+MBE|Monbetsu|44.304|143.404
+MBI|Mbeya Songwe|-8.920|33.274
+MBJ|Montego Bay Sangster|18.503|-77.913
+MBL|Manistee County Blacker|44.273|-86.246
+MBS|Freeland MBS|43.533|-84.083
+MBT|Masbate Moises R. Espinosa|12.370|123.630
+MBW|Melbourne Moorabbin|-37.978|145.100
+MBX|Maribor Edvard Rusjan|46.480|15.686
+MCE|Merced Regional Macready Field|37.285|-120.514
+MCG|McGrath|62.953|-155.606
+MCI|Kansas City|39.302|-94.714
+MCK|McCook Ben Nelson|40.208|-100.593
+MCN|Macon Middle Georgia|32.693|-83.649
+MCO|Orlando|28.429|-81.309
+MCP|Macapá - Alberto Alcolumbre|0.051|-51.072
+MCT|Muscat/Seeb Muscat|23.600|58.285
+MCV|McArthur River Mine|-16.442|136.084
+MCW|Mason City|43.160|-93.330
+MCX|Makhachkala Uytash|42.817|47.652
+MCY|Maroochydore Sunshine Coast|-26.593|153.083
+MCZ|Maceió Zumbi dos Palmares|-9.513|-35.792
+MDC|Manado Sam Ratulangi|1.549|124.926
+MDE|Medellín Jose Maria Córdova|6.165|-75.423
+MDG|Mudanjiang Hailang|44.525|129.569
+MDI|Makurdi|7.704|8.614
+MDK|Mbandaka|0.023|18.289
+MDL|Mandalay|21.702|95.978
+MDQ|Mar del Plata Ástor Piazzola|-37.934|-57.573
+MDT|Harrisburg|40.193|-76.762
+MDU|Mendi|-6.148|143.657
+MDW|Chicago Midway|41.786|-87.752
+MDZ|Mendoza Governor Francisco Gabrielli|-32.832|-68.793
+MEB|Essendon Fields Melbourne Essendon|-37.728|144.902
+MEC|Manta Eloy Alfaro|-0.946|-80.679
+MED|Medina Prince Mohammad Bin Abdulaziz|24.553|39.705
+MEE|Maré|-21.482|168.038
+MEG|Malanje|-9.525|16.312
+MEH|Mehamn|71.030|27.827
+MEI|Key Field / Meridian|32.333|-88.752
+MEL|Melbourne|-37.671|144.838
+MEM|Memphis Frederick W. Smith|35.044|-89.976
+MEQ|Kuala Pesisir Cut Nyak Dhien|4.041|96.253
+MFA|Kilindoni Mafia|-7.917|39.669
+MFE|McAllen Miller|26.176|-98.238
+MFG|Muzaffarabad|34.339|73.509
+MFJ|Moala|-18.567|179.951
+MFK|Matsu Beigan|26.224|120.003
+MFM|Nossa Senhora do Carmo Macau|22.150|113.592
+MFR|Rogue Valley International-Medford|42.374|-122.873
+MFU|Mfuwe|-13.259|31.937
+MGA|Augusto C. Sandino (Managua)|12.142|-86.168
+MGB|Mount Gambier|-37.744|140.781
+MGC|Michigan City|41.703|-86.821
+MGF|Regional de Maringá - Sílvio Name Júnior|-23.476|-52.016
+MGH|Margate|-30.857|30.343
+MGM|Montgomery Regional (Dannelly Field)|32.301|-86.394
+MGQ|Mogadishu Aden Adde|2.014|45.305
+MGT|Milingimbi Island Milingimbi|-12.094|134.894
+MGW|Morgantown Walter L. (Bill) Hart Field|39.643|-79.918
+MGZ|Mkeik Myeik|12.440|98.621
+MHC|Dalcahue Mocopulli|-42.340|-73.716
+MHD|Mashhad|36.235|59.643
+MHG|Mannheim-City|49.473|8.514
+MHH|Marsh Harbour Leonard M. Thompson|26.511|-77.084
+MHK|Manhattan|39.141|-96.671
+MHM|Manaoba|-8.325|160.801
+MHQ|Mariehamn|60.122|19.898
+MHT|Manchester-Boston|42.933|-71.436
+MHU|Mount Hotham|-37.048|147.334
+MHX|Manihiki Island|-10.381|-160.999
+MID|Mérida Manuel Crescencio Rejón|20.930|-89.645
+MIG|Mianyang Nanjiao|31.428|104.741
+MII|Frank Miloye Milenkowichi–Marília State|-22.197|-49.926
+MIJ|Mili Island|6.085|171.731
+MIM|Merimbula|-36.909|149.901
+MIR|Monastir Habib Bourguiba|35.758|10.755
+MIS|Misima Island|-10.689|152.838
+MIU|Maiduguri|11.854|13.081
+MJE|Majkin|8.163|168.174
+MJF|Mosjøen, Kjærstad|65.784|13.215
+MJI|Tripoli Mitiga|32.892|13.288
+MJK|Denham Shark Bay|-25.897|113.576
+MJM|Mbuji Mayi|-6.121|23.569
+MJN|Mahajanga Amborovy|-15.667|46.351
+MJT|Mytilene|39.057|26.599
+MJY|Motygino|58.181|94.745
+MJZ|Mirny|62.535|114.039
+MKE|Milwaukee General Mitchell|42.947|-87.897
+MKG|Muskegon County|43.169|-86.238
+MKK|Kaunakakai Molokai|21.153|-157.096
+MKL|Jackson McKellar-Sipes|35.600|-88.916
+MKM|Mukah|2.882|112.043
+MKP|Makemo|-16.584|-143.658
+MKQ|Merauke Mopah|-8.524|140.420
+MKR|Meekatharra|-26.612|118.548
+MKU|Makokou|0.579|12.891
+MKW|Manokwari Rendani|-0.892|134.049
+MKY|Mackay|-21.171|149.183
+MKZ|Malacca|2.266|102.253
+MLA|Valletta Malta|35.846|14.492
+MLB|Melbourne Orlando|28.102|-80.641
+MLG|Malang Abdul Rachman Saleh|-7.929|112.714
+MLI|Moline Quad City|41.449|-90.507
+MLL|Marshall Don Hunter Sr|61.864|-162.026
+MLM|Morelia General Francisco J. Mujica|19.850|-101.025
+MLN|Melilla|35.280|-2.956
+MLO|Milos Island Milos|36.697|24.477
+MLU|Monroe|32.511|-92.038
+MLW|Monrovia Spriggs Payne|6.289|-10.759
+MLX|Malatya Erhaç|38.435|38.091
+MLY|Manley Hot Springs|64.992|-150.644
+MMB|Ōzora Memanbetsu|43.881|144.164
+MMD|Minamidaito|25.846|131.263
+MME|Darlington, Durham Teesside|54.509|-1.429
+MMG|Mount Magnet|-28.116|117.842
+MMH|Mammoth Lakes Mammoth Yosemite|37.625|-118.843
+MMJ|Shinshu-Matsumoto|36.167|137.923
+MMK|Emperor Nicholas II Murmansk|68.782|32.751
+MMO|Vila do Maio Maio|15.156|-23.214
+MMX|Malmö Sturup|55.536|13.376
+MMY|Miyakojima Miyako|24.783|125.295
+MNC|Nacala|-14.488|40.712
+MNF|Mana Island|-17.673|177.099
+MNG|Maningrida|-12.056|134.234
+MNI|Gerald's Park John A. Osborne|16.792|-62.193
+MNJ|Mananjary|-21.202|48.358
+MNT|Minto Al Wright|65.148|-149.369
+MNU|Mawlamyine|16.445|97.661
+MNX|Manicoré|-5.811|-61.278
+MNY|Stirling Island Mono|-7.417|155.565
+MOB|Mobile|30.691|-88.243
+MOC|Montes Claros Mário Ribeiro|-16.707|-43.819
+MOF|Waioti Frans Xavier Seda|-8.640|122.238
+MOG|Mong Hsat|20.517|99.257
+MOH|Morowali Maleo|-2.201|121.663
+MOI|Mitiaro Island|-19.843|-157.703
+MOJ|Moengo|5.608|-54.400
+MOL|Molde, Årø|62.745|7.263
+MOQ|Morondava|-20.285|44.318
+MOT|Minot|48.258|-101.279
+MOU|Mountain Village|62.095|-163.682
+MOV|Moranbah|-22.058|148.077
+MOZ|Moorea-Maiao Moorea Temae|-17.490|-149.762
+MPA|Mpacha Katima Mulilo|-17.634|24.177
+MPC|Muko Muko|-2.541|101.088
+MPH|Caticlan Godofredo P. Ramos|11.925|121.954
+MPL|Montpellier/Méditerranée Montpellier-Méditerrané|43.576|3.963
+MPM|Maputo|-25.921|32.573
+MPN|Mount Pleasant / RAF Mount Pleasant|-51.823|-58.446
+MPY|Maripasoula|3.656|-54.039
+MQC|Miquelon|47.096|-56.380
+MQF|Magnitogorsk|53.392|58.755
+MQJ|Khonuu Moma|66.451|143.262
+MQL|Mildura|-34.229|142.086
+MQM|Mardin|37.223|40.632
+MQN|Mo i Rana, Røssvoll|66.364|14.301
+MQP|Mbombela Kruger Mpumalanga|-25.383|31.105
+MQS|Lovell Mustique|12.888|-61.180
+MQT|Gwinn Marquette Sawyer|46.351|-87.396
+MQX|Mekele Alula Aba Nega|13.467|39.534
+MRA|Misrata|32.325|15.061
+MRE|Mara Serena Lodge|-1.405|35.008
+MRI|Anchorage Merrill Field|61.213|-149.844
+MRS|Marignane, Bouches-du-Rhône Marseille Provence|43.438|5.213
+MRU|Plaine Magnien Sir Seewoosagur Ramgoolam|-20.430|57.684
+MRX|Mahshahr|30.556|49.152
+MRY|Monterey|36.587|-121.844
+MRZ|Moree|-29.499|149.845
+MSA|Muskrat Dam|53.441|-91.763
+MSJ|Misawa / Misawa|40.703|141.368
+MSL|Muscle Shoals Northwest Alabama|34.745|-87.613
+MSN|Madison Dane County Regional Truax Field|43.140|-89.338
+MSO|Missoula Montana|46.916|-114.091
+MSP|Minneapolis–Saint Paul / Wold–Chamberlain Field|44.880|-93.222
+MSR|Muş|38.748|41.661
+MSS|Massena Richards Field|44.936|-74.844
+MST|Maastricht Aachen|50.911|5.769
+MSU|Maseru Moshoeshoe I|-29.456|27.554
+MSY|Louis Armstrong New Orleans|29.993|-90.265
+MSZ|Moçâmedes Welwitschia Mirabilis|-15.261|12.147
+MTF|Mizan Teferi|6.957|35.555
+MTJ|Montrose|38.510|-107.894
+MTP|Montauk|41.077|-71.921
+MTR|Montería Los Garzones|8.824|-75.826
+MTT|Cosoleacaque Minatitlán/Coatzacoalcos|18.103|-94.581
+MTY|Monterrey|25.779|-100.107
+MUA|Munda|-8.328|157.263
+MUB|Maun|-19.970|23.431
+MUE|Waimea Kohala|20.001|-155.668
+MUH|Marsa Matruh Mersa Matruh|31.324|27.222
+MUK|Mauke Island Mauke|-20.136|-157.345
+MUN|Maturín José Tadeo Monagas|9.749|-63.153
+MUR|Marudi|4.179|114.330
+MUX|Multan|30.203|71.419
+MUZ|Musoma|-1.503|33.802
+MVB|Franceville M'Vengue El Hadj Omar Bongo Ondimba|-1.656|13.438
+MVD|Ciudad de la Costa Carrasco General Cesáreo L. B|-34.836|-56.026
+MVF|Mossoró Dix-Sept Rosado|-5.202|-37.364
+MVP|Mitú Fabio Alberto Leon Bentley|1.254|-70.234
+MVQ|Mogilev|53.955|30.095
+MVR|Maroua Salak|10.451|14.257
+MVT|Mataiva|-14.868|-148.717
+MVY|Martha's Vineyard|41.393|-70.614
+MWA|Marion Veterans of Southern Illinois|37.751|-89.017
+MWL|Mineral Wells|32.782|-98.060
+MWQ|Magway|20.166|94.941
+MWX|Muan|34.991|126.383
+MWZ|Mwanza|-2.447|32.936
+MXH|Moro|-6.363|143.238
+MXL|Mexicali General Rodolfo Sánchez Taboada|32.631|-115.243
+MXV|Mörön|49.664|100.100
+MXW|Mandalgobi|45.738|106.269
+MXX|Mora|60.958|14.511
+MXZ|Meizhou Meixian Changgangji|24.263|116.098
+MYA|Moruya|-35.898|150.144
+MYD|Malindi|-3.229|40.102
+MYE|Miyakejima|34.074|139.560
+MYG|Abraham Bay Settlement Mayaguana|22.379|-73.013
+MYI|Murray Island|-9.915|144.055
+MYJ|Matsuyama|33.827|132.700
+MYK|May Creek|61.336|-142.687
+MYL|McCall|44.889|-116.101
+MYP|Mary|37.624|61.896
+MYQ|Mysore|12.230|76.654
+MYR|Myrtle Beach|33.680|-78.928
+MYT|Myitkyina|25.384|97.352
+MYU|Mekoryuk|60.372|-166.270
+MYW|Mtwara|-10.336|40.182
+MYY|Miri|4.322|113.987
+MZG|Huxi Penghu Magong|23.569|119.628
+MZH|Amasya Merzifon|40.829|35.522
+MZI|Sévaré Mopti|14.513|-4.080
+MZL|Manizales La Nubia|5.030|-75.465
+MZO|Manzanillo Sierra Maestra|20.289|-77.088
+MZQ|Mkuze|-27.626|32.044
+MZR|Mazar-i-Sharif|36.704|67.210
+MZS|Moradabad|28.817|78.922
+MZT|Mazatlàn General Rafael Buelna|23.163|-106.265
+MZV|Mulu|4.048|114.805
+MZW|Mecheria|33.536|-0.242
+NAA|Narrabri|-30.319|149.827
+NAG|Nagpur Dr. Babasaheb Ambedkar|21.092|79.047
+NAH|Tabukan Utara, Sangihe Islands Naha|3.685|125.527
+NAJ|Nakhchivan|39.189|45.458
+NAL|Nalchik|43.513|43.637
+NAM|Namniwel|-3.143|126.976
+NAN|Nadi|-17.762|177.438
+NAO|Nanchong Gaoping|30.798|106.164
+NAP|Napoli Naples|40.886|14.291
+NAQ|Qaanaaq|77.489|-69.389
+NAS|Nassau Lynden Pindling|25.039|-77.466
+NAT|Natal Rio Grande do Norte/São Gonçalo do Amarant|-5.770|-35.367
+NAU|Napuka Island|-14.177|-141.266
+NAV|Nevşehir Kapadokya|38.772|34.535
+NAW|Narathiwat|6.520|101.743
+NBC|Nizhnekamsk Begishevo|55.565|52.092
+NBE|Enfidha - Hammamet|36.076|10.439
+NBJ|Luanda Dr. Antonio Agostinho Neto|-9.051|13.499
+NBN|San Antonio de Palé Annobón|-1.409|5.624
+NBO|Nairobi Jomo Kenyatta|-1.319|36.928
+NBS|Changbaishan|42.067|127.602
+NCA|North Caicos|21.916|-71.943
+NCE|Nice, Alpes-Maritimes Nice-Côte d'Azur|43.658|7.216
+NCL|Newcastle upon Tyne, Tyne and Wear Newcastle|55.038|-1.690
+NCN|Chenega Bay|60.078|-147.995
+NCU|Nukus|42.488|59.623
+NCY|Annecy Meythet|45.929|6.099
+NDB|Nouadhibou|20.932|-17.030
+NDC|Nanded|19.183|77.317
+NDG|Qiqihar Sanjiazi|47.230|123.914
+NDJ|N'Djamena|12.134|15.034
+NDR|Nador Al Aaroui|34.989|-3.028
+NDU|Rundu|-17.956|19.719
+NDY|Sanday|59.250|-2.577
+NEC|Necochea|-38.491|-58.816
+NER|Neryungri Chulman|56.914|124.914
+NEV|Charlestown Vance W. Amory|17.206|-62.590
+NGB|Ningbo Lishe|29.827|121.462
+NGE|N'Gaoundéré|7.357|13.559
+NGI|Ngau|-18.116|179.340
+NGK|Nogliki|51.784|143.142
+NGO|Tokoname Chubu Centrair|34.858|136.805
+NGQ|Shiquanhe Ngari Gunsa|32.098|80.054
+NGS|Nagasaki|32.917|129.914
+NHV|Nuku Hiva|-8.796|-140.229
+NIB|Nikolai|63.018|-154.360
+NIM|Niamey Diori Hamani|13.482|2.184
+NIU|Naiu Atoll Naiu|-16.119|-146.369
+NJC|Nizhnevartovsk|60.949|76.484
+NJF|Al Najaf|31.991|44.405
+NKC|Nouakchott–Oumtounsy|18.310|-15.970
+NKM|Nagoya / JASDF Komaki|35.256|136.924
+NKT|Şırnak Şerafettin Elçi|37.365|42.058
+NLA|Ndola Simon Mwansa Kapwepwe|-12.965|28.516
+NLD|Nuevo Laredo Quetzalcóatl|27.444|-99.571
+NLF|Darnley Island|-9.579|143.780
+NLG|Nelson Lagoon|56.008|-161.160
+NLH|Ninglang Luguhu|27.540|100.759
+NLI|Nikolayevsk-na-Amure Airport Nikolayevsk-na-Amur|53.155|140.650
+NLK|Burnt Pine Norfolk Island|-29.042|167.939
+NLT|Xinyuan Nalati|43.432|83.379
+NLU|Mexico City Felipe Ángeles|19.744|-99.015
+NMA|Namangan|40.985|71.558
+NME|Nightmute|60.469|-164.704
+NMF|Noonu Atoll Maafaru|5.817|73.468
+NMI|Navi Mumbai|18.985|73.065
+NNB|Santa Ana Island Santa Ana|-10.848|162.454
+NNG|Nanning Wuxu|22.598|108.182
+NNM|Naryan Mar|67.640|53.122
+NNR|Inverin Connemara|53.230|-9.468
+NNT|Nan|18.808|100.783
+NNY|Nanyang Jiangying|32.983|112.617
+NOB|Nicoya Nosara|9.976|-85.653
+NOC|Charlestown Ireland West Knock|53.910|-8.817
+NOD|Norden-Norddeich|53.633|7.190
+NOJ|Noyabrsk|63.183|75.270
+NOP|Sinop|42.018|35.072
+NOS|Nosy Be|-13.312|48.315
+NOU|Nouméa La Tontouta|-22.015|166.213
+NOV|Huambo Albano Machado|-12.809|15.761
+NOZ|Novokuznetsk Spichenkovo|53.811|86.877
+NPE|Napier Hawke's Bay|-39.466|176.870
+NPL|New Plymouth|-39.009|174.179
+NPO|Nanga Pinoh-Borneo Island Nanga Pinoh|-0.349|111.746
+NPT|Newport State|41.532|-71.281
+NQN|Neuquén Presidente Perón|-38.949|-68.156
+NQU|Nuquí Reyes Murillo|5.710|-77.262
+NQY|Cornwall Newquay|50.441|-4.995
+NRA|Narrandera|-34.702|146.512
+NRD|Norderney|53.707|7.230
+NRK|Norrköping|58.586|16.251
+NRL|North Ronaldsay|59.368|-2.434
+NRN|Weeze (Niederrhein)|51.601|6.141
+NRR|Ceiba José Aponte de la Torre|18.247|-65.640
+NSH|Nowshahr|36.664|51.463
+NSI|Yaoundé Nsimalen|3.723|11.553
+NSK|Norilsk Alykel|69.308|87.326
+NSN|Nelson|-41.297|173.224
+NST|Nakhon Si Thammarat|8.540|99.945
+NTE|Nantes Atlantique|47.153|-1.611
+NTG|Nantong Xingdong|32.074|120.980
+NTL|Williamtown Newcastle|-32.796|151.835
+NTN|Normanton|-17.684|141.070
+NTQ|Wajima Noto Satoyama|37.293|136.962
+NTT|Niuatoputapu Kuini Lavenia|-15.977|-173.791
+NTX|Ranai-Natuna Besar Island Ranai|3.909|108.388
+NUE|Nuremberg|49.499|11.078
+NUI|Nuiqsut|70.210|-151.006
+NUL|Nulato|64.729|-158.074
+NUM|Sharma Neom Bay|27.924|35.294
+NUP|Nunapitchuk|60.906|-162.440
+NUS|Norsup|-16.080|167.401
+NUX|Novy Urengoy|66.069|76.520
+NVA|Neiva Benito Salas|2.950|-75.294
+NVI|Navoi|40.118|65.173
+NVT|Navegantes Ministro Victor Konder|-26.879|-48.651
+NWI|Norwich, Norfolk Norwich|52.676|1.283
+NYA|Nyagan|62.110|65.615
+NYI|Sunyani|7.362|-2.329
+NYK|Gathiuru Nanyuki Civil|-0.062|37.041
+NYM|Nadym|65.481|72.699
+NYO|Nyköping Stockholm Skavsta|58.790|16.911
+NYT|Naypyitaw Nay Pyi Taw|19.624|96.201
+NYU|Nyaung U Bagan|21.179|94.930
+NZC|Nazca Maria Reiche Neuman|-14.854|-74.962
+NZG|Nizhneangarsk|55.801|109.595
+NZH|Manzhouli Xijiao|49.567|117.330
+NZL|Zhalantun Genghis Khan|47.866|122.769
+OAJ|Richlands Albert J Ellis|34.829|-77.612
+OAK|Oakland San Francisco Bay|37.720|-122.221
+OAL|Cacoal|-11.496|-61.451
+OAX|Oaxaca Xoxocotlán|16.999|-96.726
+OBN|North Connel Oban|56.464|-5.400
+OBO|Tokachi-Obihiro|42.733|143.217
+OBU|Kobuk|66.912|-156.897
+OBX|Obo|-7.591|141.324
+OCC|Coca Francisco De Orellana|-0.463|-76.987
+OCE|Ocean City|38.310|-75.124
+OCJ|Boscobel Ian Fleming|18.404|-76.970
+OCS|Corisco Island Corisco|0.911|9.330
+ODB|Córdoba|37.842|-4.849
+ODE|Odense Hans Christian Andersen|55.475|10.327
+ODN|Long Seridan|3.976|115.067
+ODO|Bodaybo|57.866|114.243
+ODS|Odesa|46.427|30.673
+ODY|Oudomsay|20.683|101.994
+OEC|Oecussi-Ambeno Oecusse Route of the Sandalwood|-9.198|124.338
+OER|Örnsköldsvik|63.408|18.990
+OES|San Antonio Oeste Antoine de Saint Exupéry|-40.751|-65.034
+OFU|Ofu|-14.184|-169.670
+OGD|Ogden Hinckley|41.196|-112.012
+OGG|Kahului|20.896|-156.432
+OGL|Ogle Eugene F. Correia|6.806|-58.108
+OGN|Yonaguni|24.467|122.980
+OGS|Ogdensburg|44.682|-75.466
+OGU|Ordu–Giresun|40.967|38.086
+OGX|Ouargla Ain Beida|31.917|5.413
+OGZ|Vladikavkaz Beslan|43.205|44.607
+OHD|Ohrid St. Paul the Apostle|41.180|20.742
+OHE|Mohe Gulian|52.917|122.423
+OHO|Okhotsk|59.410|143.057
+OHS|Suhar|24.386|56.625
+OIM|Izu Oshima Oshima|34.782|139.360
+OIR|Okushiri Island Okushiri|42.072|139.433
+OIT|Oita|33.479|131.737
+OJU|Tojo Una-Una Tanjung Api|-0.865|121.629
+OKA|Naha|26.192|127.640
+OKC|Oklahoma City OKC Will Rogers World|35.393|-97.598
+OKD|Sapporo Okadama|43.117|141.381
+OKE|Wadomari Okinoerabu|27.432|128.706
+OKI|Okinoshima Oki Global Geopark|36.178|133.324
+OKJ|Okayama Momotaro|34.757|133.855
+OKL|Oksibil|-4.907|140.628
+OKR|Yorke Island|-9.753|143.406
+OKY|Oakey Army Aviation Centre|-27.409|151.737
+OLA|Ørland|63.699|9.604
+OLB|Olbia Costa Smeralda|40.899|9.518
+OLF|Wolf Point L M Clayton|48.095|-105.575
+OLH|Old Harbor|57.218|-153.270
+OLJ|Olpoi North West Santo|-14.882|166.558
+OLM|Olympia|46.969|-122.903
+OLP|Olympic Dam|-30.484|136.877
+OLZ|Olyokminsk|60.402|120.476
+OMA|Omaha Eppley|41.303|-95.894
+OMD|Oranjemund|-28.585|16.446
+OME|Nome|64.512|-165.445
+OMH|Urmia|37.668|45.069
+OMN|Zomin|40.014|68.411
+OMO|Mostar|43.282|17.846
+OMR|Oradea|47.025|21.902
+OMS|Omsk Central|54.963|73.312
+OND|Ondangwa|-17.878|15.953
+ONG|Mornington Island|-16.663|139.178
+ONJ|Kitaakita Odate Noshiro|40.192|140.371
+ONQ|Zonguldak Çaycuma|41.506|32.089
+ONT|Ontario|34.056|-117.601
+ONX|Colón Enrique Adolfo Jimenez|9.357|-79.867
+OOK|Toksook Bay|60.541|-165.087
+OOL|Gold Coast|-28.166|153.507
+OOM|Cooma Snowy Mountains|-36.300|148.972
+OPF|Miami-Opa Locka Executive|25.907|-80.278
+OPO|Porto Francisco de Sá Carneiro|41.248|-8.681
+OPP|Salinópolis|-0.696|-47.336
+OPS|Sinop Presidente João Batista Figueiredo|-11.885|-55.586
+OPU|Balimo|-8.050|142.933
+ORB|Örebro|59.224|15.038
+ORF|Norfolk|36.895|-76.201
+ORG|Paramaribo Zorg en Hoop|5.811|-55.192
+ORH|Worcester|42.267|-71.876
+ORI|Port Lions|57.885|-152.848
+ORK|Cork|51.841|-8.491
+ORN|Oran Es-Sénia (Ahmed Ben Bella)|35.621|-0.622
+ORT|Northway|62.961|-141.929
+ORU|Oruro Juan Mendoza|-17.956|-67.076
+ORV|Noorvik Robert (Bob) Curtis Memorial|66.818|-161.019
+ORZ|Orange Walk H.E Alfredo Martinez (Tower Hill)|18.047|-88.584
+OSD|Åre Östersund|63.194|14.504
+OSI|Osijek|45.462|18.811
+OSM|Mosul|36.306|43.147
+OSR|Mošnov Leoš Janáček Ostrava|49.696|18.111
+OSS|Osh|40.609|72.793
+OST|Oostende Ostend-Bruges|51.200|2.875
+OSW|Orsk|51.072|58.596
+OSY|Namsos|64.472|11.579
+OTD|Contadora Island Raul Arias Espinoza|8.629|-79.035
+OTH|North Bend Southwest Oregon|43.417|-124.246
+OTP|Otopeni Bucharest Henri Coandă|44.572|26.103
+OTS|Anacortes|48.499|-122.663
+OTZ|Kotzebue Ralph Wien Memorial|66.885|-162.599
+OUA|Ouagadougou Thomas Sankara|12.353|-1.512
+OUD|Ahl Angad Oujda Angads|34.790|-1.926
+OUI|Ushant Ouessant|48.463|-5.064
+OUL|Oulu / Oulunsalo Oulu|64.930|25.355
+OUZ|Zouérate Tazadit|22.757|-12.482
+OVD|Ranón Asturias|43.564|-6.035
+OVS|Sovetskiy|61.327|63.602
+OWB|Owensboro Daviess County|37.740|-87.167
+OXB|Bissau Osvaldo Vieira|11.894|-15.654
+OYE|Oyem|1.543|11.581
+OZC|Ozamiz Labo|8.179|123.842
+OZG|Zagora|30.266|-5.861
+OZZ|Ouarzazate|30.939|-6.909
+PAB|Bilaspur|21.988|82.111
+PAC|Albrook Marcos A. Gelabert|8.973|-79.556
+PAD|Büren Paderborn Lippstadt|51.613|8.617
+PAE|Everett Seattle Paine Field|47.906|-122.282
+PAG|Pagadian|7.826|123.460
+PAH|Paducah Barkley|37.061|-88.774
+PAP|Port-au-Prince Toussaint Louverture|18.580|-72.293
+PAS|Paros|37.020|25.113
+PAT|Patna Jay Prakash Narayan|25.591|85.088
+PAV|Paulo Afonso|-9.401|-38.251
+PAZ|Poza Rica El Tajín|20.603|-97.461
+PBC|Puebla Hermanos Serdán|19.158|-98.372
+PBD|Porbandar|21.650|69.656
+PBG|Plattsburgh|44.651|-73.468
+PBH|Paro|27.403|89.425
+PBJ|Paama Island Tavie|-16.432|168.236
+PBM|Paramaribo Johan Adolf Pengel|5.453|-55.188
+PBO|Paraburdoo|-23.171|117.745
+PBR|Puerto Barrios|15.731|-88.584
+PBU|Putao|27.330|97.426
+PCL|Pucallpa Cap FAP David Abenzur Rengifo|-8.378|-74.574
+PCN|Koromiko Picton|-41.346|173.956
+PCP|São Tomé & Príncipe Principe|1.661|7.411
+PCR|Puerto Carreño German Olano|6.185|-67.493
+PDA|Puerto Inírida Obando Cesar Gaviria Trujillo|3.854|-67.906
+PDB|Pedro Bay|59.797|-154.130
+PDG|Padang Minangkabau|-0.786|100.280
+PDK|Atlanta DeKalb Peachtree|33.876|-84.302
+PDL|Ponta Delgada João Paulo II|37.741|-25.698
+PDM|Pedasí Capt. J. Montenegro|7.535|-80.043
+PDO|Talang Gudang-Sumatra Island Pendopo|-3.286|103.880
+PDP|Punta del Este Capitan Corbeta CA Curbelo|-34.855|-55.094
+PDS|Piedras Negras|28.628|-100.535
+PDT|Eastern Oregon at Pendleton|45.695|-118.841
+PDV|Plovdiv|42.068|24.851
+PDX|Portland|45.589|-122.598
+PED|Pardubice|50.015|15.740
+PEE|Perm|57.915|56.021
+PEG|Perugia San Francesco d'Assisi – Umbria|43.096|12.513
+PEI|Pereira Matecaña|4.813|-75.740
+PEM|Puerto Maldonado Padre Aldamiz|-12.614|-69.229
+PEN|Penang|5.296|100.276
+PER|Perth|-31.940|115.967
+PES|Petrozavodsk|61.885|34.155
+PET|Pelotas João Simões Lopes Neto|-31.717|-52.328
+PEU|Puerto Lempira|15.262|-83.781
+PEV|Pécs-Pogány|45.989|18.242
+PEW|Peshawar Bacha Khan|33.994|71.515
+PEX|Pechora|65.121|57.131
+PEZ|Penza|53.111|45.021
+PFB|Passo Fundo Lauro Kurtz|-28.244|-52.328
+PFO|Paphos|34.718|32.486
+PFQ|Parsabad-Moghan|39.604|47.882
+PFR|Ilebo|-4.330|20.590
+PGA|Page|36.924|-111.448
+PGD|Punta Gorda|26.920|-81.991
+PGF|Perpignan/Rivesaltes Perpignan-Rivesaltes (Llaba|42.740|2.871
+PGH|Pantnagar|29.033|79.474
+PGK|Pangkal Pinang Depati Amir|-2.162|106.139
+PGM|Port Graham|59.348|-151.830
+PGU|Khiyaroo Persian Gulf|27.380|52.738
+PGV|Pitt-Greenville|35.636|-77.384
+PGZ|Ponta Grossa - Comandante Antonio Amilton Berald|-25.184|-50.144
+PHB|Parnaíba - Prefeito Doutor João Silva Filho|-2.894|-41.732
+PHC|Port Harcourt|5.015|6.950
+PHE|Port Hedland|-20.383|118.630
+PHF|Newport News Williamsburg|37.132|-76.493
+PHG|Port Harcourt City / Port Harcourt Air Force Bas|4.846|7.021
+PHH|Pokhara|28.184|84.015
+PHL|Philadelphia|39.872|-75.241
+PHO|Point Hope|68.349|-166.799
+PHS|Phitsanulok|16.783|100.279
+PHW|Phalaborwa Hendrik Van Eck|-23.937|31.155
+PHX|Phoenix Sky Harbor|33.435|-112.006
+PHY|Phetchabun|16.676|101.195
+PIA|General Wayne A. Downing Peoria|40.664|-89.693
+PIB|Moselle Hattiesburg Laurel|31.467|-89.337
+PIE|Pinellas Park St. Petersburg Clearwater|27.910|-82.687
+PIH|Pocatello|42.910|-112.596
+PIK|Prestwick, South Ayrshire Glasgow Prestwick|55.501|-4.577
+PIO|Pisco Captain Renán Elías Olivera|-13.745|-76.220
+PIP|Pilot Point|57.580|-157.572
+PIR|Pierre|44.383|-100.286
+PIS|Poitiers/Biard Poitiers-Biard|46.588|0.307
+PIT|Pittsburgh|40.492|-80.233
+PIU|Piura PAF Captain Guillermo Concha Iberico|-5.206|-80.616
+PIX|Pico Island Pico|38.554|-28.441
+PIZ|Point Lay LRRS|69.733|-163.005
+PJA|Pajala|67.245|23.075
+PJM|Puerto Jimenez|8.533|-83.300
+PKA|Napaskiak|60.703|-161.778
+PKB|Parkersburg Mid Ohio Valley|39.345|-81.439
+PKC|Petropavlovsk-Kamchatsky Yelizovo|53.169|158.451
+PKE|Parkes|-33.131|148.239
+PKG|Pangkor Island Pulau Pangkor|4.245|100.553
+PKN|Pangkalanbun Iskandar|-2.705|111.673
+PKP|Puka Puka|-14.810|-138.813
+PKR|Pokhara|28.201|83.981
+PKU|Pekanbaru Sultan Syarif Kasim II / Roesmin Nurja|0.459|101.444
+PKV|Princess Olga Pskov|57.781|28.394
+PKY|Palangkaraya Tjilik Riwut|-2.227|113.943
+PKZ|Pakse|15.134|105.780
+PLJ|Placencia|16.537|-88.362
+PLM|Palembang Sultan Mahmud Badaruddin II|-2.898|104.698
+PLN|Pellston of Emmet County|45.571|-84.797
+PLO|Port Lincoln|-34.605|135.880
+PLQ|Palanga|55.973|21.094
+PLS|Providenciales|21.774|-72.268
+PLW|Palu Mutiara - SIS Al-Jufrie|-0.916|119.909
+PLX|Semey Semei|50.351|80.234
+PLZ|Gqeberha Chief Dawid Stuurman|-33.990|25.617
+PMC|Puerto Montt El Tepual|-41.443|-73.094
+PMF|Parma|44.826|10.297
+PMG|Ponta Porã|-22.550|-55.703
+PMI|Palma de Mallorca|39.552|2.739
+PMK|Palm Island|-18.755|146.581
+PMO|Palermo Falcone–Borsellino|38.176|13.091
+PMQ|Perito Moreno Jalil Hamer|-46.538|-70.979
+PMR|Palmerston North|-40.321|175.617
+PMV|Isla Margarita Del Caribe Santiago Mariño|10.913|-63.967
+PMW|Palmas Brigadeiro Lysias Rodrigues|-10.291|-48.357
+PMY|Puerto Madryn El Tehuelche|-42.759|-65.103
+PNA|Pamplona|42.770|-1.646
+PND|Punta Gorda|16.102|-88.808
+PNH|Phnom Penh|11.547|104.845
+PNI|Pohnpei Island Pohnpei|6.985|158.210
+PNK|Pontianak Supadio|-0.152|109.404
+PNL|Pantelleria|36.817|11.969
+PNP|Popondetta Girua|-8.805|148.309
+PNQ|Pune|18.582|73.920
+PNR|Pointe Noire Antonio Agostinho-Neto|-4.816|11.887
+PNS|Pensacola|30.473|-87.187
+PNT|Puerto Natales Lieutenant Julio Gallardo|-51.671|-72.529
+PNY|Puducherry Pondicherry|11.968|79.812
+PNZ|Petrolina Senador Nilo Coelho|-9.362|-40.569
+POA|Porto Alegre-Salgado Filho|-29.994|-51.167
+POG|Port Gentil|-0.712|8.754
+POL|Pemba|-12.993|40.525
+POM|Port Moresby Jacksons|-9.443|147.220
+POP|Puerto Plata Gregorio Luperon|19.758|-70.570
+POR|Pori|61.462|21.800
+POS|Port of Spain Piarco|10.595|-61.338
+POZ|Poznań-Ławica|52.422|16.823
+PPB|Presidente Prudente|-22.175|-51.425
+PPE|Puerto Peñasco Mar de Cortés|31.352|-113.305
+PPG|Pago Pago|-14.331|-170.710
+PPK|Petropavl|54.776|69.187
+PPN|Popayán Guillermo León Valencia|2.454|-76.609
+PPP|Proserpine Whitsunday Coast|-20.494|148.554
+PPS|Puerto Princesa / PAF Antonio Bautista|9.742|118.759
+PPT|Papeete Fa'a'ā|-17.553|-149.607
+PPW|Papa Westray, Orkney Islands Papa Westray|59.351|-2.900
+PQC|Phu Quoc Island Phú Quốc|10.170|103.994
+PQI|Presque Isle|46.689|-68.045
+PQQ|Port Macquarie|-31.436|152.863
+PQS|Pilot Station|61.962|-162.942
+PRA|Parana General Urquiza|-31.795|-60.480
+PRC|Prescott - Ernest A. Love Field|34.654|-112.420
+PRI|Praslin Island|-4.319|55.692
+PRM|Portimão|37.149|-8.584
+PRN|Prishtina Priština Adem Jashari|42.573|21.036
+PSA|Pisa|43.684|10.393
+PSC|Pasco Tri Cities|46.265|-119.119
+PSD|Port Said|31.279|32.241
+PSE|Ponce Mercedita|18.008|-66.563
+PSG|Petersburg James A Johnson|56.802|-132.945
+PSM|Portsmouth at Pease|43.078|-70.823
+PSO|Chachagüí Antonio Nariño|1.397|-77.291
+PSP|Palm Springs|33.830|-116.507
+PSR|Pescara Abruzzo|42.431|14.183
+PSS|Posadas Libertador Gral D Jose De San Martin|-27.386|-55.971
+PSU|Putussibau-Borneo Island Pangsuma|0.835|112.940
+PSY|Port Stanley|-51.686|-57.778
+PSZ|Puerto Suárez Capitán Av. Salvador Ogaya G.|-18.975|-57.821
+PTA|Port Alsworth|60.202|-154.326
+PTF|Malolo Lailai Island|-17.778|177.197
+PTG|Polokwane|-23.845|29.459
+PTH|Port Heiden|56.958|-158.630
+PTJ|Portland|-38.318|141.471
+PTO|Pato Branco Juvenal Loureiro Cardoso|-26.217|-52.694
+PTP|Pointe-à-Pitre Maryse Condé|16.265|-61.533
+PTU|Platinum|59.018|-161.828
+PTY|Tocumen|9.071|-79.383
+PUB|Pueblo Memorial|38.289|-104.497
+PUD|Puerto Deseado|-47.735|-65.904
+PUF|Pau/Pyrénées Pau Pyrénées|43.380|-0.419
+PUG|Port Augusta|-32.507|137.717
+PUJ|Punta Cana|18.567|-68.365
+PUQ|Punta Arenas President Carlos Ibáñez|-53.003|-70.855
+PUR|Puerto Rico/Manuripi Puerto Rico|-11.108|-67.551
+PUS|Busan Gimhae|35.180|128.938
+PUU|Puerto Asís Tres De Mayo|0.505|-76.501
+PUW|Pullman-Moscow|46.742|-117.112
+PUY|Pula|44.894|13.922
+PUZ|Puerto Cabezas|14.047|-83.387
+PVA|Providencia El Embrujo|13.357|-81.358
+PVD|Providence/Warwick Rhode Island T. F. Green|41.725|-71.426
+PVH|Porto Velho Governador Jorge Teixeira de Oliveir|-8.708|-63.902
+PVK|Preveza Aktion|38.925|20.765
+PVR|Puerto Vallarta|20.680|-105.254
+PVU|Provo|40.219|-111.722
+PWE|Apapelgino Pevek|69.783|170.597
+PWM|Portland International Jetport|43.646|-70.309
+PWQ|Pavlodar|52.195|77.073
+PXH|Mount Eba Prominent Hill|-29.716|135.524
+PXM|Puerto Escondido|15.877|-97.089
+PXO|Vila Baleira Porto Santo|33.073|-16.350
+PXR|Surin|14.868|103.498
+PXU|Pleiku|14.005|108.017
+PYJ|Yakutia Polyarny|66.400|112.030
+PYK|Karaj Payam|35.776|50.827
+PYT|Paracatu Pedro Rabelo de Souza|-17.243|-46.883
+PZB|Pietermaritzburg|-29.649|30.399
+PZH|Fort Sandeman Zhob|31.358|69.464
+PZI|Panzhihua Bao'anying|26.540|101.799
+PZO|Guyana City General Manuel Carlos Piar|8.289|-62.760
+PZU|Port Sudan New|19.435|37.234
+QBC|Bella Coola|52.388|-126.596
+QOW|Owerri Sam Mbakwe International Cargo|5.427|7.206
+QRO|Querétaro Intercontinental|20.619|-100.186
+QRW|Okpe Warri|5.598|5.819
+QSF|Sétif Ain Arnat|36.178|5.330
+QSR|Salerno Costa d'Amalfi|40.620|14.911
+QSZ|Shache|38.245|77.056
+QUO|Uyo Akwa Ibom|4.872|8.093
+RAB|Kokopo Tokua|-4.340|152.380
+RAE|Arar|30.907|41.138
+RAH|Rafha|29.626|43.491
+RAI|Praia Nelson Mandela|14.941|-23.485
+RAK|Marrakesh Menara|31.605|-8.036
+RAM|Ramingining|-12.356|134.898
+RAO|Ribeirão Preto Leite Lopes|-21.134|-47.774
+RAP|Rapid City|44.045|-103.057
+RAR|Avarua Rarotonga|-21.203|-159.806
+RAS|Rasht Sardar-e-Jangal|37.323|49.618
+RBA|Rabat-Salé|34.051|-6.752
+RBB|Borba|-4.406|-59.602
+RBQ|Rurrenabaque|-14.428|-67.497
+RBR|Rio Branco-Plácido de Castro|-9.869|-67.894
+RBV|Ramata|-8.168|157.643
+RBY|Ruby|64.727|-155.470
+RCB|Richards Bay|-28.741|32.092
+RCE|Roche Harbor|48.612|-123.139
+RCH|Riohacha Almirante Padilla|11.526|-72.926
+RCM|Richmond|-20.702|143.115
+RDD|Redding|40.509|-122.293
+RDM|Redmond Roberts Field|44.254|-121.150
+RDO|Warsaw Radom|51.389|21.215
+RDP|Durgapur Kazi Nazrul Islam|23.622|87.243
+RDU|Raleigh/Durham Raleigh-Durham|35.879|-78.787
+RDV|Red Devil|61.788|-157.350
+RDZ|Rodez/Marcillac Rodez–Aveyron|44.408|2.483
+REC|Recife/Guararapes - Gilberto Freyre|-8.127|-34.923
+REG|Reggio Calabria|38.071|15.652
+REL|Rawson Almirante Marco Andres Zar|-43.211|-65.270
+REN|Orenburg Central|51.793|55.457
+RER|Retalhuleu|14.521|-91.697
+RES|Resistencia|-27.450|-59.056
+RET|Røst|67.526|12.102
+REU|Reus|41.148|1.168
+REW|Rewa, Chorhata, REWA|24.503|81.220
+REX|Reynosa General Lucio Blanco|26.009|-98.228
+RFD|Chicago/Rockford Chicago Rockford|42.195|-89.097
+RFP|Uturoa Raiatea|-16.723|-151.466
+RGA|Rio Grande Gobernador Ramón Trejo Noel|-53.778|-67.749
+RGI|Rangiroa|-14.954|-147.661
+RGL|Rio Gallegos Piloto Civil Norberto Fernández|-51.609|-69.309
+RGN|Yangon|16.907|96.133
+RGO|Hoemun-ri Orang (Chongjin)|41.429|129.648
+RHD|Termas de Río Hondo|-27.497|-64.936
+RHI|Rhinelander Oneida County|45.631|-89.467
+RHO|Rhodes "Diagoras"|36.405|28.086
+RHT|Alxa Right Banner Badanjilin|39.225|101.546
+RIA|Santa Maria|-29.711|-53.688
+RIB|Riberalta Capitán Av. Selin Zeitun Lopez|-11.009|-66.075
+RIC|Richmond|37.505|-77.320
+RIH|Río Hato Scarlett Martinez|8.376|-80.128
+RIS|Rishiri|45.242|141.186
+RIW|Riverton Central Wyoming|43.064|-108.460
+RIY|Mukalla Riyan|14.662|49.375
+RIZ|Rizhao Shanzihe|35.405|119.324
+RJA|Madhurapudi Rajahmundry|17.106|81.813
+RJH|Rajshahi Shah Makhdum|24.437|88.617
+RJK|Rijeka|45.216|14.571
+RJL|Logroño-Agoncillo|42.461|-2.322
+RJM|Waisai Marinda|-0.425|130.774
+RJN|Rafsanjan|30.298|56.049
+RKD|Rockland Knox County|44.060|-69.099
+RKE|Copenhagen Roskilde|55.586|12.131
+RKI|Sipura Island Mentawai|-2.100|99.704
+RKS|Rock Springs Southwest Wyoming|41.594|-109.065
+RKT|Ras Al Khaimah|25.614|55.939
+RKV|Reykjavík|64.129|-21.938
+RKZ|Xigazê Xigaze Peace / Shigatse|29.351|89.299
+RLG|Rostock-Laage|53.918|12.278
+RLK|Bayannur Tianjitai|40.926|107.741
+RMA|Roma|-26.545|148.775
+RMF|Marsa Alam|25.556|34.592
+RMI|Rimini Federico Fellini|44.020|12.612
+RML|Colombo Ratmalana|6.822|79.886
+RMO|Chişinău|46.928|28.932
+RMP|Rampart|65.508|-150.141
+RMQ|Taichung / Ching Chuang Kang|24.265|120.621
+RMT|Rimatara Island Rimatara|-22.637|-152.806
+RMU|Corvera Region of Murcia|37.803|-1.125
+RMZ|Tobolsk Remezov|58.060|68.348
+RNB|Ronneby|56.267|15.265
+RNI|Corn Island|12.175|-83.059
+RNJ|Yoron|27.044|128.402
+RNL|Rennell Island Rennell/Tingoa|-11.550|160.063
+RNN|Rønne Bornholm|55.063|14.760
+RNO|Reno Tahoe|39.499|-119.768
+RNP|Rongelap Island|11.157|166.887
+RNS|Saint-Jacques-de-la-Lande, Ille-et-Vilaine Renne|48.069|-1.735
+ROA|Roanoke–Blacksburg|37.325|-79.975
+ROB|Monrovia Roberts|6.234|-10.362
+ROC|Frederick Douglass Greater Rochester|43.119|-77.672
+ROI|Roi Et|16.117|103.774
+ROK|Rockhampton|-23.380|150.475
+ROO|Rondonópolis Maestro Marinho Franco|-16.584|-54.725
+ROP|Rota Island Rota|14.173|145.241
+ROR|Babelthuap Island Roman Tmetuchl|7.367|134.544
+ROS|Rosario Islas Malvinas|-32.904|-60.785
+ROT|Rotorua|-38.109|176.317
+ROV|Rostov-on-Don Platov|47.494|39.925
+ROW|Roswell Air Center|33.302|-104.531
+RPR|Raipur Swami Vivekananda|21.180|81.739
+RQA|Ruoqiang Town Ruoqiang Loulan|38.975|88.008
+RRG|Port Mathurin Sir Charles Gaetan Duval|-19.758|63.361
+RRR|Raroia|-16.050|-142.477
+RRS|Røros|62.578|11.342
+RSA|Santa Rosa|-36.588|-64.276
+RSD|Rock Sound|24.892|-76.178
+RSH|Russian Mission|61.775|-161.319
+RSI|Hanak Red Sea|25.628|37.089
+RST|Rochester|43.908|-92.500
+RSU|Yeosu|34.842|127.617
+RSW|Fort Myers Southwest Florida|26.535|-81.753
+RTA|Rotuma|-12.483|177.071
+RTB|Coxen Hole Juan Manuel Gálvez|16.317|-86.523
+RTG|Satar Tacik, Manggarai Frans Sales Lega|-8.596|120.478
+RTI|Ba'a - Rote Island David Constantijn Saudale|-10.766|123.076
+RTM|Rotterdam The Hague|51.957|4.437
+RUA|Arua|3.049|30.912
+RUH|Riyadh King Khalid|24.958|46.699
+RUL|Maavaarulu Maavaarulaa|0.338|73.513
+RUN|Sainte-Marie Roland Garros|-20.890|55.519
+RUR|Rurutu|-22.434|-151.361
+RUS|Marau|-9.862|160.825
+RUT|Rutland - Southern Vermont|43.529|-72.950
+RVE|Saravena Los Colonizadores|6.952|-71.857
+RVK|Rørvik, Ryum|64.838|11.146
+RVN|Rovaniemi|66.563|25.830
+RVV|Raivavae|-23.885|-147.662
+RVY|Rivera/Santana do Livramento Pres. Gral. Óscar D|-30.975|-55.476
+RXS|Roxas City Roxas|11.598|122.752
+RYK|Rahim Yar Khan Shaikh Zaid|28.384|70.280
+RYO|Rio Turbio 28 de Noviembre|-51.605|-72.220
+RZE|Rzeszów-Jasionka|50.110|22.024
+RZR|Ramsar|36.907|50.687
+RZV|Rize–Artvin|41.180|40.849
+SAB|Zion's Hill Juancho E. Yrausquin|17.645|-63.221
+SAF|Santa Fe|35.617|-106.089
+SAG|Kakadi Shirdi|19.689|74.374
+SAH|Sanaa|15.476|44.220
+SAI|Siem Reap-Angkor|13.370|104.224
+SAL|San Salvador El Salvador Saint Óscar Arnulfo Rom|13.444|-89.056
+SAN|San Diego|32.734|-117.190
+SAP|San Pedro Sula Ramón Villeda Morales|15.453|-87.924
+SAQ|Andros Island San Andros|25.054|-78.049
+SAT|San Antonio|29.534|-98.470
+SAV|Savannah Hilton Head|32.127|-81.200
+SBA|Santa Barbara|34.426|-119.840
+SBD|San Bernardino|34.097|-117.237
+SBH|Gustavia St. Jean|17.904|-62.843
+SBN|South Bend|41.708|-86.317
+SBP|San Luis Obispo San Luis County|35.237|-120.642
+SBR|Saibai Island|-9.378|142.625
+SBT|Sabetta|71.219|72.052
+SBW|Sibu|2.262|111.985
+SBY|Salisbury Ocean City Wicomico|38.340|-75.510
+SBZ|Sibiu|45.786|24.087
+SCC|Deadhorse|70.195|-148.465
+SCE|State College|40.849|-77.849
+SCK|Stockton Metropolitan|37.893|-121.238
+SCL|Santiago Comodoro Arturo Merino Benítez|-33.393|-70.786
+SCM|Scammon Bay|61.845|-165.575
+SCN|Saarbrücken|49.215|7.110
+SCO|Aktau|43.860|51.091
+SCQ|Santiago de Compostela Santiago-Rosalía de Castr|42.896|-8.415
+SCR|Malung-Sälen Scandinavian Mountains|61.165|12.834
+SCT|Mori Socotra|12.632|53.906
+SCU|Santiago Antonio Maceo|19.975|-75.836
+SCV|Suceava Ștefan cel Mare|47.688|26.354
+SCW|Syktyvkar|61.647|50.845
+SCY|Puerto Baquerizo Moreno San Cristóbal|-0.910|-89.617
+SCZ|Santa Cruz/Graciosa Bay/Luova|-10.720|165.795
+SDD|Lubango Mukanka|-14.925|13.577
+SDE|Santiago del Estero Vicecomodoro Angel D. La Paz|-27.766|-64.310
+SDF|Louisville Muhammad Ali|38.171|-85.735
+SDG|Sanandaj|35.246|47.009
+SDJ|Natori Sendai|38.140|140.917
+SDK|Sandakan|5.901|118.059
+SDL|Sundsvall/ Härnösand Sundsvall-Härnösand|62.528|17.444
+SDN|Sandane, Anda|61.830|6.106
+SDP|Sand Point|55.314|-160.522
+SDQ|Santo Domingo Las Américas|18.430|-69.669
+SDR|Seve Ballesteros-Santander|43.427|-3.820
+SDS|Sado|38.060|138.414
+SDU|Rio de Janeiro Santos Dumont|-22.910|-43.163
+SDW|Chipi Sindhudurg|16.003|73.530
+SDY|Sidney - Richland|47.705|-104.194
+SEA|Seattle–Tacoma|47.448|-122.310
+SEB|Sabha|26.992|14.466
+SEK|Srednekolymsk|67.481|153.736
+SEN|Southend-on-Sea, Essex London Southend|51.571|0.694
+SET|Serra Talhada Santa Magalhães|-8.061|-38.329
+SEU|Seronera|-2.458|34.822
+SEZ|Victoria Seychelles|-4.674|55.522
+SFA|Sfax Thyna|34.718|10.691
+SFB|Orlando Sanford|28.774|-81.235
+SFC|St-François|16.258|-61.263
+SFG|Grand Case-l'Espérance|18.100|-63.047
+SFJ|Kangerlussuaq|67.010|-50.715
+SFL|São Filipe|14.885|-24.480
+SFN|Santa Fe Sauce Viejo|-31.712|-60.812
+SFS|Olongapo Subic Bay / Naval Air Station Cubi Poin|14.795|120.272
+SFT|Skellefteå|64.625|21.077
+SGC|Surgut|61.341|73.406
+SGD|Sønderborg|54.964|9.792
+SGF|Springfield Branson|37.245|-93.389
+SGO|St George|-28.050|148.595
+SGU|St George|37.036|-113.510
+SGY|Skagway|59.460|-135.317
+SHB|Nakashibetsu|43.577|144.960
+SHC|Shire Inda Selassie|14.076|38.274
+SHD|Weyers Cave Shenandoah Valley|38.264|-78.896
+SHE|Shenyang Taoxian|41.640|123.484
+SHF|Shihezi Huayuan|44.242|85.891
+SHG|Shungnak|66.888|-157.162
+SHH|Shishmaref|66.250|-166.089
+SHI|Miyakojima Shimojishima|24.827|125.145
+SHJ|Sharjah|25.329|55.517
+SHL|Shillong|25.704|91.979
+SHM|Nanki Shirahama|33.662|135.364
+SHO|Mpaka King Mswati III|-26.359|31.717
+SHR|Sheridan County|44.769|-106.980
+SHS|Jingzhou Shashi|30.293|112.449
+SHV|Shreveport|32.445|-93.827
+SHW|Sharurah|17.467|47.121
+SHY|Shinyanga|-3.609|33.504
+SID|Espargos Amílcar Cabral|16.741|-22.949
+SIF|Simara|27.160|84.980
+SIG|San Juan Fernando Luis Ribas Dominicci|18.457|-66.098
+SIH|Silgadi Doti|29.262|80.936
+SIP|Simferopol|45.052|33.975
+SIS|Sishen|-27.649|22.999
+SIT|Sitka Rocky Gutierrez|57.047|-135.362
+SJC|Mineta San Jose|37.362|-121.929
+SJD|San José del Cabo Los Cabos|23.152|-109.721
+SJE|San José Del Guaviare Jorge E. Gonzalez Torres|2.580|-72.639
+SJI|San Jose|12.361|121.047
+SJJ|Sarajevo|43.825|18.331
+SJK|São José Dos Campos Professor Urbano Ernesto Stu|-23.229|-45.861
+SJL|São Gabriel da Cachoeira|-0.148|-66.986
+SJO|San José Juan Santamaría|9.994|-84.209
+SJP|São José do Rio Preto Prof. Eribelto Manoel Rein|-20.817|-49.407
+SJT|San Angelo Regional Mathis Field|31.358|-100.496
+SJU|San Juan Luis Munoz Marin|18.439|-66.002
+SJW|Shijiazhuang Zhengding|38.281|114.697
+SJZ|Velas São Jorge|38.666|-28.176
+SKB|Basseterre Robert L. Bradshaw|17.311|-62.719
+SKD|Samarkand|39.702|66.981
+SKG|Thessaloniki Macedonia|40.519|22.970
+SKH|Surkhet|28.586|81.636
+SKK|Shaktoolik|64.371|-161.224
+SKN|Hadsel Stokmarknes, Skagen|68.579|15.033
+SKO|Sokoto Sadiq Abubakar III|12.916|5.208
+SKP|Ilinden Skopje|41.958|21.623
+SKT|Sialkot|32.536|74.365
+SKU|Skiros Island Skiros|38.968|24.487
+SKX|Saransk|54.125|45.212
+SKZ|Begum Nusrat Bhutto Sukkur|27.722|68.792
+SLA|Salta Martín Miguel de Güemes|-24.856|-65.486
+SLC|Salt Lake City|40.789|-111.980
+SLD|Sliač|48.638|19.134
+SLE|Salem-Willamette Valley/McNary Field|44.910|-123.003
+SLH|Sola|-13.852|167.537
+SLI|Solwesi|-12.174|26.365
+SLK|Saranac Lake Adirondack|44.387|-74.205
+SLL|Salalah|17.039|54.091
+SLM|Salamanca|40.952|-5.502
+SLN|Salina|38.791|-97.652
+SLP|San Luis Potosí Ponciano Arriaga|22.262|-100.936
+SLQ|Sleetmute|61.700|-157.166
+SLU|Castries George F. L. Charles|14.020|-60.993
+SLW|Saltillo Plan de Guadalupe|25.538|-100.928
+SLX|Salt Cay|21.333|-71.200
+SLY|Salekhard|66.591|66.611
+SLZ|São Luís Marechal Cunha Machado|-2.586|-44.235
+SMA|Vila do Porto Santa Maria|36.971|-25.171
+SMF|Sacramento|38.695|-121.591
+SMI|Samos Island Samos|37.690|26.912
+SMK|St Michael|63.490|-162.110
+SML|Stella Maris|23.582|-75.269
+SMN|Salmon Lemhi County|45.122|-113.882
+SMQ|Sampit (H.Asan)|-2.499|112.975
+SMR|Santa Marta Simón Bolívar|11.120|-74.231
+SMS|Vohilava Sainte Marie|-17.094|49.816
+SMT|Sorriso Adolino Bedin|-12.479|-55.672
+SMW|Smara|26.732|-11.684
+SMX|Santa Maria Public Captain G Allan Hancock Field|34.899|-120.457
+SNA|Santa Ana John Wayne Orange County|33.675|-117.869
+SNB|Milikapiti Snake Bay|-11.418|130.648
+SNC|Salinas/La Libertad General Ulpiano Paez|-2.210|-80.985
+SNE|Preguiça|16.589|-24.284
+SNN|Shannon|52.702|-8.925
+SNO|Sakon Nakhon|17.195|104.119
+SNP|St Paul Island|57.166|-170.223
+SNU|Santa Clara Abel Santamaria|22.492|-79.943
+SNV|Santa Elena de Uairén|4.555|-61.145
+SNW|Thandwe|18.461|94.300
+SNX|Semnan|35.591|53.495
+SOB|Sármellék Hévíz–Balaton|46.686|17.159
+SOC|Surakarta Adisoemarmo|-7.516|110.757
+SOD|Sorocaba|-23.478|-47.490
+SOF|Sofia|42.696|23.418
+SOG|Sogndal, Haukåsen|61.156|7.138
+SOJ|Sørkjosen|69.787|20.959
+SOM|El Tigre San Tomé|8.945|-64.151
+SON|Luganville Santo Pekoa|-15.505|167.220
+SOQ|Sorong Domine Eduard Osok|-0.894|131.287
+SOU|Southampton|50.950|-1.357
+SOV|Seldovia|59.443|-151.705
+SOW|Show Low|34.264|-110.007
+SOY|Stronsay|59.155|-2.641
+SPC|Sta Cruz de la Palma, La Palma Island La Palma|28.626|-17.756
+SPD|Saidpur|25.759|88.909
+SPI|Springfield Abraham Lincoln Capital|39.844|-89.678
+SPN|I Fadang, Saipan Saipan|15.119|145.729
+SPP|Menongue|-14.658|17.720
+SPR|San Pedro John Greif II|17.914|-87.971
+SPS|Wichita Falls / Sheppard Air Force Base|33.989|-98.492
+SPX|Al Jiza Sphinx|30.108|30.896
+SPY|San Pedro|4.747|-6.661
+SQD|Shangrao Sanqingshan|28.380|117.964
+SQG|Sintang Tebelian|-0.045|111.458
+SQJ|Sanming Shaxian|26.426|117.834
+SQL|San Carlos|37.513|-122.251
+SRA|Santa Rosa Luis Alberto Lehr|-27.907|-54.521
+SRE|Sucre Alcantarí|-19.247|-65.150
+SRG|Semarang Jenderal Ahmad Yani|-6.971|110.373
+SRL|Mulegé Palo Verde|27.093|-112.099
+SRP|Leirvik Stord, Sørstokken|59.792|5.341
+SRQ|Sarasota/Bradenton Sarasota Bradenton|27.395|-82.554
+SRT|Soroti|1.728|33.623
+SRV|Stony River 2|61.790|-156.589
+SRX|Sirt / Ghardabiya Airbase|31.059|16.597
+SRY|Sari Dasht-e Naz|36.644|53.189
+SRZ|Santa Cruz El Trompillo|-17.812|-63.172
+SSA|Salvador Deputado Luiz Eduardo Magalhães|-12.909|-38.322
+SSG|Malabo|3.755|8.709
+SSJ|Alstahaug Sandnessjøen, Stokka|65.957|12.469
+SSR|Pentecost Island Sara|-15.471|168.152
+SST|Santa Teresita|-36.542|-56.722
+SSW|Friday Harbor Stuart Island Airpark|48.673|-123.175
+SSY|Mbanza Congo|-6.270|14.247
+STC|Saint Cloud|45.547|-94.060
+STD|Santo Domingo Mayor Buenaventura Vivas|7.565|-72.035
+STG|St George|56.577|-169.664
+STI|Santiago Cibao|19.404|-70.604
+STL|St Louis St. Louis Lambert|38.749|-90.370
+STM|Santarém - Maestro Wilson Fonseca|-2.422|-54.793
+STN|London, Essex London Stansted|51.885|0.235
+STR|Stuttgart|48.690|9.222
+STS|Santa Rosa Charles M. Schulz Sonoma County|38.509|-122.813
+STT|Charlotte Amalie Cyril E. King|18.337|-64.977
+STV|Surat|21.116|72.743
+STW|Stavropol Shpakovskoye|45.109|42.113
+STX|Christiansted Henry E. Rohlsen|17.701|-64.803
+SUB|Surabaya Juanda|-7.380|112.787
+SUF|Lamezia Terme Sant'Eufemia|38.906|16.246
+SUG|Surigao City Surigao|9.756|125.481
+SUI|Sukhumi Vladislav Ardzinba Sukhum|42.858|41.128
+SUJ|Satu Mare|47.703|22.886
+SUK|Batagay-Alyta Sakkyryr|67.792|130.394
+SUN|Hailey Friedman Memorial|43.504|-114.296
+SUR|Summer Beaver|52.709|-88.542
+SUV|Nausori|-18.044|178.561
+SUX|Sioux City Sioux Gateway / Brigadier General Bud|42.398|-96.382
+SUY|Suntar|62.185|117.635
+SVA|Savoonga|63.686|-170.493
+SVB|Sambava|-14.279|50.175
+SVC|Silver City Grant County|32.637|-108.155
+SVD|Kingstown Argyle|13.160|-61.149
+SVG|Stavanger, Sola|58.877|5.638
+SVI|San Vicente Del Caguán Eduardo Falla Solano|2.152|-74.766
+SVJ|Svolvær, Helle|68.243|14.669
+SVL|Savonlinna|61.943|28.945
+SVQ|Seville|37.418|-5.893
+SVS|Stevens Village|66.017|-149.057
+SVU|Savusavu|-16.803|179.341
+SVZ|San Antonio del Tachira Juan Vicente Gómez|7.841|-72.440
+SWA|Jieyang Chaoshan|23.552|116.503
+SWF|Newburgh New York Stewart|41.504|-74.109
+SWL|San Vicente|10.524|119.273
+SWO|Stillwater|36.162|-97.086
+SWQ|Sumbawa Besar Sultan Muhammad Kaharuddin III|-8.489|117.412
+SWX|Shakawe|-18.374|21.833
+SXB|Strasbourg|48.538|7.628
+SXK|Saumlaki-Yamdena Island Mathilda Batlayeri|-7.848|131.337
+SXM|Sint Maarten Princess Juliana|18.041|-63.109
+SXP|Nunam Iqua|62.521|-164.848
+SXR|Srinagar|33.987|74.774
+SYM|Pu'er Simao|22.793|100.959
+SYO|Shonai|38.812|139.787
+SYQ|San Jose Tobías Bolaños|9.957|-84.140
+SYR|Syracuse Hancock|43.111|-76.106
+SYS|Saskylakh|71.928|114.080
+SYU|Sue Islet Warraber Island|-10.208|142.825
+SYY|Stornoway, Western Isles Stornoway|58.216|-6.331
+SYZ|Shiraz Shahid Dastghaib|29.539|52.590
+SZA|Soyo|-6.141|12.372
+SZB|Subang Sultan Abdul Aziz Shah|3.131|101.549
+SZE|Semera|11.787|40.992
+SZF|Samsun-Çarşamba|41.254|36.568
+SZG|Salzburg|47.793|13.004
+SZH|Shuozhou Zirun|39.273|112.692
+SZI|Zaysan|47.487|84.888
+SZK|Skukuza|-24.961|31.589
+SZY|Szymany Olsztyn-Mazury|53.482|20.938
+SZZ|Solidarity Szczecin–Goleniów|53.585|14.902
+TAB|Scarborough A.N.R. Robinson|11.150|-60.831
+TAC|Tacloban City Daniel Z. Romualdez|11.228|125.028
+TAE|Daegu|35.894|128.657
+TAG|Bohol-Panglao|9.573|123.770
+TAH|Tanna Island Whitegrass|-19.455|169.224
+TAI|Taiz|13.686|44.139
+TAK|Takamatsu|34.215|134.015
+TAL|Tanana Ralph M Calhoun Memorial|65.174|-152.109
+TAM|Ciudad Madero General Francisco Javier Mina|22.293|-97.867
+TAP|Tapachula|14.795|-92.370
+TAT|Poprad-Tatry|49.071|20.241
+TAY|Tartu|58.307|26.686
+TAZ|Daşoguz Dashoguz|41.760|59.836
+TBB|Tuy Hoa Dong Tac|13.050|109.334
+TBG|Tabubil|-5.280|141.228
+TBH|Tablas Island Tugdan|12.311|122.085
+TBI|Cat Island New Bight|24.315|-75.452
+TBJ|Tabarka-Aïn Draham|36.980|8.877
+TBM|Tumbang Samba-Borneo Island Tumbang Samba|-1.469|113.081
+TBN|Fort Leonard Wood Waynesville-St. Robert -Forney|37.742|-92.141
+TBO|Tabora|-5.076|32.833
+TBP|Tumbes Captain Pedro Canga Rodríguez|-3.552|-80.381
+TBT|Tabatinga|-4.256|-69.936
+TBU|Nuku'alofa Fua'amotu|-21.241|-175.149
+TBZ|Tabriz|38.134|46.235
+TCA|Tennant Creek|-19.634|134.183
+TCB|Treasure Cay|26.745|-77.391
+TCD|Tarapacá|-2.896|-69.750
+TCG|Tacheng Qianquan|46.673|83.341
+TCO|Tumaco La Florida|1.814|-78.749
+TCP|Taba|29.594|34.776
+TCQ|Tacna Coronel FAP Carlos Ciriani Santa Rosa|-18.053|-70.276
+TCR|Vagaikulam Tuticorin|8.724|78.026
+TCT|Takotna|62.993|-156.029
+TCZ|Baoshan Tengchong Tuofeng|24.938|98.486
+TDD|Trinidad Teniente Av. Jorge Henrich Arauz|-14.819|-64.918
+TDK|Taldykorgan|45.123|78.443
+TDS|Sasereme|-7.622|142.868
+TDX|Laem Ngop Trat|12.275|102.319
+TEB|Teterboro|40.850|-74.061
+TEE|Cheikh Larbi Tébessi|35.432|8.121
+TEK|Tatitlek|60.871|-146.690
+TEN|Tongren Fenghuang|27.883|109.309
+TEQ|Tekirdağ Çorlu|41.138|27.919
+TER|Praia da Vitória Lajes|38.762|-27.091
+TET|Tete|-16.105|33.640
+TEX|Telluride|37.954|-107.908
+TEZ|Tezpur|26.709|92.785
+TFF|Tefé|-3.383|-64.724
+TFI|Tufi|-9.076|149.320
+TFN|Tenerife Norte-Ciudad de La Laguna|28.483|-16.342
+TFS|Tenerife Sur|28.044|-16.573
+TGD|Podgorica / Podgorica Golubovci Airbase|42.359|19.252
+TGG|Kuala Terengganu Sultan Mahmud|5.383|103.103
+TGH|Tongoa Island Tongoa|-16.891|168.551
+TGJ|Tiga|-21.096|167.804
+TGM|Recea Târgu Mureş Transilvania|46.468|24.413
+TGO|Tongliao|43.557|122.200
+TGQ|Tangará da Serra|-14.662|-57.444
+TGR|Touggourt Sidi Madhi|33.068|6.089
+TGT|Tanga|-5.092|39.071
+TGU|Tegucigalpa Toncontín|14.061|-87.217
+TGZ|Tuxtla Gutiérrez Angel Albino Corzo|16.562|-93.026
+THD|Thanh Hóa Tho Xuan|19.902|105.468
+THE|Teresina Senador Petrônio Portela|-5.060|-42.824
+THG|Biloela Thangool|-24.495|150.578
+THL|Tachileik|20.484|99.935
+THN|Trollhättan-Vänersborg|58.318|12.345
+THO|Þórshöfn|66.218|-15.335
+THQ|Tianshui Maijishan|34.560|105.860
+THR|Tehran Mehrabad|35.689|51.314
+THS|Sukhothai|17.238|99.818
+THX|Turukhansk|65.797|87.935
+TIA|Rinas Tirana Mother Teresa|41.415|19.721
+TIE|Tippi|7.202|35.415
+TIF|Taif|21.485|40.544
+TIH|Tuherahera Tikehau|-15.120|-148.231
+TIJ|Tijuana General Abelardo L. Rodriguez|32.541|-116.970
+TIM|Timika Mozes Kilangin|-4.530|136.887
+TIN|Tindouf|27.700|-8.167
+TIQ|Tinian Island Francisco Manglona Borja / Tinian|14.999|145.619
+TIR|Tirupati|13.632|79.540
+TIU|Timaru|-44.303|171.225
+TIW|Tacoma Narrows|47.267|-122.577
+TIZ|Tari|-5.845|142.948
+TJA|Tarija Capitan Oriel Lea Plaza|-21.556|-64.701
+TJG|Tanta-Tabalong Warukin|-2.217|115.436
+TJH|Toyooka Konotori Tajima|35.513|134.787
+TJK|Tokat|40.325|36.391
+TJL|Três Lagoas Plínio Alarcom|-20.753|-51.682
+TJM|Tyumen Roshchino|57.179|65.328
+TJQ|Tanjung Pandan H A S Hanandjoeddin|-2.744|107.755
+TJS|Tanjung Selor-Borneo Island Tanjung Harapan|2.838|117.375
+TJU|Kulob|37.988|69.805
+TKD|Sekondi-Takoradi Takoradi|4.896|-1.775
+TKF|Truckee Tahoe|39.319|-120.141
+TKG|Bandar Lampung Radin Inten II|-5.247|105.183
+TKJ|Tok Junction|63.329|-142.954
+TKK|Weno Island Chuuk|7.462|151.843
+TKM|Taksimo|56.362|114.930
+TKN|Amagi Tokunoshima|27.836|128.881
+TKP|Takapoto|-14.710|-145.246
+TKQ|Kigoma|-4.886|29.671
+TKS|Tokushima Awaodori / JMSDF Tokushima|34.133|134.608
+TKU|Turku|60.514|22.263
+TKV|Tatakoto|-17.355|-138.447
+TKX|Takaroa|-14.456|-145.025
+TLA|Teller|65.240|-166.339
+TLC|Toluca Adolfo López Mateos|19.337|-99.566
+TLE|Toliara|-23.383|43.728
+TLH|Tallahassee|30.401|-84.354
+TLI|Toli Toli-Celebes Island Sultan Bantilan|1.123|120.794
+TLM|Zenata – Messali El Hadj|35.013|-1.457
+TLN|Hyères, Var Toulon-Hyères|43.097|6.146
+TLQ|Turpan Jiaohe|43.031|89.099
+TLS|Toulouse/Blagnac Toulouse-Blagnac|43.629|1.364
+TLT|Tuluksak|61.087|-160.923
+TLU|Santiago de Tolú Golfo de Morrosquillo|9.509|-75.585
+TLY|Plastun|44.815|136.292
+TMC|Radamata Tambolaka|-9.409|119.243
+TME|Tame Gustavo Vargas|6.451|-71.760
+TMF|Thimarafushi|2.211|73.153
+TMG|Tomanggong|5.403|118.658
+TMH|Tanah Merah|-6.097|140.304
+TMI|Tumling Tar|27.315|87.193
+TMJ|Termez|37.287|67.312
+TML|Tamale Yakubu Tali|9.554|-0.866
+TMM|Toamasina Ambalamanasy|-18.114|49.392
+TMP|Tampere / Pirkkala Tampere-Pirkkala|61.414|23.604
+TMR|Tamanrasset Aguenar – Hadj Bey Akhamok|22.811|5.451
+TMS|São Tomé|0.378|6.712
+TMT|Oriximiná Trombetas|-1.490|-56.397
+TMW|Tamworth|-31.078|150.845
+TMX|Timimoun|29.237|0.276
+TNA|Jinan Yaoqiang|36.857|117.216
+TNC|Tin City Long Range Radar Station|65.563|-167.922
+TND|Trinidad Alberto Delgado|21.788|-79.997
+TNE|New Tanegashima|30.605|130.991
+TNG|Tangier Ibn Battuta|35.732|-5.921
+TNH|Tonghua Sanyuanpu|42.048|125.734
+TNJ|Tanjung Pinang-Bintan Island Raja Haji Fisabilil|0.924|104.533
+TNK|Tununak|60.570|-165.247
+TNN|Tainan / Tainan|22.950|120.206
+TNR|Antananarivo Ivato|-18.797|47.479
+TOD|Tioman Island Tioman|2.818|104.160
+TOE|Tozeur Nefta|33.940|8.111
+TOF|Tomsk Kamov|56.380|85.208
+TOG|Togiak Village Togiak|59.053|-160.397
+TOL|Eugene F. Kranz Toledo Express|41.587|-83.808
+TOM|Timbuktu Tombouktou|16.730|-3.008
+TOS|Tromsø|69.683|18.919
+TOU|Touho|-20.790|165.260
+TOW|Toledo - Luiz Dalcanale Filho|-24.686|-53.697
+TOY|Toyama Kitokito|36.648|137.187
+TPA|Tampa|27.976|-82.533
+TPI|Tapini|-8.357|146.989
+TPJ|Taplejung|27.351|87.695
+TPP|Tarapoto Cadete FAP Guillermo Del Castillo Pared|-6.509|-76.373
+TPQ|Tepic Amado Nervo|21.420|-104.842
+TPS|Vincenzo Florio Trapani-Birgi|37.911|12.488
+TQO|Felipe Carrillo Puerto Tulum|20.172|-87.660
+TRA|Tarama|24.654|124.675
+TRC|Torreón Francisco Sarabia Tinoco|25.562|-103.405
+TRD|Trondheim, Værnes|63.458|10.924
+TRE|Balemartine, Argyll and Bute Tiree|56.499|-6.869
+TRF|Sandefjord, Torp|59.187|10.259
+TRG|Tauranga|-37.672|176.196
+TRI|Blountville Tri-Cities Regional TN/VA|36.475|-82.407
+TRK|Tarakan Juwata / Suharnoko Harbani AFB|3.325|117.564
+TRN|Caselle Torinese Turin|45.201|7.650
+TRR|Trincomalee China Bay|8.539|81.181
+TRT|Toraja|-3.184|119.919
+TRU|Trujillo Capitán FAP Carlos Martínez de Pinillos|-8.082|-79.109
+TRV|Thiruvananthapuram|8.482|76.920
+TRW|South Tarawa Bonriki|1.382|173.147
+TRZ|Tiruchirappalli|10.763|78.718
+TSA|Taipei Songshan|25.067|121.553
+TSF|Treviso|45.648|12.194
+TSJ|Tsushima|34.285|129.331
+TSM|Taos|36.452|-105.677
+TSR|Timişoara Timișoara Traian Vuia|45.810|21.338
+TST|Trang|7.509|99.617
+TSV|Townsville / RAAF Base Townsville|-19.253|146.767
+TTA|Tan Tan|28.448|-11.162
+TTE|Ternate Sultan Babullah|0.831|127.382
+TTJ|Tottori Sand Dunes Conan|35.530|134.165
+TTN|Ewing Township Trenton Mercer|40.277|-74.813
+TTS|Tsaratanana|-16.751|47.619
+TTT|Taitung City Taitung|22.755|121.102
+TTU|Tétouan Sania Ramel|35.594|-5.320
+TUA|Tulcán Lieutenant Colonel Luis A. Mantilla|0.810|-77.708
+TUB|Tubuai|-23.365|-149.524
+TUC|San Miguel de Tucumán Teniente Benjamín Matienzo|-26.837|-65.104
+TUF|Tours, Indre-et-Loire Tours Val de Loire|47.432|0.728
+TUG|Tuguegarao City Tuguegarao|17.643|121.733
+TUI|Turaif|31.692|38.732
+TUK|Turbat|25.985|63.029
+TUL|Tulsa|36.197|-95.886
+TUN|Tunis Carthage|36.851|10.227
+TUO|Taupo|-38.740|176.084
+TUP|Tupelo|34.268|-88.770
+TUR|Tucuruí|-3.786|-49.720
+TUS|Tucson|32.115|-110.938
+TUU|Tabuk Prince Sultan bin Abdulaziz|28.371|36.625
+TVC|Traverse City Cherry Capital|44.741|-85.582
+TVF|Thief River Falls|48.066|-96.185
+TVS|Tangshan Sannühe|39.718|118.003
+TVT|Tashkent-Khumo|41.313|69.396
+TVU|Matei|-16.691|-179.877
+TVY|Dawei|14.104|98.204
+TWA|Twin Hills|59.075|-160.275
+TWC|Tumxuk Tangwangcheng|39.887|79.233
+TWF|Twin Falls Joslin Field Magic Valley|42.482|-114.488
+TWT|Bongao Sanga Sanga|5.048|119.743
+TWU|Tawau|4.313|118.122
+TXE|Takengon Rembele|4.721|96.852
+TXK|Texarkana (Webb Field)|33.454|-93.991
+TXN|Huangshan Tunxi|29.733|118.256
+TYF|Torsby|60.158|12.991
+TYL|Talara Captain Victor Montes Arias|-4.577|-81.254
+TYN|Taiyuan Wusu|37.747|112.628
+TYR|Tyler Pounds|32.354|-95.402
+TYS|Knoxville/Maryville McGhee Tyson|35.811|-83.994
+TZA|Belize City Sir Barry Bowen|17.517|-88.196
+TZL|Dubrave Gornje Tuzla|44.460|18.724
+TZN|Andros Congo Town|24.159|-77.590
+TZX|Trabzon|40.995|39.790
+UAH|Ua Huka|-8.936|-139.554
+UAI|Suai Commander in Chief of FALINTIL, Kay Rala Xa|-9.302|125.286
+UAP|Ua Pou|-9.352|-140.078
+UAQ|San Juan Domingo Faustino Sarmiento|-31.572|-68.418
+UAR|Bouarfa|32.514|-1.983
+UBA|Uberaba Mário de Almeida Franco|-19.765|-47.965
+UBB|Mabuiag Island|-9.950|142.195
+UBJ|Yamaguchi Ube|33.930|131.279
+UBN|Ulaanbaatar Chinggis Khaan|47.647|106.820
+UBP|Ubon Ratchathani|15.251|104.870
+UCB|Ulanqab Jining|41.130|113.107
+UCT|Ukhta|63.567|53.805
+UDI|Uberlândia Ten. Cel. Aviador César Bombonato|-18.884|-48.226
+UDR|Udaipur Maharana Pratap|24.618|73.896
+UEL|Quelimane|-17.855|36.869
+UEO|Kumejima|26.363|126.714
+UET|Quetta|30.251|66.938
+UGA|Bulgan|48.855|103.476
+UGC|Urgench|41.583|60.643
+UGU|Bilogai Bilorai|-3.740|137.031
+UIB|Quibdó El Caraño|5.691|-76.641
+UIH|Quy Nohn Phu Cat|13.955|109.042
+UII|Utila Island Utila|16.113|-86.880
+UIN|Quincy Baldwin Field|39.943|-91.195
+UIO|Quito Mariscal Sucre|-0.125|-78.354
+UIT|Jabor Jaluit Atoll Jaluit|5.909|169.637
+UJE|Ujae Atoll|8.928|165.762
+UKB|Kobe|34.633|135.224
+UKE|Bhawanipatna Utkela|20.098|83.183
+UKG|Ust-Kuyga|70.011|135.645
+UKK|Ust-Kamenogorsk Oskemen|50.035|82.496
+UKX|Ust-Kut|56.857|105.730
+ULG|Ölgii Mongolei|48.993|89.923
+ULH|Al-Ula|26.484|38.117
+ULK|Lensk|60.724|114.825
+ULO|Ulaangom|50.067|91.938
+ULP|Quilpie|-26.609|144.254
+ULU|Gulu|2.806|32.272
+ULV|Ulyanovsk Baratayevka|54.270|48.226
+ULY|Cherdakly Ulyanovsk Vostochny|54.401|48.803
+ULZ|Uliastai Donoi|47.709|96.526
+UME|Umeå|63.792|20.283
+UMS|Ust-Maya|60.357|134.437
+UMU|Umuarama Orlando de Carvalho|-23.799|-53.314
+UNA|Una-Comandatuba|-15.354|-38.999
+UNG|Kiunga|-6.126|141.282
+UNI|Union Island|12.600|-61.412
+UNK|Unalakleet|63.888|-160.799
+UNN|Ranong|9.778|98.586
+UOL|Buol - Pogogul|1.102|121.413
+UPG|Makassar Sultan Hasanuddin|-5.076|119.554
+UPN|Uruapan - Licenciado y General Ignacio Lopez Ray|19.397|-102.039
+URA|Uralsk Manshuk Mametova|51.152|51.544
+URE|Kuressaare|58.230|22.510
+URG|Uruguaiana Rubem Berta|-29.782|-57.038
+URJ|Uray|60.103|64.827
+URT|Surat Thani|9.133|99.136
+URY|Gurayat|31.412|37.279
+USA|Concord-Padgett|35.388|-80.709
+USH|Ushuaia - Malvinas Argentinas|-54.843|-68.296
+USJ|Usharal|46.191|80.831
+USK|Usinsk|66.005|57.367
+USM|Na Thon Samui|9.548|100.062
+USN|Ulsan|35.593|129.352
+USR|Ust-Nera|64.550|143.115
+UST|St Augustine Northeast Florida|29.959|-81.340
+USU|Coron Francisco B. Reyes (Busuanga)|12.122|120.101
+UTH|Udon Thani|17.386|102.789
+UTK|Utirik Island Utirik|11.222|169.851
+UTN|Upington|-28.400|21.264
+UTO|Utopia Creek Indian Mountain LRRS|65.993|-153.704
+UTP|U-Tapao–Rayong–Pattaya|12.680|101.005
+UTT|Mthatha K. D. Matanzima|-31.546|28.673
+UUA|Bugulma|54.641|52.800
+UUD|Ulan Ude Baikal|51.809|107.440
+UUS|Yuzhno-Sakhalinsk|46.885|142.717
+UVE|Ouvéa|-20.641|166.573
+UVF|Vieux Fort Hewanorra|13.733|-60.953
+UVI|União da Vitória José Cleto|-26.233|-51.067
+UYL|Nyala|12.053|24.956
+UYN|Yulin Yuyang|38.360|109.591
+UYU|Quijarro Joya Andina|-20.441|-66.858
+UZR|Urzhar|47.092|81.668
+VAA|Vaasa|63.050|21.763
+VAI|Vanimo|-2.693|141.303
+VAK|Chevak|61.541|-165.601
+VAL|Valença|-13.296|-38.992
+VAM|Villa Maamigili|3.472|72.833
+VAN|Van Ferit Melen|38.468|43.332
+VAO|Suavanao|-7.586|158.731
+VAQ|Vanavara|60.356|102.310
+VAR|Varna|43.232|27.825
+VAS|Sivas Nuri Demirağ|39.814|36.904
+VAV|Vava'u Island Vava'u|-18.585|-173.962
+VAW|Vardø, Svartnes|70.355|31.045
+VBS|Montichiari Brescia Gabriele d'Annunzio|45.429|10.331
+VBV|Vanua Balavu|-17.269|-178.976
+VBY|Visby|57.663|18.346
+VCA|Can Tho|10.083|105.709
+VCL|Tam Nghĩa Chu Lai|15.403|108.706
+VCP|Campinas Viracopos|-23.007|-47.135
+VCS|Con Dao|8.732|106.633
+VCT|Victoria|28.853|-96.919
+VDC|Vitória da Conquista Glauber de Andrade Rocha|-14.908|-40.915
+VDE|El Hierro Island El Hierro|27.815|-17.887
+VDH|Dong Hoi|17.515|106.591
+VDM|Viedma / Carmen de Patagones Gobernador Castello|-40.869|-63.000
+VDO|Van Don|21.121|107.415
+VDS|Vadsø|70.065|29.845
+VDZ|Valdez Pioneer Field|61.133|-146.247
+VEE|Venetie|67.009|-146.366
+VEL|Vernal|40.436|-109.512
+VEO|Severo-Yeniseysk|60.373|93.012
+VER|Veracruz General Heriberto Jara|19.140|-96.189
+VFA|Victoria Falls|-18.097|25.837
+VGA|Vijayawada|16.530|80.805
+VGO|Vigo|42.232|-8.627
+VHM|Vilhelmina South Lapland|64.579|16.834
+VHV|Verkhnevilyuisk|63.458|120.269
+VIG|El Vigía Juan Pablo Pérez Alfonso|8.624|-71.673
+VII|Vinh|18.738|105.671
+VIJ|Spanish Town Virgin Gorda|18.447|-64.428
+VIL|Dakhla|23.718|-15.932
+VIT|Alava Vitoria|42.883|-2.724
+VIX|Vitória Eurico de Aguiar Salles|-20.258|-40.285
+VJB|Xai-Xai Chongoene|-24.893|33.753
+VKG|Rach Gia|9.958|105.132
+VKT|Vorkuta|67.489|63.993
+VLC|Valencia|39.489|-0.481
+VLD|Valdosta|30.782|-83.277
+VLI|Port Vila Bauerfield|-17.699|168.320
+VLL|Valladolid|41.706|-4.852
+VLN|Valencia Arturo Michelena|10.150|-67.928
+VLS|Epi Island Valesdir|-16.796|168.177
+VLV|Valera Dr. Antonio Nicolás Briceño|9.340|-70.584
+VMU|Baimuru|-7.497|144.822
+VNS|Varanasi Lal Bahadur Shastri|25.452|82.863
+VNX|Vilanculo Vilankulo|-22.018|35.313
+VOG|Volgograd|48.781|44.339
+VOL|Nea Anchialos|39.220|22.794
+VOZ|Voronezh|51.814|39.231
+VPE|Ngiva Ngjiva Pereira|-17.044|15.684
+VPN|Vopnafjörður|65.721|-14.851
+VPS|Valparaiso Destin-Fort Walton Beach|30.481|-86.516
+VPY|Chimoio|-19.151|33.429
+VQS|Vieques Antonio Rivera Rodriguez|18.135|-65.494
+VRA|Matanzas Juan Gualberto Gomez|23.034|-81.435
+VRB|Vero Beach|27.656|-80.418
+VRC|Virac|13.576|124.206
+VRL|Vila Real|41.274|-7.720
+VRN|Caselle Verona Villafranca Valerio Catullo|45.395|10.887
+VSA|Villahermosa Carlos Rovirosa Pérez|17.994|-92.818
+VSE|Aerodromo Goncalves Lobato (Viseu)|40.725|-7.889
+VST|Stockholm / Västerås Stockholm Västerås|59.589|16.634
+VSV|Shravasti|27.500|82.033
+VTE|Vientiane Wattay|17.985|102.567
+VTU|Las Tunas Hermanos Ameijeiras|20.988|-76.936
+VTZ|Visakhapatnam Alluri Sitarama Raju (Vizag)|17.972|83.504
+VUP|Valledupar Alfonso López Pumarejo|10.435|-73.249
+VUS|Velikiy Ustyug|60.788|46.260
+VVC|Villavicencio Vanguardia|4.168|-73.614
+VVI|Santa Cruz Viru Viru|-17.645|-63.135
+VVZ|Illizi Takhamalt|26.723|8.623
+VXC|Lichinga|-13.274|35.266
+VXE|São Pedro Cesaria Evora|16.833|-25.055
+VXO|Växjö Kronoberg|56.929|14.728
+VYI|Vilyuisk|63.757|121.693
+WAA|Wales|65.623|-168.095
+WAE|Wadi Al Dawasir|20.504|45.200
+WAG|Wanganui|-39.963|175.024
+WBB|Stebbins|63.516|-162.278
+WBM|Wapenamanda|-5.635|143.892
+WBQ|Beaver|66.362|-147.407
+WDH|Windhoek Hosea Kutako|-22.480|17.471
+WDN|Eastsound Waldron|48.711|-123.018
+WDS|Shiyan Wudangshan|32.593|110.906
+WEF|Weifang Nanyuan|36.647|119.119
+WEH|Weihai Dashuibo|37.187|122.229
+WEI|Weipa|-12.677|141.923
+WGA|Forest Hill Wagga Wagga|-35.163|147.468
+WGE|Walgett|-30.033|148.126
+WGN|Shaoyang Wugang|26.806|110.641
+WGP|Waingapu-Sumba Island Umbu Mehang Kunda|-9.669|120.302
+WHA|Wuhu Xuanzhou|31.105|118.667
+WHK|Whakatāne|-37.922|176.917
+WIC|Wick John O'Groats|58.459|-3.093
+WIL|Nairobi Wilson|-1.322|36.815
+WIN|Winton|-22.364|143.086
+WJR|Wajir|1.733|40.092
+WJU|Wonju / Hoengseong (K-38/K-46)|37.437|127.960
+WKA|Wanaka|-44.722|169.246
+WKJ|Wakkanai|45.404|141.801
+WKK|Aleknagik / New|59.283|-158.618
+WLG|Wellington|-41.327|174.807
+WLH|Walaha|-15.412|167.691
+WLK|Selawik|66.600|-159.986
+WLS|Wallis Island Hihifo|-13.239|-176.199
+WMI|Nowy Dwór Mazowiecki Warsaw Modlin|52.451|20.652
+WMN|Maroantsetra|-15.438|49.689
+WMO|White Mountain|64.689|-163.413
+WMT|Zunyi Maotai|27.962|106.435
+WMX|Wamena|-4.097|138.952
+WNA|Napakiak|60.690|-161.979
+WNH|Wenshan Puzhehei|23.558|104.326
+WNI|Wangi-wangi Island Matahora|-5.292|123.636
+WNN|Wunnumin Lake|52.894|-89.289
+WNP|Naga|13.585|123.270
+WNR|Windorah|-25.411|142.668
+WNS|Nawabashah Shaheed Benazirabad|26.219|68.390
+WNZ|Wenzhou Longwan|27.911|120.853
+WOS|Wonsan Kalma|39.165|127.488
+WRE|Whangarei|-35.769|174.364
+WRG|Wrangell|56.484|-132.370
+WRO|Copernicus Wrocław|51.104|16.882
+WRY|Westray, Orkney Islands Westray|59.350|-2.950
+WSI|Western Sydney International (Nancy-Bird Walton)|-33.883|150.713
+WSK|Chongqing Wushan|31.069|109.709
+WSN|South Naknek Number 2|58.702|-157.005
+WST|Westerly State|41.350|-71.803
+WSZ|Westport|-41.737|171.579
+WTA|Tambohorano|-17.476|43.973
+WTB|Toowoomba Wellcamp|-27.558|151.793
+WTE|Wotje|9.458|170.239
+WTK|Noatak|67.561|-162.980
+WTL|Tuntutuliak|60.351|-162.654
+WTO|Wotho Island|10.173|166.003
+WUA|Wuhai|39.793|106.799
+WUN|Wiluna|-26.633|120.222
+WUS|Nanping Wuyishan|27.702|118.001
+WUT|Xinzhou Wutaishan|38.597|112.969
+WUU|Wau|7.726|27.975
+WUX|Wuxi Sunan Shuofang|31.497|120.430
+WUZ|Tangbu Wuzhou Xijiang|23.403|111.093
+WVB|Walvis Bay|-22.979|14.647
+WWK|Wewak|-3.584|143.669
+WWT|Mertarvik|60.810|-164.500
+WXN|Wanzhou Wuqiao|30.802|108.433
+WYA|Whyalla|-33.059|137.514
+WYS|West Yellowstone Yellowstone|44.688|-111.118
+XAI|Xinyang Minggang|32.541|114.079
+XAP|Chapecó Serafin Enoss Bertaso|-27.134|-52.657
+XBE|Bearskin Lake|53.966|-91.027
+XBJ|Birjand|32.897|59.281
+XCH|Flying Fish Cove Christmas Island|-10.450|105.691
+XCR|Chalons en Champagne Chalons Vatry|48.773|4.206
+XFN|Xiangyang Liuji|32.152|112.292
+XGR|Kangiqsualujjuaq (Georges River)|58.711|-65.993
+XIC|Liangshan Xichang Qingshan|27.989|102.184
+XIL|Xilinhot|43.916|115.964
+XKH|Xieng Khouang|19.450|103.158
+XKS|Kasabonika|53.525|-88.643
+XLB|Lac Brochet|58.614|-101.469
+XMH|Manihi|-14.437|-146.070
+XMS|Macas Coronel E Carvajal|-2.299|-78.121
+XMY|Yam Island|-9.899|142.774
+XNA|Fayetteville/Springdale/Rogers Northwest Arkansa|36.282|-94.307
+XNN|Haidong Xining Caojiabao|36.528|102.040
+XPK|Pukatawagan|55.749|-101.266
+XPL|Palmerola|14.382|-87.621
+XQP|Quepos Managua|9.443|-84.130
+XQU|Qualicum Beach|49.337|-124.393
+XRY|Jerez de la Frontera Jerez|36.745|-6.060
+XSC|South Caicos|21.516|-71.529
+XSI|South Indian Lake|56.793|-98.907
+XSP|Seletar|1.416|103.867
+XTG|Thargomindah|-27.986|143.812
+XTL|Tadoule Lake|58.706|-98.511
+XUZ|Xuzhou Guanyin|34.059|117.555
+XWA|Williston Basin|48.261|-103.751
+XYA|Yandina|-9.093|159.218
+YAA|Anahim Lake|52.452|-125.304
+YAB|Arctic Bay|73.006|-85.046
+YAC|Cat Lake|51.727|-91.824
+YAG|Fort Frances|48.656|-93.443
+YAK|Yakutat|59.509|-139.660
+YAL|Alert Bay|50.582|-126.916
+YAM|Sault Ste Marie|46.483|-84.508
+YAP|Yap Island Yap|9.499|138.083
+YAS|Yasawa Island|-16.759|177.545
+YAT|Attawapiskat|52.928|-82.432
+YAX|Angling Lake Wapekeka|53.849|-89.579
+YAY|St. Anthony|51.392|-56.083
+YAZ|Tofino / Long Beach|49.080|-125.776
+YBB|Kugaaruk|68.536|-89.806
+YBC|Baie-Comeau|49.133|-68.204
+YBE|Uranium City|59.561|-108.481
+YBG|Saguenay-Bagotville|48.330|-70.992
+YBI|Black Tickle|53.470|-55.788
+YBK|Baker Lake|64.299|-96.078
+YBL|Campbell River|49.951|-125.271
+YBP|Yibin Wuliangye|28.858|104.526
+YBR|Brandon|49.910|-99.952
+YBT|Brochet|57.889|-101.679
+YBV|Berens River|52.359|-97.018
+YBX|Lourdes-de-Blanc-Sablon|51.444|-57.185
+YBY|Bonnyville|54.304|-110.744
+YCB|Cambridge Bay|69.108|-105.138
+YCD|Nanaimo|49.055|-123.870
+YCG|Castlegar/West Kootenay|49.296|-117.632
+YCK|Colville Lake Tommy Kochon|67.020|-126.128
+YCM|Niagara-on-the-Lake Niagara District|43.192|-79.172
+YCO|Kugluktuk|67.816|-115.143
+YCR|Cross Lake (Charlie Sinclair Memorial)|54.610|-97.762
+YCS|Chesterfield Inlet|63.347|-90.731
+YCU|Yuncheng Yanhu|35.118|111.034
+YCY|Clyde River|70.486|-68.517
+YDA|Dawson City|64.043|-139.128
+YDF|Deer Lake|49.208|-57.396
+YDL|Dease Lake|58.422|-130.032
+YDN|Dauphin Barker|51.101|-100.052
+YDP|Nain|56.551|-61.682
+YDV|Bloodvein River|51.785|-96.692
+YEG|Edmonton|53.310|-113.580
+YEI|Bursa Yenişehir|40.255|29.563
+YEK|Arviat|61.094|-94.071
+YER|Fort Severn|56.019|-87.676
+YEV|Inuvik Mike Zubko|68.304|-133.483
+YFA|Fort Albany|52.203|-81.695
+YFB|Iqaluit|63.756|-68.556
+YFC|Fredericton|45.869|-66.530
+YFH|Fort Hope|51.562|-87.908
+YFJ|Wekweètì|64.191|-114.077
+YFO|Flin Flon|54.678|-101.682
+YFS|Fort Simpson|61.760|-121.237
+YFX|St. Lewis (Fox Harbour)|52.373|-55.674
+YGH|Fort Good Hope|66.241|-128.648
+YGJ|Yonago Kitaro / JASDF Miho|35.492|133.236
+YGL|La Grande Rivière|53.625|-77.704
+YGO|Gods Lake Narrows|54.558|-94.490
+YGP|Michel-Pouliot Gaspé|48.775|-64.482
+YGR|Les Îles-de-la-Madeleine Îles-de-la-Madeleine|47.425|-61.779
+YGT|Igloolik|69.365|-81.816
+YGV|Havre-Saint-Pierre|50.282|-63.611
+YGW|Kuujjuarapik|55.282|-77.765
+YGX|Gillam|56.357|-94.712
+YGZ|Grise Fiord|76.426|-82.909
+YHA|Port Hope Simpson|52.528|-56.286
+YHG|Charlottetown|52.766|-56.112
+YHI|Ulukhaktok Holman|70.763|-117.806
+YHK|Gjoa Haven|68.636|-95.850
+YHM|John C. Munro Hamilton|43.171|-79.929
+YHO|Hopedale|55.449|-60.228
+YHP|Poplar Hill|52.113|-94.256
+YHR|Chevery|50.468|-59.638
+YHU|Montréal / Saint-Hubert Metropolitan|45.518|-73.417
+YHY|Hay River / Merlyn Carter|60.840|-115.783
+YHZ|Halifax / Stanfield|44.881|-63.509
+YIA|Yogyakarta|-7.905|110.057
+YIC|Yichun Mingyueshan|27.802|114.306
+YIE|Arxan Yi'ershi|47.311|119.912
+YIF|St-Augustin St Augustin|51.212|-58.658
+YIH|Yichang Sanxia|30.554|111.483
+YIK|Ivujivik|62.417|-77.925
+YIN|Ili Yining|43.956|81.330
+YIO|Pond Inlet|72.689|-77.969
+YIV|Island Lake|53.857|-94.654
+YIW|Yiwu/Jinhua Yiwu|29.342|120.031
+YKA|Kamloops John Moose Fulton Field|50.703|-120.449
+YKF|Breslau Region of Waterloo|43.461|-80.379
+YKG|Kangirsuk|60.027|-69.999
+YKH|Yingkou Lanqi|40.543|122.359
+YKL|Schefferville|54.805|-66.805
+YKM|Yakima Air Terminal McAllister Field|46.568|-120.544
+YKO|Hakkari Yüksekova|37.550|44.238
+YKQ|Waskaganish|51.473|-78.758
+YKS|Platon Oyunsky Yakutsk|62.093|129.771
+YKU|Chisasibi|53.806|-78.917
+YLC|Kimmirut|62.848|-69.878
+YLE|Whatì|63.132|-117.246
+YLH|Lansdowne House|52.196|-87.934
+YLK|Barrie-Lake Simcoe|44.485|-79.555
+YLL|Lloydminster|53.309|-110.073
+YLW|Kelowna|49.956|-119.378
+YLX|Yulin Fumian|22.433|110.120
+YMH|Mary's Harbour|52.303|-55.847
+YMM|Fort McMurray|56.653|-111.222
+YMN|Makkovik|55.077|-59.188
+YMO|Moosonee|51.291|-80.608
+YMP|Port McNeill|50.573|-127.028
+YMS|Yurimaguas Moises Benzaquen Rengifo|-5.894|-76.118
+YMT|Chibougamau Chapais|49.772|-74.528
+YMX|Montréal Montreal Mirabel|45.680|-74.039
+YNA|Natashquan|50.190|-61.789
+YNB|Yanbu Prince Abdulmohsen Bin Abdulaziz|24.144|38.063
+YNC|Wemindji|53.011|-78.831
+YND|Ottawa / Gatineau|45.522|-75.564
+YNE|Norway House|53.958|-97.844
+YNJ|Yanji Chaoyangchuan|42.883|129.451
+YNL|Points North Landing|58.277|-104.082
+YNO|North Spirit Lake|52.490|-92.971
+YNP|Natuashish|55.914|-61.184
+YNS|Nemiscau|51.691|-76.136
+YNT|Yantai Penglai|37.660|120.978
+YNY|Gonghang-ro Yangyang|38.060|128.670
+YNZ|Yancheng Nanyang|33.428|120.205
+YOC|Old Crow|67.571|-139.839
+YOG|Ogoki Post|51.659|-85.902
+YOH|Oxford House|54.933|-95.279
+YOJ|High Level|58.621|-117.165
+YOL|Yola|9.258|12.430
+YON|Yongphulla|27.256|91.515
+YOW|Ottawa Macdonald-Cartier|45.322|-75.669
+YPA|Prince Albert Glass Field|53.214|-105.673
+YPC|Paulatuk (Nora Aliqatchialuk Ruben)|69.361|-124.075
+YPE|Peace River|56.227|-117.447
+YPH|Inukjuak|58.472|-78.077
+YPJ|Aupaluk|59.297|-69.600
+YPL|Pickle Lake|51.446|-90.214
+YPM|Pikangikum|51.820|-93.973
+YPN|Port-Menier|49.836|-64.289
+YPO|Peawanuck|54.988|-85.443
+YPQ|Peterborough|44.232|-78.362
+YPR|Prince Rupert|54.286|-130.445
+YPW|Powell River|49.834|-124.500
+YPX|Puvirnituq|60.051|-77.287
+YPY|Fort Chipewyan|58.767|-111.117
+YPZ|Burns Lake|54.376|-125.951
+YQA|Gravenhurst Muskoka|44.975|-79.307
+YQB|Quebec Jean Lesage|46.791|-71.393
+YQC|Quaqtaq|61.046|-69.618
+YQD|The Pas|53.971|-101.091
+YQG|Windsor|42.276|-82.956
+YQH|Watson Lake|60.117|-128.822
+YQK|Kenora|49.788|-94.363
+YQL|Lethbridge County|49.630|-112.800
+YQM|Greater Moncton Roméo LeBlanc|46.113|-64.677
+YQN|Nakina|50.183|-86.696
+YQQ|Comox Valley / CFB Comox|49.711|-124.887
+YQR|Regina|50.432|-104.661
+YQT|Thunder Bay|48.372|-89.324
+YQU|Grande Prairie|55.180|-118.885
+YQX|Gander|48.936|-54.568
+YQY|Sydney / J.A. Douglas McCurdy|46.161|-60.050
+YQZ|Quesnel|53.026|-122.510
+YRA|Gamètì Rae Lakes|64.116|-117.310
+YRB|Resolute Bay|74.717|-94.969
+YRF|Cartwright|53.683|-57.042
+YRG|Rigolet|54.180|-58.458
+YRJ|Roberval|48.520|-72.266
+YRL|Red Lake|51.067|-93.793
+YRO|Ottawa / Rockcliffe|45.460|-75.644
+YRS|Red Sucker Lake|54.167|-93.557
+YRT|Rankin Inlet|62.811|-92.116
+YSB|Sudbury|46.625|-80.799
+YSF|Stony Rapids|59.250|-105.841
+YSG|Lutselk'e|62.418|-110.683
+YSJ|Saint John|45.316|-65.890
+YSK|Sanikiluaq|56.537|-79.250
+YSM|Fort Smith|60.020|-111.962
+YSO|Postville|54.910|-59.785
+YSQ|Qian Gorlos Mongol Autonomous County Songyuan Ch|44.931|124.552
+YST|St. Theresa Point|53.845|-94.852
+YSY|Sachs Harbour (David Nasogaluak Jr. Saaryuaq)|71.994|-125.243
+YTE|Kinngait Cape Dorset|64.230|-76.527
+YTH|Thompson|55.801|-97.864
+YTL|Big Trout Lake|53.818|-89.897
+YTQ|Tasiujaq|58.668|-69.956
+YTS|Timmins/Victor M. Power|48.570|-81.377
+YTW|Hotan Yutian Wanfang|36.809|81.783
+YTY|Yangzhou Taizhou|32.563|119.720
+YTZ|Billy Bishop Toronto City|43.628|-79.396
+YUD|Umiujaq|56.536|-76.518
+YUL|Montréal Montreal / Pierre Elliott Trudeau|45.468|-73.742
+YUM|Yuma / Marine Corps Air Station Yuma|32.651|-114.609
+YUS|Yushu Batang|32.836|97.036
+YUT|Repulse Bay Naujaat|66.521|-86.225
+YUX|Sanirajak Hall Beach|68.776|-81.243
+YUY|Rouyn-Noranda Rouyn Noranda|48.206|-78.836
+YVB|Bonaventure|48.071|-65.460
+YVC|La Ronge|55.151|-105.262
+YVM|Qikiqtarjuaq|67.547|-64.031
+YVO|Val-d'Or|48.053|-77.783
+YVP|Kuujjuaq|58.096|-68.427
+YVQ|Norman Wells|65.282|-126.798
+YVR|Vancouver|49.194|-123.184
+YVV|Wiarton|44.746|-81.107
+YVZ|Deer Lake|52.656|-94.061
+YWB|Kangiqsujuaq (Wakeham Bay)|61.589|-71.929
+YWG|Winnipeg / James Armstrong Richardson|49.910|-97.240
+YWJ|Déline|65.211|-123.436
+YWK|Wabush|52.922|-66.864
+YWL|Williams Lake|52.183|-122.054
+YWM|Williams Harbour|52.567|-55.785
+YWP|Webequie|52.959|-87.375
+YXC|Cranbrook/Canadian Rockies|49.611|-115.782
+YXE|Saskatoon John G. Diefenbaker|52.171|-106.701
+YXH|Medicine Hat|50.019|-110.721
+YXJ|Fort Saint John Fort St John / North Peace|56.238|-120.740
+YXL|Sioux Lookout|50.114|-91.905
+YXN|Whale Cove|62.240|-92.598
+YXP|Pangnirtung|66.145|-65.714
+YXS|Prince George (International)|53.884|-122.667
+YXT|Northwest Terrace-Kitimat|54.468|-128.576
+YXU|London|43.033|-81.149
+YXX|Abbotsford|49.025|-122.361
+YXY|Whitehorse / Erik Nielsen|60.709|-135.066
+YYA|Yueyang Sanhe|29.312|113.282
+YYB|North Bay Jack Garland|46.364|-79.423
+YYC|Calgary|51.119|-114.010
+YYD|Smithers|54.825|-127.183
+YYE|Fort Nelson|58.836|-122.597
+YYF|Penticton|49.463|-119.602
+YYG|Charlottetown|46.289|-63.125
+YYH|Taloyoak|69.547|-93.577
+YYJ|Victoria|48.647|-123.428
+YYL|Lynn Lake|56.864|-101.076
+YYQ|Churchill|58.739|-94.065
+YYR|Goose Bay|53.319|-60.426
+YYT|St. John's|47.619|-52.752
+YYY|Mont-Joli Mont Joli|48.609|-68.208
+YZF|Yellowknife|62.463|-114.440
+YZG|Salluit|62.179|-75.667
+YZP|Sandspit|53.254|-131.814
+YZS|Coral Harbour|64.193|-83.359
+YZT|Port Hardy|50.681|-127.367
+YZU|Whitecourt|54.144|-115.787
+YZV|Sept-Îles|50.223|-66.266
+YZY|Zhangye Ganzhou|38.802|100.675
+YZZ|Trail|49.056|-117.609
+ZAD|Zadar|44.097|15.354
+ZAH|Zahedan|29.476|60.906
+ZAL|Valdivia Pichoy|-39.650|-73.086
+ZAM|Zamboanga|6.922|122.060
+ZAT|Zhaotong Zhaoyang|27.206|103.692
+ZAZ|Zaragoza|41.666|-1.042
+ZBF|South Tetagouche Bathurst|47.630|-65.739
+ZBR|Chabahar Konarak|25.443|60.382
+ZCL|Zacatecas General Leobardo C. Ruiz|22.895|-102.687
+ZCO|Temuco La Araucanía|-38.926|-72.651
+ZDY|Delma Island Delma|24.510|52.335
+ZEL|Bella Bella (Campbell Island)|52.185|-128.157
+ZEM|Eastmain River|52.226|-78.522
+ZFD|Fond-du-Lac|59.334|-107.182
+ZFL|Zhaosu Tianma|43.088|81.223
+ZFM|Fort Mcpherson|67.407|-134.860
+ZFN|Tulita|64.909|-125.570
+ZGI|Gods River|54.840|-94.079
+ZGS|Le Golfe-du-Saint-Laurent La Romaine|50.260|-60.674
+ZHA|Zhanjiang Wuchuan|21.482|110.590
+ZHY|Zhongwei Shapotou|37.573|105.154
+ZIA|Moscow Zhukovsky|55.553|38.150
+ZIG|Ziguinchor|12.556|-16.283
+ZIH|Ixtapa-Zihuatanejo|17.602|-101.461
+ZIX|Zhigansk|66.797|123.361
+ZKE|Kashechewan|52.283|-81.678
+ZKP|Zyryanka|65.749|150.889
+ZLO|Manzanillo Playa de Oro|19.145|-104.559
+ZLT|La Tabatière|50.831|-58.976
+ZMT|Masset|54.028|-132.125
+ZND|Zinder|13.779|8.984
+ZNE|Newman|-23.418|119.803
+ZNZ|Zanzibar Abeid Amani Karume|-6.222|39.225
+ZOS|Osorno Cañal Bajo Carlos Hott Siebert|-40.611|-73.061
+ZPB|Sachigo Lake|53.891|-92.196
+ZPC|Pucon Pucón|-39.293|-71.916
+ZQN|Queenstown|-45.019|168.746
+ZQZ|Zhangjiakou Ningyuan|40.739|114.933
+ZRJ|Round Lake (Weagamow Lake)|52.944|-91.313
+ZSA|San Salvador|24.063|-74.523
+ZSE|Saint-Pierre Pierrefonds|-21.319|55.423
+ZSJ|Sandy Lake|53.064|-93.344
+ZTB|Tête-à-la-Baleine|50.674|-59.384
+ZTH|Zakynthos "Dionysios Solomos"|37.751|20.884
+ZTM|Shamattawa|55.864|-92.081
+ZUH|Zhuhai Jinwan|22.006|113.376
+ZUM|Churchill Falls|53.562|-64.106
+ZWL|Wollaston Lake|58.107|-103.172
+ZYI|Zunyi Xinzhou|27.811|107.247
+ZYL|Sylhet Osmany|24.964|91.865`.split("\n").map(l=>{const[c,n,a,o]=l.split("|");return{c,n,lat:+a,lon:+o,x:1}});
+const ALL=AP.concat(AP2);
 
 /* English airport names (Slovenian falls back to these, with overrides below) */
 const AP_EN={LJU:"Ljubljana",ZAG:"Zagreb",VIE:"Vienna",MUC:"Munich",FRA:"Frankfurt",BER:"Berlin",CDG:"Paris Charles de Gaulle",ORY:"Paris Orly",
@@ -549,7 +4457,7 @@ const LOCALE={ru:"ru-RU",en:"en-GB",sl:"sl-SI"};
 const LANG_KEY="shtil.lang";
 let lang="ru";
 function T(k,...a){const v=(I18N[lang]&&I18N[lang][k]!==undefined)?I18N[lang][k]:I18N.ru[k];return typeof v==="function"?v(...a):v}
-function apName(a){if(!a.c)return a.n;if(lang==="en")return AP_EN[a.c]||a.n;if(lang==="sl")return AP_SL[a.c]||AP_EN[a.c]||a.n;return a.n}
+function apName(a){if(!a.c||a.x)return a.n;if(lang==="en")return AP_EN[a.c]||a.n;if(lang==="sl")return AP_SL[a.c]||AP_EN[a.c]||a.n;return a.n}
 function num(x,d){return Number(x).toLocaleString(LOCALE[lang],{minimumFractionDigits:d||0,maximumFractionDigits:d||0})}
 
 const $=id=>document.getElementById(id);
@@ -651,7 +4559,13 @@ function parsePlace(s){
   const m=s.match(/^(-?\d+(?:\.\d+)?)\s*[,; ]\s*(-?\d+(?:\.\d+)?)$/);
   if(m) return {c:"",n:`${(+m[1]).toFixed(2)}, ${(+m[2]).toFixed(2)}`,lat:+m[1],lon:+m[2]};
   const code=s.slice(0,3).toUpperCase(), low=s.toLowerCase();
-  return AP.find(a=>a.c===code)||AP.find(a=>[a.n,AP_EN[a.c]||"",AP_SL[a.c]||""].some(n=>n&&n.toLowerCase().startsWith(low)))||null;
+  const names=a=>[a.n,AP_EN[a.c]||"",AP_SL[a.c]||""].filter(Boolean).map(n=>n.toLowerCase());
+  const isCode=/^[A-Za-z]{3}($|[\s—–-])/.test(s);
+  return (isCode?ALL.find(a=>a.c===code):null)
+    ||AP.find(a=>names(a).some(n=>n.startsWith(low)))
+    ||AP2.find(a=>a.n.toLowerCase().startsWith(low))
+    ||(low.length>=4?ALL.find(a=>names(a).some(n=>n.includes(low))):null)
+    ||null;
 }
 function hav(a,b){const dl=(b.lat-a.lat)*rad,dn=(b.lon-a.lon)*rad;const h=Math.sin(dl/2)**2+Math.cos(a.lat*rad)*Math.cos(b.lat*rad)*Math.sin(dn/2)**2;return 2*RE*Math.asin(Math.min(1,Math.sqrt(h)))}
 function vec(p){const la=p.lat*rad,lo=p.lon*rad;return[Math.cos(la)*Math.cos(lo),Math.cos(la)*Math.sin(lo),Math.sin(la)]}
@@ -1022,7 +4936,9 @@ function fillFlOptions(){
 }
 function fillAirports(){
   const dl=$("apList");dl.textContent="";
-  AP.forEach(a=>{const o=document.createElement("option");o.value=placeLabel(a);dl.append(o)});
+  const frag=document.createDocumentFragment();
+  ALL.forEach(a=>{const o=document.createElement("option");o.value=placeLabel(a);frag.append(o)});
+  dl.append(frag);
 }
 function relabelInput(id){const p=parsePlace($(id).value);if(p&&p.c)$(id).value=placeLabel(p)}
 function setLang(l,persist){
