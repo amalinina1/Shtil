@@ -75,7 +75,8 @@ button:disabled{opacity:.5;cursor:default}
 .evt b{font-size:15px}
 .evt span{font-size:14px;color:var(--muted)}
 .nextEvt{font-size:13px;color:var(--muted)}
-.cardhead{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cardhead{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.cardhead .row{gap:6px}
 button.small{padding:6px 10px;font-size:13px}
 .flist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
 .flist li{display:flex;gap:6px}
@@ -103,7 +104,7 @@ button.small{padding:6px 10px;font-size:13px}
   </header>
 
   <section class="card" id="flightsCard" hidden aria-labelledby="hFlights">
-    <div class="cardhead"><h2 id="hFlights" data-i="myFlights">Мои рейсы</h2><button class="small" id="newFlight" data-i="newFlight">+ Новый рейс</button></div>
+    <div class="cardhead"><h2 id="hFlights" data-i="myFlights">Мои рейсы</h2><div class="row"><button class="small" id="refreshAll" data-i="refreshAll">Обновить все</button><button class="small" id="newFlight" data-i="newFlight">+ Новый рейс</button></div></div>
     <ul class="flist" id="flist"></ul>
     <p class="hint" style="margin:0" data-i="flightsHint"></p>
   </section>
@@ -4292,7 +4293,7 @@ ru:{
  alTail:l=>`Участок займёт около ${l}. Это обычная часть полёта: самолёт рассчитан на гораздо более сильные нагрузки.`,
  say:(lv,w)=>`${lv} ${w}. Пристегнитесь.`,ok:"Понятно",
  events:"События полёта",nextEvt:(t,x)=>`Дальше через ${x}: ${t}`,
- myFlights:"Мои рейсы",newFlight:"+ Новый рейс",del:"Удалить",delSure:"Точно?",
+ myFlights:"Мои рейсы",refreshAll:"↻ Обновить все",refreshing:(i,n,r)=>`Обновляю рейс ${i} из ${n}: ${r}…`,refreshDone:n=>`Готово: обновлено рейсов — ${n}. Прогнозы сохранены в телефоне.`,refreshNone:"Нет предстоящих рейсов для обновления. Прошедшие и тот, что сейчас в полёте, не обновляются.",refreshFail:(ok,n,r)=>`Обновлено ${ok} из ${n}, остановился на рейсе ${r}. Остальные прогнозы остались прежними.`,newFlight:"+ Новый рейс",del:"Удалить",delSure:"Точно?",
  flightsHint:"Постройте прогноз на каждый рейс до вылета, пока есть интернет. Все рейсы хранятся в телефоне, нажмите на рейс, чтобы открыть его.",
  newFlightHint:"Введите следующий рейс и нажмите «Построить прогноз». Предыдущие рейсы сохранятся.",
  nextOpened:r=>`Рейс завершён. Открыт следующий: ${r}.`,deleted:"Рейс удалён.",
@@ -4363,7 +4364,7 @@ en:{
  alTail:l=>`It should last about ${l}. This is a normal part of flying: the aircraft is built for much stronger loads.`,
  say:(lv,w)=>`${lv} ${w}. Please fasten your seatbelt.`,ok:"Got it",
  events:"Flight events",nextEvt:(t,x)=>`Next in ${x}: ${t}`,
- myFlights:"My flights",newFlight:"+ New flight",del:"Delete",delSure:"Sure?",
+ myFlights:"My flights",refreshAll:"↻ Refresh all",refreshing:(i,n,r)=>`Refreshing flight ${i} of ${n}: ${r}…`,refreshDone:n=>`Done: ${n} ${n===1?"flight":"flights"} refreshed. Forecasts are saved on your phone.`,refreshNone:"No upcoming flights to refresh. Past flights and the one in the air are skipped.",refreshFail:(ok,n,r)=>`Refreshed ${ok} of ${n}, stopped at ${r}. The other forecasts are unchanged.`,newFlight:"+ New flight",del:"Delete",delSure:"Sure?",
  flightsHint:"Get a forecast for each flight before departure while you have internet. All flights are kept on your phone; tap one to open it.",
  newFlightHint:"Enter the next flight and tap “Get forecast”. Your other flights stay saved.",
  nextOpened:r=>`Flight complete. Opened the next one: ${r}.`,deleted:"Flight deleted.",
@@ -4434,7 +4435,7 @@ sl:{
  alTail:l=>`Trajalo bo približno ${l}. To je običajen del leta: letalo je zasnovano za precej večje obremenitve.`,
  say:(lv,w)=>`${lv} ${w}. Pripnite se.`,ok:"Razumem",
  events:"Dogodki leta",nextEvt:(t,x)=>`Naprej čez ${x}: ${t}`,
- myFlights:"Moji leti",newFlight:"+ Nov let",del:"Izbriši",delSure:"Res?",
+ myFlights:"Moji leti",refreshAll:"↻ Osveži vse",refreshing:(i,n,r)=>`Osvežujem let ${i} od ${n}: ${r} …`,refreshDone:n=>`Končano: osveženih letov: ${n}. Napovedi so shranjene v telefonu.`,refreshNone:"Ni prihajajočih letov za osvežitev. Pretekli leti in let, ki je v zraku, se ne osvežijo.",refreshFail:(ok,n,r)=>`Osveženih ${ok} od ${n}, ustavil sem se pri letu ${r}. Druge napovedi so ostale nespremenjene.`,newFlight:"+ Nov let",del:"Izbriši",delSure:"Res?",
  flightsHint:"Za vsak let pripravite napoved pred odhodom, dokler imate internet. Vsi leti ostanejo v telefonu; tapnite let, da ga odprete.",
  newFlightHint:"Vnesite naslednji let in tapnite »Pripravi napoved«. Drugi leti ostanejo shranjeni.",
  nextOpened:r=>`Let je končan. Odprt je naslednji: ${r}.`,deleted:"Let je izbrisan.",
@@ -4676,17 +4677,12 @@ function paintStatus(){const st=$("status");if(!statusState){st.textContent="";r
 function setPos(fn){posState=fn;$("posMeta").textContent=fn?fn():""}
 
 /* ---------- build ---------- */
-async function build(){
-  const from=parsePlace($("from").value),to=parsePlace($("to").value);
-  if(!from||!to){setStatus(()=>T("errPlace"),true);return}
-  const dist=hav(from,to); if(dist<60){setStatus(()=>T("errClose"),true);return}
-  const depMs=new Date($("dep").value).getTime(); if(!isFinite(depMs)){setStatus(()=>T("errDep"),true);return}
-  const dur=Math.max(20,+$("dur").value||autoDur(dist));
-  const flSel=$("fl").value, flSrc=flSel==="auto"?"auto":"manual", fl=flSel==="auto"?autoFl(dist):+flSel, now=Date.now();
-  if(depMs>now+15*864e5){setStatus(()=>T("errFar"),true);return}
+/* fetch + score one flight; throws on network errors (outside the Claude preview) */
+async function computeForecast(p,onProgress){
+  const {from,to,depMs,dur,flSrc}=p, dist=hav(from,to);
+  const fl=flSrc==="auto"?autoFl(dist):p.fl;
   const n=Math.max(12,Math.min(60,Math.round(dist/120)));
-  const pts=gc(from,to,n).map((p,idx)=>{const min=p.f*dur;return{...p,idx,min,ms:depMs+min*6e4,altFt:altAt(min,dur,fl*100)}});
-  $("build").disabled=true;setStatus(()=>T("loading"));
+  const pts=gc(from,to,n).map((q,idx)=>{const min=q.f*dur;return{...q,idx,min,ms:depMs+min*6e4,altFt:altAt(min,dur,fl*100)}});
   let source="open-meteo";
   try{
     for(let b=0;b<pts.length;b+=10){
@@ -4694,30 +4690,69 @@ async function build(){
       let res;
       try{res=await fetchBatch(chunk,depMs-3.6e6,depMs+dur*6e4)}
       catch(e1){if(/HTTP 4|reason/i.test(e1.message||""))throw e1;await new Promise(r=>setTimeout(r,1500));res=await fetchBatch(chunk,depMs-3.6e6,depMs+dur*6e4)}
-      chunk.forEach((p,k)=>{p.v={};FLS.forEach(F=>{p.v[F]=analyzePoint({...p,altFt:altAt(p.min,dur,F*100)},res[k].hourly)});Object.assign(p,p.v[fl])});
-      const done=Math.min(pts.length,b+10),total=pts.length;setStatus(()=>T("loadingN",done,total));
+      chunk.forEach((q,k)=>{q.v={};FLS.forEach(F=>{q.v[F]=analyzePoint({...q,altFt:altAt(q.min,dur,F*100)},res[k].hourly)});Object.assign(q,q.v[fl])});
+      if(onProgress) onProgress(Math.min(pts.length,b+10),pts.length);
     }
   }catch(e){
-    if(!IN_FRAME){
-      $("build").disabled=false;
-      const had=!!flight, offline=navigator.onLine===false, isAbort=e&&e.name==="AbortError", raw=(e&&e.message)||"";
-      const http=/HTTP|reason|must|invalid|parameter/i.test(raw)&&!/load failed|failed to fetch|network/i.test(raw);
-      setStatus(()=>{const msg=isAbort?T("errTimeout"):(raw||T("errUnknown"));
-        return (had?T("keptSaved"):"")+(offline?T("errOffline"):http?T("errHttp",msg):T("errNet",msg))+T("onceNote")},true);
-      return;
-    }
-    source="demo";pts.forEach((p,i)=>{p.v={};FLS.forEach(F=>{p.v[F]=demoMetrics({...p,altFt:altAt(p.min,dur,F*100)},i,pts.length)});Object.assign(p,p.v[fl])});
+    if(!IN_FRAME) throw e;
+    source="demo";pts.forEach((q,i)=>{q.v={};FLS.forEach(F=>{q.v[F]=demoMetrics({...q,altFt:altAt(q.min,dur,F*100)},i,pts.length)});Object.assign(q,q.v[fl])});
   }
-  $("build").disabled=false;
-  const points=pts.map(p=>{const v={};FLS.forEach(F=>{const o=p.v[F];v[F]={level:o.level,cause:o.cause,val:o.val}});
-    return {idx:p.idx,lat:+p.lat.toFixed(3),lon:+p.lon.toFixed(3),min:+p.min.toFixed(1),altFt:Math.round(p.altFt),level:p.level,cause:p.cause,val:p.val,v}});
-  const nf={from,to,depMs,fl,flSrc,dur,dist:Math.round(dist),points,zones:buildZones(points,dur),source,fetchedAt:Date.now()};
+  const points=pts.map(q=>{const v={};FLS.forEach(F=>{const o=q.v[F];v[F]={level:o.level,cause:o.cause,val:o.val}});
+    return {idx:q.idx,lat:+q.lat.toFixed(3),lon:+q.lon.toFixed(3),min:+q.min.toFixed(1),altFt:Math.round(q.altFt),level:q.level,cause:q.cause,val:q.val,v}});
+  return {from,to,depMs,fl,flSrc,dur,dist:Math.round(dist),points,zones:buildZones(points,dur),source,fetchedAt:Date.now()};
+}
+function netErrorText(e,had){
+  const offline=navigator.onLine===false, isAbort=e&&e.name==="AbortError", raw=(e&&e.message)||"";
+  const http=/HTTP|reason|must|invalid|parameter/i.test(raw)&&!/load failed|failed to fetch|network/i.test(raw);
+  const msg=isAbort?T("errTimeout"):(raw||T("errUnknown"));
+  return (had?T("keptSaved"):"")+(offline?T("errOffline"):http?T("errHttp",msg):T("errNet",msg))+T("onceNote");
+}
+function setBusy(on){$("build").disabled=on;$("refreshAll").disabled=on;$("newFlight").disabled=on}
+async function build(){
+  const from=parsePlace($("from").value),to=parsePlace($("to").value);
+  if(!from||!to){setStatus(()=>T("errPlace"),true);return}
+  const dist=hav(from,to); if(dist<60){setStatus(()=>T("errClose"),true);return}
+  const depMs=new Date($("dep").value).getTime(); if(!isFinite(depMs)){setStatus(()=>T("errDep"),true);return}
+  const dur=Math.max(20,+$("dur").value||autoDur(dist));
+  const flSel=$("fl").value, flSrc=flSel==="auto"?"auto":"manual", fl=flSel==="auto"?autoFl(dist):+flSel;
+  if(depMs>Date.now()+15*864e5){setStatus(()=>T("errFar"),true);return}
+  setBusy(true);setStatus(()=>T("loading"));
+  let nf;
+  try{nf=await computeForecast({from,to,depMs,dur,fl,flSrc},(d,t)=>setStatus(()=>T("loadingN",d,t)))}
+  catch(e){setBusy(false);const had=!!flight;setStatus(()=>netErrorText(e,had),true);return}
+  setBusy(false);
   const twin=flights.find(f=>sameFlight(f,nf));
   nf.id=twin?twin.id:newId();
   flight=nf;
   save();
-  setStatus(()=>source==="demo"?T("demoNote"):T("done"),source==="demo");
+  setStatus(()=>nf.source==="demo"?T("demoNote"):T("done"),nf.source==="demo");
   render();
+}
+async function refreshAll(){
+  const now=Date.now();
+  const todo=flights.filter(f=>f.depMs+f.dur*6e4>now&&f.depMs<now+15*864e5&&!(clock&&clock.fid===f.id));
+  if(!todo.length){setStatus(()=>T("refreshNone"));return}
+  if(clock&&clock.mode==="sim") stopFlight();
+  setBusy(true);
+  let ok=0;
+  for(let i=0;i<todo.length;i++){
+    const old=todo[i],k=i+1,total=todo.length,route=routeLabel(old);
+    setStatus(()=>T("refreshing",k,total,route));
+    try{
+      const nf=await computeForecast(old,(d,t)=>setStatus(()=>T("refreshing",k,total,route)+` ${d}/${t}`));
+      nf.id=old.id;
+      const j=flights.findIndex(f=>f.id===old.id);if(j>=0)flights[j]=nf;
+      if(flight&&flight.id===old.id) flight=nf;
+      ok++;saveAll();render();
+    }catch(e){
+      setBusy(false);
+      setStatus(()=>T("refreshFail",ok,total,route)+" "+netErrorText(e,false),true);
+      return;
+    }
+  }
+  setBusy(false);
+  const demo=flights.some(f=>f.source==="demo");
+  setStatus(()=>T("refreshDone",ok)+(demo&&IN_FRAME?" "+T("demoNote"):""),demo&&IN_FRAME);
 }
 
 /* ---------- render ---------- */
@@ -4989,6 +5024,7 @@ $("alOk").addEventListener("click",()=>{$("alert").hidden=true;alertZone=null});
 $("evt").addEventListener("click",()=>{$("evt").hidden=true;evtKey=null});
 $("optEvents").addEventListener("change",updateFlight);
 $("newFlight").addEventListener("click",startNewFlight);
+$("refreshAll").addEventListener("click",refreshAll);
 $("lead").addEventListener("change",()=>clock&&tick());
 $("fl").addEventListener("change",()=>{
   const v=$("fl").value;
