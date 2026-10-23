@@ -101,6 +101,18 @@ button.small[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)
 .gscale{display:flex;justify-content:space-between;font-family:var(--f-data);font-size:11px;color:var(--muted)}
 #spark{width:100%;height:96px;display:block}
 .statrow{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-end}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.tile .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+.tile .v{font-family:var(--f-display);font-size:20px;font-weight:500;font-variant-numeric:tabular-nums;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile .s{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tile .s b{font-weight:600;color:var(--accent)}
+.lift{display:flex;flex-direction:column;gap:8px}
+.lift .big{font-size:28px}
+.lift ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.marginbar{height:10px;border-radius:5px;background:var(--band-bg);overflow:hidden}
+.marginbar i{display:block;height:100%;background:var(--calm);border-radius:5px}
+@media (max-width:420px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .log{list-style:none;margin:0;padding:0}
 .log li{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-top:1px solid var(--line);font-size:13px}
 .log li:first-child{border-top:0}
@@ -214,6 +226,13 @@ button.small{padding:6px 10px;font-size:13px}
     </div>
   </section>
 
+  <section class="card" id="instrCard" hidden aria-labelledby="hInstr">
+    <h2 id="hInstr" data-i="hInstr">Приборы</h2>
+    <div class="tiles" id="instr"></div>
+    <p class="hint" style="margin:0" id="instrNote"></p>
+    <div class="lift" id="lift"></div>
+  </section>
+
   <footer class="foot">
     <p data-i="foot1"></p>
     <p data-i="foot2"></p>
@@ -229,6 +248,7 @@ button.small{padding:6px 10px;font-size:13px}
       <canvas id="mapCanvas" role="img"></canvas>
       <div class="legend" id="legend"></div>
       <div class="next" id="mapInfo"></div>
+      <div class="tiles" id="instrMap"></div>
       <p class="hint" style="margin:0" data-i="mapNote"></p>
     </section>
   </div>
@@ -4381,7 +4401,7 @@ ru:{
  speed:v=>` · ${v} км/ч`,alt:a=>` · высота ${a} км`,
  flGps:f=>`По GPS самолёт на FL${f}. Прогноз пересчитан под эту высоту.`,flRecalc:f=>`Прогноз пересчитан для FL${f}.`,
  oldSaved:"Этот прогноз сохранён старой версией. Нажмите «Построить прогноз», чтобы менять эшелон.",
- simDone:"Симуляция завершена.",autoTo:"Определить взлёт сам",autoCancel:"Отменить ожидание",autoWait:"Жду взлёт. Положите телефон на столик или в карман кресла и не трогайте его во время разбега. Если не сработает, нажмите «Взлетели».",autoRoll:s=>`Похоже на разбег по полосе: ${s} с…`,autoGpsOnly:"Датчик движения недоступен, жду взлёт по GPS. Держите телефон у окна.",autoNone:"Ни датчик движения, ни GPS недоступны. Нажмите «Взлетели» сами.",srcMotion:"по разгону",srcGps:"по GPS",autoDone:x=>`Взлёт определён автоматически (${x}). Если время не совпадает, поправьте кнопками ±5 мин.`,bgHint:"Держите приложение открытым на экране. Если перейти в другое приложение, iPhone приостановит слежение, а при возврате положение на маршруте восстановится само.",away:(d,l)=>`Приложение было свёрнуто ${d}. ${l?`За это время: ${l}. `:""}Положение на маршруте восстановлено.`,awayZone:lv=>`зона: ${lv.toLowerCase()}`,zonePassed:"Зона болтанки позади. Дальше по прогнозу спокойнее.",
+ simDone:"Симуляция завершена.",hInstr:"Приборы",iAlt:"Высота",iSpd:"Скорость",iEl:"В пути",iLeft:"До посадки",iDone:"Пролетели",iRem:"Осталось",tagGps:"GPS",tagEst:"расчёт",ft:"фт",kmh:"км/ч",overGround:"над землёй",etaAt:t=>`посадка ≈ ${t}`,ofKm:k=>`из ${k} км`,instrIdle:"Живые данные появятся после взлёта.",instrHow:"Высота и скорость берутся из GPS, если телефон у окна ловит спутники, иначе считаются по профилю полёта.",hLift:"Подъёмная сила крыла",tons:"т",kN:"кН",liftEq:"Столько сейчас весит самолёт. В ровном полёте крыло держит ровно его вес.",liftArea:k=>`Каждый квадратный метр крыла держит около ${k} кг.`,liftMargin:(p,x)=>`Крыло использует около ${p}% подъёмной силы, доступной на этой высоте и скорости. Запас ×${x}.`,liftGust:(g,n)=>`Толчок ${g} g: на мгновение крыло держит ×${n} от веса. Конструкция рассчитана минимум на ×2,5 и ещё в полтора раза больше с запасом.`,liftLow:"Ниже 3 км крылу помогают выпущенные закрылки, поэтому запас показывается только в наборе высоты и на эшелоне.",liftNote:(ac,def)=>`Оценка для ${ac} по типичной массе, расходу топлива и стандартной атмосфере, а не данные с борта.${def?" Свой самолёт можно выбрать на вкладке «Тряска».":""}`,liftPre:(t,ac)=>`На эшелоне крыло будет держать около ${t} т: это примерный вес ${ac} на этом рейсе.`,acGroups:{narrow:"Узкофюзеляжные",regional:"Региональные",prop:"Винтовые",wide:"Широкофюзеляжные",heavy:"Самые большие"},acUnk:"Не знаю",autoTo:"Определить взлёт сам",autoCancel:"Отменить ожидание",autoWait:"Жду взлёт. Положите телефон на столик или в карман кресла и не трогайте его во время разбега. Если не сработает, нажмите «Взлетели».",autoRoll:s=>`Похоже на разбег по полосе: ${s} с…`,autoGpsOnly:"Датчик движения недоступен, жду взлёт по GPS. Держите телефон у окна.",autoNone:"Ни датчик движения, ни GPS недоступны. Нажмите «Взлетели» сами.",srcMotion:"по разгону",srcGps:"по GPS",autoDone:x=>`Взлёт определён автоматически (${x}). Если время не совпадает, поправьте кнопками ±5 мин.`,bgHint:"Держите приложение открытым на экране. Если перейти в другое приложение, iPhone приостановит слежение, а при возврате положение на маршруте восстановится само.",away:(d,l)=>`Приложение было свёрнуто ${d}. ${l?`За это время: ${l}. `:""}Положение на маршруте восстановлено.`,awayZone:lv=>`зона: ${lv.toLowerCase()}`,zonePassed:"Зона болтанки позади. Дальше по прогнозу спокойнее.",
  whenIn:x=>`примерно через ${x}`,whenNow:"сейчас",
  alStrong:"Пристегнитесь и уберите горячие напитки. ",alLight:"Хорошее время пристегнуться. ",
  alTail:l=>`Участок займёт около ${l}. Это обычная часть полёта: самолёт рассчитан на гораздо более сильные нагрузки.`,
@@ -4489,7 +4509,7 @@ en:{
  speed:v=>` · ${v} km/h`,alt:a=>` · altitude ${a} km`,
  flGps:f=>`GPS shows the plane at FL${f}. Forecast recalculated for this altitude.`,flRecalc:f=>`Forecast recalculated for FL${f}.`,
  oldSaved:"This forecast was saved by an older version. Tap “Get forecast” to change the flight level.",
- simDone:"Simulation finished.",autoTo:"Detect takeoff",autoCancel:"Stop waiting",autoWait:"Waiting for takeoff. Put the phone on the tray table or in the seat pocket and don't touch it during the takeoff run. If it doesn't trigger, tap “Took off”.",autoRoll:s=>`Looks like the takeoff run: ${s} s…`,autoGpsOnly:"Motion sensor unavailable; waiting for takeoff by GPS. Keep the phone near the window.",autoNone:"Neither the motion sensor nor GPS is available. Tap “Took off” yourself.",srcMotion:"from the takeoff run",srcGps:"by GPS",autoDone:x=>`Takeoff detected automatically (${x}). If the time is off, adjust it with ±5 min.`,bgHint:"Keep the app open on screen. If you switch to another app, iPhone pauses tracking; your position on the route is restored automatically when you come back.",away:(d,l)=>`The app was in the background for ${d}. ${l?`Meanwhile: ${l}. `:""}Your position on the route has been restored.`,awayZone:lv=>`${lv.toLowerCase()} zone`,zonePassed:"Turbulence zone passed. Smoother air is forecast ahead.",
+ simDone:"Simulation finished.",hInstr:"Instruments",iAlt:"Altitude",iSpd:"Speed",iEl:"Flying for",iLeft:"To landing",iDone:"Flown",iRem:"Remaining",tagGps:"GPS",tagEst:"estimate",ft:"ft",kmh:"km/h",overGround:"over ground",etaAt:t=>`landing ≈ ${t}`,ofKm:k=>`of ${k} km`,instrIdle:"Live data appears after takeoff.",instrHow:"Altitude and speed come from GPS when the phone picks up satellites by the window; otherwise they are estimated from the flight profile.",hLift:"Wing lift",tons:"t",kN:"kN",liftEq:"That is what the aircraft weighs right now. In level flight the wing holds exactly its weight.",liftArea:k=>`Each square metre of wing carries about ${k} kg.`,liftMargin:(p,x)=>`The wing is using about ${p}% of the lift available at this altitude and speed. Margin ×${x}.`,liftGust:(g,n)=>`A ${g} g bump: for a moment the wing carries ×${n} the weight. The structure is built for at least ×2.5, plus another 50% safety margin.`,liftLow:"Below 3 km the flaps help the wing, so the margin is shown only in the climb and at cruise.",liftNote:(ac,def)=>`Estimate for the ${ac} from typical weight, fuel burn and the standard atmosphere, not data from the aircraft.${def?" You can pick your aircraft on the Shake meter tab.":""}`,liftPre:(t,ac)=>`At cruise the wing will carry about ${t} t: the approximate weight of the ${ac} on this flight.`,acGroups:{narrow:"Narrow-body",regional:"Regional",prop:"Turboprop",wide:"Wide-body",heavy:"Largest"},acUnk:"Not sure",autoTo:"Detect takeoff",autoCancel:"Stop waiting",autoWait:"Waiting for takeoff. Put the phone on the tray table or in the seat pocket and don't touch it during the takeoff run. If it doesn't trigger, tap “Took off”.",autoRoll:s=>`Looks like the takeoff run: ${s} s…`,autoGpsOnly:"Motion sensor unavailable; waiting for takeoff by GPS. Keep the phone near the window.",autoNone:"Neither the motion sensor nor GPS is available. Tap “Took off” yourself.",srcMotion:"from the takeoff run",srcGps:"by GPS",autoDone:x=>`Takeoff detected automatically (${x}). If the time is off, adjust it with ±5 min.`,bgHint:"Keep the app open on screen. If you switch to another app, iPhone pauses tracking; your position on the route is restored automatically when you come back.",away:(d,l)=>`The app was in the background for ${d}. ${l?`Meanwhile: ${l}. `:""}Your position on the route has been restored.`,awayZone:lv=>`${lv.toLowerCase()} zone`,zonePassed:"Turbulence zone passed. Smoother air is forecast ahead.",
  whenIn:x=>`in about ${x}`,whenNow:"now",
  alStrong:"Fasten your seatbelt and put away hot drinks. ",alLight:"A good moment to fasten your seatbelt. ",
  alTail:l=>`It should last about ${l}. This is a normal part of flying: the aircraft is built for much stronger loads.`,
@@ -4597,7 +4617,7 @@ sl:{
  speed:v=>` · ${v} km/h`,alt:a=>` · višina ${a} km`,
  flGps:f=>`Po GPS je letalo na FL${f}. Napoved je preračunana za to višino.`,flRecalc:f=>`Napoved preračunana za FL${f}.`,
  oldSaved:"To napoved je shranila starejša različica. Tapnite »Pripravi napoved«, da lahko spremenite višino leta.",
- simDone:"Simulacija je končana.",autoTo:"Samodejno zaznaj vzlet",autoCancel:"Prekliči čakanje",autoWait:"Čakam na vzlet. Telefon položite na mizico ali v žep sedeža in se ga med zaletom ne dotikajte. Če ne zazna, tapnite »Vzleteli smo«.",autoRoll:s=>`Videti je kot zalet po stezi: ${s} s …`,autoGpsOnly:"Senzor gibanja ni na voljo; vzlet čakam po GPS. Telefon držite ob oknu.",autoNone:"Ne senzor gibanja ne GPS nista na voljo. Tapnite »Vzleteli smo« sami.",srcMotion:"po zaletu",srcGps:"po GPS",autoDone:x=>`Vzlet je zaznan samodejno (${x}). Če čas ne ustreza, ga popravite z gumboma ±5 min.`,bgHint:"Aplikacija naj ostane odprta na zaslonu. Če preklopite v drugo aplikacijo, iPhone sledenje začasno ustavi; ko se vrnete, se položaj na poti samodejno obnovi.",away:(d,l)=>`Aplikacija je bila v ozadju ${d}. ${l?`Medtem: ${l}. `:""}Položaj na poti je obnovljen.`,awayZone:lv=>`območje: ${lv.toLowerCase()}`,zonePassed:"Območje turbulence je za vami. Naprej je napovedano mirneje.",
+ simDone:"Simulacija je končana.",hInstr:"Instrumenti",iAlt:"Višina",iSpd:"Hitrost",iEl:"V zraku",iLeft:"Do pristanka",iDone:"Preleteli",iRem:"Še",tagGps:"GPS",tagEst:"ocena",ft:"ft",kmh:"km/h",overGround:"nad tlemi",etaAt:t=>`pristanek ≈ ${t}`,ofKm:k=>`od ${k} km`,instrIdle:"Podatki v živo se prikažejo po vzletu.",instrHow:"Višina in hitrost sta iz GPS, če telefon ob oknu ujame satelite; sicer sta ocenjeni po profilu leta.",hLift:"Vzgon krila",tons:"t",kN:"kN",liftEq:"Toliko zdaj tehta letalo. V vodoravnem letu krilo nosi natanko njegovo težo.",liftArea:k=>`Vsak kvadratni meter krila nosi približno ${k} kg.`,liftMargin:(p,x)=>`Krilo izkorišča približno ${p}% vzgona, ki je na voljo pri tej višini in hitrosti. Rezerva ×${x}.`,liftGust:(g,n)=>`Sunek ${g} g: za trenutek krilo nosi ×${n} teže. Konstrukcija je zasnovana za vsaj ×2,5 in še 50% varnostne rezerve.`,liftLow:"Pod 3 km krilu pomagajo zakrilca, zato je rezerva prikazana le med vzpenjanjem in na potovalni višini.",liftNote:(ac,def)=>`Ocena za ${ac} na podlagi tipične mase, porabe goriva in standardne atmosfere, ne podatki z letala.${def?" Svoje letalo lahko izberete na zavihku Tresenje.":""}`,liftPre:(t,ac)=>`Na potovalni višini bo krilo nosilo približno ${t} t: to je približna teža letala ${ac} na tem letu.`,acGroups:{narrow:"Ozkotrupna",regional:"Regionalna",prop:"Turbopropelerska",wide:"Širokotrupna",heavy:"Največja"},acUnk:"Ne vem",autoTo:"Samodejno zaznaj vzlet",autoCancel:"Prekliči čakanje",autoWait:"Čakam na vzlet. Telefon položite na mizico ali v žep sedeža in se ga med zaletom ne dotikajte. Če ne zazna, tapnite »Vzleteli smo«.",autoRoll:s=>`Videti je kot zalet po stezi: ${s} s …`,autoGpsOnly:"Senzor gibanja ni na voljo; vzlet čakam po GPS. Telefon držite ob oknu.",autoNone:"Ne senzor gibanja ne GPS nista na voljo. Tapnite »Vzleteli smo« sami.",srcMotion:"po zaletu",srcGps:"po GPS",autoDone:x=>`Vzlet je zaznan samodejno (${x}). Če čas ne ustreza, ga popravite z gumboma ±5 min.`,bgHint:"Aplikacija naj ostane odprta na zaslonu. Če preklopite v drugo aplikacijo, iPhone sledenje začasno ustavi; ko se vrnete, se položaj na poti samodejno obnovi.",away:(d,l)=>`Aplikacija je bila v ozadju ${d}. ${l?`Medtem: ${l}. `:""}Položaj na poti je obnovljen.`,awayZone:lv=>`območje: ${lv.toLowerCase()}`,zonePassed:"Območje turbulence je za vami. Naprej je napovedano mirneje.",
  whenIn:x=>`čez približno ${x}`,whenNow:"zdaj",
  alStrong:"Pripnite se in odložite vroče pijače. ",alLight:"Dober trenutek, da se pripnete. ",
  alTail:l=>`Trajalo bo približno ${l}. To je običajen del leta: letalo je zasnovano za precej večje obremenitve.`,
@@ -4742,7 +4762,7 @@ function deleteFlight(id){
   else saveAll();
   renderList();toast(T("deleted"));
 }
-function clearView(){$("results").hidden=true;$("flight").hidden=true;$("wxCard").hidden=true}
+function clearView(){$("results").hidden=true;$("flight").hidden=true;$("wxCard").hidden=true;$("instrCard").hidden=true;$("instrMap").innerHTML=""}
 function startNewFlight(){
   if(clock&&clock.mode==="sim") stopFlight();
   const prev=flight||flights[flights.length-1]||null;
@@ -5109,7 +5129,7 @@ function updateFlight(){
   const m=curMin(),line=document.getElementById("nowLine");
   $("bgHint").hidden=!(clock&&clock.mode==="real");
   $("autoTo").hidden=!!clock;
-  if(m==null){$("clock").textContent="—";$("nextZone").textContent=T("idle");$("nextEvt").textContent="";if(line)line.setAttribute("visibility","hidden");return}
+  if(m==null){$("clock").textContent="—";$("nextZone").textContent=T("idle");$("nextEvt").textContent="";if(line)line.setAttribute("visibility","hidden");renderInstr();return}
   const ne=$("optEvents").checked?flightEvents().find(e=>e.at>m&&!evFired[e.k]):null;
   $("nextEvt").textContent=ne?T("nextEvt",T("ev")[ne.k][0],fmtDur(Math.max(1,ne.at-m))):"";
   $("clock").textContent=T("clock",fmtClock(Math.max(0,m)),fmtDur(flight.dur-m));
@@ -5121,6 +5141,7 @@ function updateFlight(){
   if(inZ) t=T("nowIn",lvl(inZ.level),fmtDur(inZ.end-m));
   t+=nx?T("nextZ",lvl(nx.level),fmtDur(nx.start-m),fmtDur(nx.end-nx.start)):(inZ?T("calmAfter"):T("calmAhead"));
   $("nextZone").textContent=t;
+  renderInstr();
 }
 function adjust(d){if(!clock){toast(T("needTakeoff"));return}setClock(curMin()+d,clock.rate,clock.mode);tick()}
 
@@ -5257,12 +5278,14 @@ function onPos(pos){
   if(!clock||clock.mode!=="real") return;
   const gAlt=checkAltitude(pos,curMin());
   const me={lat:pos.coords.latitude,lon:pos.coords.longitude},P=flight.points;
+  gpsLast={t:Date.now(),alt:(pos.coords.altitude!=null&&isFinite(pos.coords.altitude))?pos.coords.altitude:null,spd:(pos.coords.speed!=null&&pos.coords.speed>=0)?pos.coords.speed:null,km:null};
   lastFix={lat:me.lat,lon:me.lon,t:Date.now()};
   let bi=0,bd=1e9;P.forEach((p,i)=>{const d=hav(me,p);if(d<bd){bd=d;bi=i}});
   let m=P[bi].min;
   const nb=bi<P.length-1?bi+1:bi-1;
   if(nb>=0&&nb!==bi){const a=P[Math.min(bi,nb)],b=P[Math.max(bi,nb)],ab=hav(a,b),ad=hav(a,me),bd2=hav(b,me);
-    const fr=Math.max(0,Math.min(1,(ad*ad-bd2*bd2+ab*ab)/(2*ab*ab)));m=a.min+(b.min-a.min)*fr}
+    const fr=Math.max(0,Math.min(1,(ad*ad-bd2*bd2+ab*ab)/(2*ab*ab)));m=a.min+(b.min-a.min)*fr;
+    if(bd<200) gpsLast.km=(Math.min(bi,nb)+fr)/(P.length-1)*flight.dist}
   const acc=pos.coords.accuracy||9999, km=Math.round(bd), spd=pos.coords.speed;
   const extra=()=>(spd!=null?T("speed",Math.round(spd*3.6)):"")+(gAlt!=null?T("alt",num(gAlt/1000,1)):"");
   if(bd<200&&acc<5000){clock.baseMs=Date.now();clock.minAtBase=m;clock.lastFix={lat:me.lat,lon:me.lon,ts:Date.now()};saveClock();setPos(()=>T("gpsOk",km,extra()))}
@@ -5513,15 +5536,134 @@ function drawMap(){
 }
 function setMapMode(md){mapMode=md;$("mapAll").setAttribute("aria-pressed",String(md==="all"));$("mapPlane").setAttribute("aria-pressed",String(md==="plane"));drawMap()}
 
+
+/* ---------- instruments: altitude, speed, time, distance, wing lift ---------- */
+let gpsLast=null;
+/* ground-speed profile: slower in climb and descent, Vc in cruise, scaled so the distance adds up */
+function speedShape(m,d){const [c0,c1]=cruiseWindow(d);if(m<c0)return .3+.7*m/c0;if(m>c1)return .3+.7*Math.max(0,d-m)/(d-c1);return 1}
+function kmModel(m){
+  const d=flight.dur,[c0,c1]=cruiseWindow(d),D=d-c1,I=.65*c0+(c1-c0)+.65*D,vc=flight.dist/I;
+  m=Math.max(0,Math.min(d,m));let a;
+  if(m<=c0)a=.3*m+.35*m*m/c0;else if(m<=c1)a=.65*c0+(m-c0);else{const x=m-c1;a=.65*c0+(c1-c0)+.3*x+.7*(D*x-x*x/2)/D}
+  return {km:vc*a,kmh:vc*speedShape(m,d)*60};
+}
+function isa(h){h=Math.max(0,h);let T0,rho;if(h<11000){T0=288.15-.0065*h;rho=1.225*Math.pow(T0/288.15,4.2559)}else{T0=216.65;rho=.3639*Math.exp(-(h-11000)/6341.6)}return{rho,a:Math.sqrt(1.4*287.05*T0)}}
+function liftCalc(m,altM){
+  const s=shakeSettings();let id=acId(s.ac),def=false;
+  if(!AIRCRAFT[id]){id=flight.dist>5500?"b789":flight.dist<500?"at76":"a320";def=true}
+  const A=AIRCRAFT[id];
+  const fuel=A.burn*(flight.dur/60+.75)/1000*1.05;
+  const tow=Math.min(A.mtow,A.oew+.8*A.pay+fuel);
+  const mass=tow-A.burn*Math.max(0,m)/60/1000;               // tonnes
+  const {rho,a}=isa(altM);
+  const V=A.tas?Math.min(A.tas,A.eas*Math.sqrt(1.225/rho)):Math.min(A.M*a,A.eas*Math.sqrt(1.225/rho));
+  const W=mass*1000*9.81,CL=W/(.5*rho*V*V*A.S);
+  const clMax=A.c==="prop"?1.5:(altM>6000?.85:1.4);
+  return {A,def,mass,kN:W/1000,load:mass*1000/A.S,CL,margin:clMax/CL,used:CL/clMax};
+}
+function navNow(){
+  const m=clock&&clock.fid===flight.id?curMin():null;
+  if(m==null) return null;
+  const mod=kmModel(m),fresh=gpsLast&&Date.now()-gpsLast.t<120000;
+  const alt=fresh&&gpsLast.alt!=null?{v:gpsLast.alt,gps:true}:{v:altAt(Math.max(0,m),flight.dur,flight.fl*100)*.3048,gps:false};
+  const spd=fresh&&gpsLast.spd!=null&&m>0?{v:gpsLast.spd*3.6,gps:true}:{v:m<0?0:mod.kmh,gps:false};
+  const km=fresh&&gpsLast.km!=null?{v:gpsLast.km,gps:true}:{v:mod.km,gps:false};
+  return {m,alt,spd,km};
+}
+function tileHTML(k,v,sub,gps){
+  const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const sep=sub?" · ":"",tag=gps==null?"":gps?`${sep}<b>${esc(T("tagGps"))}</b>`:`${sep}${esc(T("tagEst"))}`;
+  return `<div class="tile"><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span><span class="s">${esc(sub)}${tag}</span></div>`;
+}
+function renderInstr(){
+  const card=$("instrCard");
+  if(!flight){card.hidden=true;$("instrMap").innerHTML="";return}
+  card.hidden=false;
+  const n=navNow(),f=flight,tot=num(f.dist);
+  let html;
+  if(!n){
+    html=tileHTML(T("iAlt"),"—",`FL${f.fl}`,null)+tileHTML(T("iSpd"),"—",T("overGround"),null)+tileHTML(T("iEl"),"—","",null)+
+         tileHTML(T("iLeft"),fmtDur(f.dur),"",null)+tileHTML(T("iDone"),"—",T("ofKm",tot),null)+tileHTML(T("iRem"),`${tot} ${T("km")}`,"",null);
+    $("instrNote").textContent=T("instrIdle")+" "+T("instrHow");
+  }else{
+    const m=n.m,left=Math.max(0,f.dur-m),done=Math.max(0,Math.min(f.dist,n.km.v));
+    const altM=Math.max(0,n.alt.v);
+    html=tileHTML(T("iAlt"),`${num(Math.round(altM/10)*10)} ${lang==="ru"?"м":"m"}`,`${num(Math.round(altM*3.28084/100)*100)} ${T("ft")}`,n.alt.gps)+
+         tileHTML(T("iSpd"),`${num(n.spd.v)} ${T("kmh")}`,T("overGround"),n.spd.gps)+
+         tileHTML(T("iEl"),fmtDur(Math.max(0,m)),"",null)+
+         tileHTML(T("iLeft"),fmtDur(left),clock.mode==="sim"?"":T("etaAt",hhmm(Date.now()+left*6e4)),null)+
+         tileHTML(T("iDone"),`${num(done)} ${T("km")}`,T("ofKm",tot),n.km.gps)+
+         tileHTML(T("iRem"),`${num(f.dist-done)} ${T("km")}`,"",n.km.gps);
+    $("instrNote").textContent=T("instrHow");
+  }
+  $("instr").innerHTML=html;$("instrMap").innerHTML=html;
+  renderLift(n);
+}
+function renderLift(n){
+  const box=$("lift");box.textContent="";
+  const h=document.createElement("h2");h.textContent=T("hLift");box.append(h);
+  const cruiseAlt=f=>f.fl*100*.3048;
+  if(!n){
+    const L=liftCalc(flight.dur/2,cruiseAlt(flight));
+    const p=document.createElement("p");p.style.margin="0";p.textContent=T("liftPre",num(L.mass),L.A.n);box.append(p);
+    const q=document.createElement("p");q.className="hint";q.style.margin="0";q.textContent=T("liftNote",L.A.n,L.def);box.append(q);return;
+  }
+  const alt=Math.max(0,n.alt.v),L=liftCalc(n.m,alt);
+  const big=document.createElement("div");big.className="big";big.textContent=`≈ ${num(L.mass)} ${T("tons")} · ${num(L.kN)} ${T("kN")}`;
+  const ul=document.createElement("ul");
+  const li=t=>{const x=document.createElement("li");x.textContent=t;ul.append(x)};
+  li(T("liftEq"));li(T("liftArea",num(Math.round(L.load/10)*10)));
+  let bar=null;
+  if(alt>=3000&&n.m>0){
+    li(T("liftMargin",Math.round(L.used*100),num(L.margin,1)));
+    bar=document.createElement("div");bar.className="marginbar";const i=document.createElement("i");i.style.width=Math.min(100,Math.round(L.used*100))+"%";bar.append(i);
+  }else li(T("liftLow"));
+  const g=(sens.on||sens.demo)?sens.now:0;
+  if(g>=0.05) li(T("liftGust",num(g,2),num(1+g,2)));
+  const q=document.createElement("p");q.className="hint";q.style.margin="0";q.textContent=T("liftNote",L.A.n,L.def);
+  box.append(big);if(bar)box.append(bar);box.append(ul,q);
+}
+
 /* ---------- shake meter ---------- */
 const AC_F={unk:1,narrow:1,regional:1.2,prop:1.4,wide:0.85,heavy:0.8}, SEAT_F={unk:1,front:1.15,wing:1,rear:1.4};
+/* typical data: wing area m², empty & max takeoff mass t, max payload t, fuel burn kg/h, cruise Mach, climb EAS m/s */
+const AIRCRAFT={
+ a319:{n:"Airbus A319",c:"narrow",S:122.6,oew:40.8,mtow:75.5,pay:17.7,burn:2300,M:.78,eas:150},
+ a320:{n:"Airbus A320",c:"narrow",S:122.6,oew:42.6,mtow:78,pay:18,burn:2500,M:.78,eas:150},
+ a321:{n:"Airbus A321",c:"narrow",S:122.6,oew:48.5,mtow:93.5,pay:22,burn:2900,M:.78,eas:150},
+ b738:{n:"Boeing 737-800",c:"narrow",S:124.6,oew:41.4,mtow:79,pay:20,burn:2500,M:.785,eas:150},
+ b38m:{n:"Boeing 737 MAX 8",c:"narrow",S:127,oew:45,mtow:82.2,pay:20.7,burn:2200,M:.79,eas:150},
+ c919:{n:"COMAC C919",c:"narrow",S:129.2,oew:45.7,mtow:77.3,pay:18.9,burn:2500,M:.785,eas:150},
+ mc21:{n:"Irkut MC-21",c:"narrow",S:113,oew:46,mtow:79.3,pay:21,burn:2400,M:.78,eas:150},
+ a220:{n:"Airbus A220-300",c:"regional",S:112.3,oew:37,mtow:70.9,pay:18.7,burn:2000,M:.78,eas:145},
+ e190:{n:"Embraer E190",c:"regional",S:92.5,oew:28,mtow:51.8,pay:13,burn:2000,M:.78,eas:145},
+ e195:{n:"Embraer E195-E2",c:"regional",S:103,oew:35.7,mtow:61.5,pay:16,burn:2000,M:.78,eas:145},
+ crj9:{n:"Bombardier CRJ900",c:"regional",S:71,oew:21.8,mtow:38.3,pay:10.2,burn:1700,M:.78,eas:145},
+ su95:{n:"Sukhoi Superjet 100",c:"regional",S:77,oew:24.5,mtow:45.9,pay:12.2,burn:1700,M:.78,eas:145},
+ at76:{n:"ATR 72-600",c:"prop",S:61,oew:13.5,mtow:23,pay:7.5,burn:750,M:.42,eas:105,tas:140},
+ dh8d:{n:"Dash 8 Q400",c:"prop",S:63.1,oew:17.8,mtow:29.6,pay:8.5,burn:1100,M:.55,eas:120,tas:180},
+ a333:{n:"Airbus A330-300",c:"wide",S:361.6,oew:124,mtow:242,pay:45,burn:5700,M:.82,eas:155},
+ a359:{n:"Airbus A350-900",c:"wide",S:442,oew:142,mtow:283,pay:53,burn:5800,M:.85,eas:155},
+ b789:{n:"Boeing 787-9",c:"wide",S:360,oew:128,mtow:254,pay:52,burn:5400,M:.85,eas:155},
+ b763:{n:"Boeing 767-300ER",c:"wide",S:283.3,oew:90,mtow:186.9,pay:40,burn:4800,M:.80,eas:155},
+ b77w:{n:"Boeing 777-300ER",c:"heavy",S:436.8,oew:168,mtow:351.5,pay:69,burn:7500,M:.84,eas:160},
+ b748:{n:"Boeing 747-8",c:"heavy",S:554,oew:220,mtow:448,pay:76,burn:10000,M:.855,eas:160},
+ a388:{n:"Airbus A380",c:"heavy",S:845,oew:285,mtow:575,pay:84,burn:11000,M:.85,eas:160}};
+const AC_LEGACY={narrow:"a320",regional:"e190",prop:"at76",wide:"a333",heavy:"b77w"};
+function acId(raw){return AIRCRAFT[raw]?raw:(AC_LEGACY[raw]||"unk")}
+function acCat(raw){const id=acId(raw);return AIRCRAFT[id]?AIRCRAFT[id].c:"unk"}
 const SHAKE_KEY="shtil.shake";
 function shakeSettings(){let d={ac:"unk",seat:"unk"};try{d={...d,...JSON.parse(localStorage.getItem(SHAKE_KEY)||"{}")}}catch(e){}
   if(flight){if(flight.ac)d.ac=flight.ac;if(flight.seat)d.seat=flight.seat}return d}
-function feelFactor(){const s=shakeSettings();return (AC_F[s.ac]||1)*(SEAT_F[s.seat]||1)}
+function feelFactor(){const s=shakeSettings();return (AC_F[acCat(s.ac)]||1)*(SEAT_F[s.seat]||1)}
 function fillShakeSelects(){
   const s=shakeSettings();
-  [["ac",T("acOpts"),s.ac],["seat",T("seatOpts"),s.seat]].forEach(([id,opts,val])=>{const sel=$(id);sel.textContent="";
+  const ac=$("ac");ac.textContent="";
+  const o0=document.createElement("option");o0.value="unk";o0.textContent=T("acUnk");ac.append(o0);
+  Object.entries(T("acGroups")).forEach(([g,label])=>{const og=document.createElement("optgroup");og.label=label;
+    Object.entries(AIRCRAFT).filter(([,a])=>a.c===g).forEach(([id,a])=>{const o=document.createElement("option");o.value=id;o.textContent=a.n;og.append(o)});ac.append(og)});
+  ac.value=acId(s.ac);
+  [["seat",T("seatOpts"),s.seat]].forEach(([id,opts,val])=>{const sel=$(id);sel.textContent="";
     Object.keys(opts).forEach(k=>{const o=document.createElement("option");o.value=k;o.textContent=opts[k];sel.append(o)});sel.value=val});
 }
 function saveShakeSetting(){
@@ -5534,9 +5676,9 @@ function renderShakeMeta(){
   const s=shakeSettings(),f=feelFactor(),x=num(f,1);
   let t=f>=1.1?T("feelMore",x):f<=0.9?T("feelLess",x):T("feelSame");
   if(s.seat==="rear"||s.seat==="front") t+=T("tipRear");
-  if(s.ac==="prop") t+=T("tipProp");
+  if(acCat(s.ac)==="prop") t+=T("tipProp");
   $("feel").textContent=t;
-  if($("ac").value!==s.ac) $("ac").value=s.ac;
+  if($("ac").value!==acId(s.ac)) $("ac").value=acId(s.ac);
   if($("seat").value!==s.seat) $("seat").value=s.seat;
   renderShakeLog();
 }
