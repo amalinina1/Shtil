@@ -192,9 +192,11 @@ button.small{padding:6px 10px;font-size:13px}
       <div class="nextEvt" id="nextEvt"></div>
       <div class="meta" id="posMeta"></div>
       <p class="hint" id="bgHint" hidden style="margin:0" data-i="bgHint"></p>
+      <p class="status" id="autoMsg" hidden style="margin:0"></p>
     </div>
     <div class="row">
       <button class="primary" id="takeoff" data-i="takeoff">Взлетели</button>
+      <button id="autoTo" data-i="autoTo">Определить взлёт сам</button>
       <button id="minus" data-i="minus">−5 мин</button>
       <button id="plus" data-i="plus">+5 мин</button>
       <button id="sim" data-i="sim">Симуляция ×60</button>
@@ -4379,7 +4381,7 @@ ru:{
  speed:v=>` · ${v} км/ч`,alt:a=>` · высота ${a} км`,
  flGps:f=>`По GPS самолёт на FL${f}. Прогноз пересчитан под эту высоту.`,flRecalc:f=>`Прогноз пересчитан для FL${f}.`,
  oldSaved:"Этот прогноз сохранён старой версией. Нажмите «Построить прогноз», чтобы менять эшелон.",
- simDone:"Симуляция завершена.",bgHint:"Держите приложение открытым на экране. Если перейти в другое приложение, iPhone приостановит слежение, а при возврате положение на маршруте восстановится само.",away:(d,l)=>`Приложение было свёрнуто ${d}. ${l?`За это время: ${l}. `:""}Положение на маршруте восстановлено.`,awayZone:lv=>`зона: ${lv.toLowerCase()}`,zonePassed:"Зона болтанки позади. Дальше по прогнозу спокойнее.",
+ simDone:"Симуляция завершена.",autoTo:"Определить взлёт сам",autoCancel:"Отменить ожидание",autoWait:"Жду взлёт. Положите телефон на столик или в карман кресла и не трогайте его во время разбега. Если не сработает, нажмите «Взлетели».",autoRoll:s=>`Похоже на разбег по полосе: ${s} с…`,autoGpsOnly:"Датчик движения недоступен, жду взлёт по GPS. Держите телефон у окна.",autoNone:"Ни датчик движения, ни GPS недоступны. Нажмите «Взлетели» сами.",srcMotion:"по разгону",srcGps:"по GPS",autoDone:x=>`Взлёт определён автоматически (${x}). Если время не совпадает, поправьте кнопками ±5 мин.`,bgHint:"Держите приложение открытым на экране. Если перейти в другое приложение, iPhone приостановит слежение, а при возврате положение на маршруте восстановится само.",away:(d,l)=>`Приложение было свёрнуто ${d}. ${l?`За это время: ${l}. `:""}Положение на маршруте восстановлено.`,awayZone:lv=>`зона: ${lv.toLowerCase()}`,zonePassed:"Зона болтанки позади. Дальше по прогнозу спокойнее.",
  whenIn:x=>`примерно через ${x}`,whenNow:"сейчас",
  alStrong:"Пристегнитесь и уберите горячие напитки. ",alLight:"Хорошее время пристегнуться. ",
  alTail:l=>`Участок займёт около ${l}. Это обычная часть полёта: самолёт рассчитан на гораздо более сильные нагрузки.`,
@@ -4487,7 +4489,7 @@ en:{
  speed:v=>` · ${v} km/h`,alt:a=>` · altitude ${a} km`,
  flGps:f=>`GPS shows the plane at FL${f}. Forecast recalculated for this altitude.`,flRecalc:f=>`Forecast recalculated for FL${f}.`,
  oldSaved:"This forecast was saved by an older version. Tap “Get forecast” to change the flight level.",
- simDone:"Simulation finished.",bgHint:"Keep the app open on screen. If you switch to another app, iPhone pauses tracking; your position on the route is restored automatically when you come back.",away:(d,l)=>`The app was in the background for ${d}. ${l?`Meanwhile: ${l}. `:""}Your position on the route has been restored.`,awayZone:lv=>`${lv.toLowerCase()} zone`,zonePassed:"Turbulence zone passed. Smoother air is forecast ahead.",
+ simDone:"Simulation finished.",autoTo:"Detect takeoff",autoCancel:"Stop waiting",autoWait:"Waiting for takeoff. Put the phone on the tray table or in the seat pocket and don't touch it during the takeoff run. If it doesn't trigger, tap “Took off”.",autoRoll:s=>`Looks like the takeoff run: ${s} s…`,autoGpsOnly:"Motion sensor unavailable; waiting for takeoff by GPS. Keep the phone near the window.",autoNone:"Neither the motion sensor nor GPS is available. Tap “Took off” yourself.",srcMotion:"from the takeoff run",srcGps:"by GPS",autoDone:x=>`Takeoff detected automatically (${x}). If the time is off, adjust it with ±5 min.`,bgHint:"Keep the app open on screen. If you switch to another app, iPhone pauses tracking; your position on the route is restored automatically when you come back.",away:(d,l)=>`The app was in the background for ${d}. ${l?`Meanwhile: ${l}. `:""}Your position on the route has been restored.`,awayZone:lv=>`${lv.toLowerCase()} zone`,zonePassed:"Turbulence zone passed. Smoother air is forecast ahead.",
  whenIn:x=>`in about ${x}`,whenNow:"now",
  alStrong:"Fasten your seatbelt and put away hot drinks. ",alLight:"A good moment to fasten your seatbelt. ",
  alTail:l=>`It should last about ${l}. This is a normal part of flying: the aircraft is built for much stronger loads.`,
@@ -4595,7 +4597,7 @@ sl:{
  speed:v=>` · ${v} km/h`,alt:a=>` · višina ${a} km`,
  flGps:f=>`Po GPS je letalo na FL${f}. Napoved je preračunana za to višino.`,flRecalc:f=>`Napoved preračunana za FL${f}.`,
  oldSaved:"To napoved je shranila starejša različica. Tapnite »Pripravi napoved«, da lahko spremenite višino leta.",
- simDone:"Simulacija je končana.",bgHint:"Aplikacija naj ostane odprta na zaslonu. Če preklopite v drugo aplikacijo, iPhone sledenje začasno ustavi; ko se vrnete, se položaj na poti samodejno obnovi.",away:(d,l)=>`Aplikacija je bila v ozadju ${d}. ${l?`Medtem: ${l}. `:""}Položaj na poti je obnovljen.`,awayZone:lv=>`območje: ${lv.toLowerCase()}`,zonePassed:"Območje turbulence je za vami. Naprej je napovedano mirneje.",
+ simDone:"Simulacija je končana.",autoTo:"Samodejno zaznaj vzlet",autoCancel:"Prekliči čakanje",autoWait:"Čakam na vzlet. Telefon položite na mizico ali v žep sedeža in se ga med zaletom ne dotikajte. Če ne zazna, tapnite »Vzleteli smo«.",autoRoll:s=>`Videti je kot zalet po stezi: ${s} s …`,autoGpsOnly:"Senzor gibanja ni na voljo; vzlet čakam po GPS. Telefon držite ob oknu.",autoNone:"Ne senzor gibanja ne GPS nista na voljo. Tapnite »Vzleteli smo« sami.",srcMotion:"po zaletu",srcGps:"po GPS",autoDone:x=>`Vzlet je zaznan samodejno (${x}). Če čas ne ustreza, ga popravite z gumboma ±5 min.`,bgHint:"Aplikacija naj ostane odprta na zaslonu. Če preklopite v drugo aplikacijo, iPhone sledenje začasno ustavi; ko se vrnete, se položaj na poti samodejno obnovi.",away:(d,l)=>`Aplikacija je bila v ozadju ${d}. ${l?`Medtem: ${l}. `:""}Položaj na poti je obnovljen.`,awayZone:lv=>`območje: ${lv.toLowerCase()}`,zonePassed:"Območje turbulence je za vami. Naprej je napovedano mirneje.",
  whenIn:x=>`čez približno ${x}`,whenNow:"zdaj",
  alStrong:"Pripnite se in odložite vroče pijače. ",alLight:"Dober trenutek, da se pripnete. ",
  alTail:l=>`Trajalo bo približno ${l}. To je običajen del leta: letalo je zasnovano za precej večje obremenitve.`,
@@ -5106,6 +5108,7 @@ function updateFlight(){
   if(!flight) return;
   const m=curMin(),line=document.getElementById("nowLine");
   $("bgHint").hidden=!(clock&&clock.mode==="real");
+  $("autoTo").hidden=!!clock;
   if(m==null){$("clock").textContent="—";$("nextZone").textContent=T("idle");$("nextEvt").textContent="";if(line)line.setAttribute("visibility","hidden");return}
   const ne=$("optEvents").checked?flightEvents().find(e=>e.at>m&&!evFired[e.k]):null;
   $("nextEvt").textContent=ne?T("nextEvt",T("ev")[ne.k][0],fmtDur(Math.max(1,ne.at-m))):"";
@@ -5120,6 +5123,102 @@ function updateFlight(){
   $("nextZone").textContent=t;
 }
 function adjust(d){if(!clock){toast(T("needTakeoff"));return}setClock(curMin()+d,clock.rate,clock.mode);tick()}
+
+
+/* ---------- automatic takeoff detection ----------
+   Motion: with the phone lying still, the takeoff run pushes the measured
+   acceleration vector backwards (tilt vs. resting gravity) and makes it slightly
+   longer; we need that sustained for ~18 s. Liftoff ≈ start of run + 30 s.
+   GPS: ground speed ≥ 180 km/h means airborne; altitude gives time since liftoff. */
+let auto=null,autoTimer=null,autoGpsWatch=null;
+async function armAuto(){
+  if(auto){disarmAuto();return}
+  if(!flight) return;
+  initAudio();
+  let motion=false;
+  if(typeof DeviceMotionEvent!=="undefined"){
+    try{if(typeof DeviceMotionEvent.requestPermission==="function"){motion=(await DeviceMotionEvent.requestPermission())==="granted"}else motion=true}catch(e){motion=false}
+  }
+  auto={fid:flight.id,motion,gotMotion:false,chunk:[],hist:[],ref:null,cand:null,lastGood:0,alt0:null,gps:false};
+  if(motion) window.addEventListener("devicemotion",autoMotion);
+  if($("optGps").checked&&navigator.geolocation){
+    try{autoGpsWatch=navigator.geolocation.watchPosition(autoPos,()=>{},{enableHighAccuracy:true,maximumAge:5000,timeout:60000});auto.gps=true}catch(e){}
+  }
+  requestWake();
+  clearInterval(autoTimer);autoTimer=setInterval(()=>{if(auto&&auto.motion&&!auto.gotMotion&&Date.now()-auto.t0>3000)auto.motion=false;paintAuto()},1000);
+  auto.t0=Date.now();
+  paintAuto();
+}
+function disarmAuto(){
+  window.removeEventListener("devicemotion",autoMotion);
+  if(autoGpsWatch!=null&&navigator.geolocation)navigator.geolocation.clearWatch(autoGpsWatch);
+  autoGpsWatch=null;clearInterval(autoTimer);autoTimer=null;auto=null;paintAuto();
+}
+function paintAuto(){
+  const b=$("autoTo"),m=$("autoMsg");
+  b.textContent=auto?T("autoCancel"):T("autoTo");b.setAttribute("aria-pressed",String(!!auto));
+  if(!auto){m.hidden=true;return}
+  m.hidden=false;m.className="status";
+  if(auto.cand&&Date.now()-auto.cand.start>3000){m.textContent=T("autoRoll",Math.round((Date.now()-auto.cand.start)/1000));return}
+  if(!auto.motion&&!auto.gps){m.textContent=T("autoNone");m.className="status warn";return}
+  m.textContent=auto.motion?T("autoWait"):T("autoGpsOnly");
+}
+function autoMotion(e){
+  if(!auto) return;
+  const a=e.accelerationIncludingGravity; if(!a||a.x==null) return;
+  auto.gotMotion=true;
+  const now=Date.now();
+  auto.chunk.push([a.x,a.y,a.z]);
+  if(!auto.chunkT) auto.chunkT=now;
+  if(now-auto.chunkT<500) return;
+  const n=auto.chunk.length,v=[0,0,0];
+  auto.chunk.forEach(p=>{v[0]+=p[0]/n;v[1]+=p[1]/n;v[2]+=p[2]/n});
+  auto.chunk=[];auto.chunkT=now;
+  autoChunk(v,now);
+}
+function autoChunk(v,now){
+  const A=auto,mag=Math.hypot(v[0],v[1],v[2]);
+  A.hist.push(v);if(A.hist.length>10)A.hist.shift();
+  if(!A.ref){                                   // wait for 5 s of stillness to learn "down"
+    if(A.hist.length<10) return;
+    const m=[0,1,2].map(i=>A.hist.reduce((s,p)=>s+p[i],0)/A.hist.length);
+    const sd=Math.max(...[0,1,2].map(i=>Math.sqrt(A.hist.reduce((s,p)=>s+(p[i]-m[i])**2,0)/A.hist.length)));
+    if(sd<0.12){A.ref=m;A.refMag=Math.hypot(m[0],m[1],m[2])}
+    return;
+  }
+  const r=A.ref,cos=(v[0]*r[0]+v[1]*r[1]+v[2]*r[2])/(mag*A.refMag);
+  const tilt=Math.acos(Math.max(-1,Math.min(1,cos)))/rad, dMag=(mag-A.refMag)/9.81;
+  const rolling=tilt>=6&&tilt<=35&&dMag>=0.012;
+  if(rolling){
+    if(!A.cand) A.cand={start:now};
+    A.lastGood=now;
+    if(now-A.cand.start>=18000){autoDetected(A.cand.start+30000,"motion");return}
+  }else{
+    if(A.cand&&now-A.lastGood>2500) A.cand=null;
+    if(!A.cand){
+      if(tilt>4){A.ref=null;A.hist=[]}         // phone was moved: learn "down" again
+      else for(let i=0;i<3;i++) r[i]+=0.02*(v[i]-r[i]);
+    }
+  }
+}
+function autoPos(pos){
+  if(!auto) return;
+  const spd=pos.coords.speed,alt=pos.coords.altitude;
+  if(spd!=null&&spd>=0&&spd<20&&alt!=null) auto.alt0=alt;   // still on the ground
+  if(spd!=null&&spd>=50){
+    let ago=15;
+    if(alt!=null){const base=auto.alt0!=null?auto.alt0:0;if(alt-base>200) ago=Math.min(1800,(alt-base)/9)}
+    autoDetected(Date.now()-ago*1000,"gps");
+  }
+}
+function autoDetected(liftoffMs,src){
+  if(!auto) return;
+  const fid=auto.fid;disarmAuto();
+  if(!flight||flight.id!==fid) selectFlight(fid);
+  startFlight("real");
+  setClock((Date.now()-liftoffMs)/6e4,1,"real");tick();
+  toast(T("autoDone",T(src==="gps"?"srcGps":"srcMotion")),10000);
+}
 
 /* GPS */
 function startGps(){
@@ -5550,7 +5649,7 @@ function setLang(l,persist){
   refreshDur();paintStatus();
   if(posState) $("posMeta").textContent=posState();
   if(flight) render(); else updateFlight();
-  paintAlert();paintEvent();renderList();
+  paintAlert();paintEvent();renderList();paintAuto();
   fillShakeSelects();renderShakeMeta();renderWx();drawMap();paintSensMsg();
   const gs=$("gScale");gs.textContent="";[0,0.5,1,1.5].forEach(v=>{const sp=document.createElement("span");sp.textContent=v?num(v,1)+" g":"0";gs.append(sp)});
   $("fno").placeholder=lang==="en"?"BA117":lang==="sl"?"JU450":"SU208";
@@ -5578,7 +5677,8 @@ function refreshDur(){
 ["from","to"].forEach(id=>$(id).addEventListener("change",refreshDur));
 $("dur").addEventListener("input",()=>{durTouched=true;refreshDur()});
 $("build").addEventListener("click",()=>{stopFlight();build()});
-$("takeoff").addEventListener("click",()=>startFlight("real"));
+$("takeoff").addEventListener("click",()=>{if(auto)disarmAuto();startFlight("real")});
+$("autoTo").addEventListener("click",armAuto);
 $("sim").addEventListener("click",()=>startFlight("sim"));
 $("stop").addEventListener("click",stopFlight);
 $("minus").addEventListener("click",()=>adjust(-5));
